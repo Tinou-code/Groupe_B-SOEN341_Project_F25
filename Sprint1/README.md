@@ -12,8 +12,6 @@ Team info:
   
 - Mbog Wendy -40259455-wenm983
 
-
-
 Core Features:
 1. Student: 
 - Each student should be able to browse and search events with filters (date, category, organization).
@@ -21,13 +19,11 @@ Core Features:
 - Claim tickets (free or mock paid).
 - Receive a digital ticket with a unique QR code.
 
-
 2. Organizers
 - Enter event details: title, description, date/time, location, ticket capacity, ticket type (free or paid).
 - Have a Dashboard per event with stats: tickets issued, attendance rates, and remaining capacity.
 - Be able to export the attendee list in CSV.
 - Need an Integrated QR scanner for ticket validation (for simplicity, we can assume the QR code image can be provided via file upload).
-
 
 
 3. Administrators
@@ -47,8 +43,6 @@ Core Features:
 - Event reminders for students 
 - Notify organizers when ticket sales are nearing capacity, when new attendees register or cancelled tickets
 - Allow users to set how they wish to receive notifications (email, SMS)
-
-
 
 
 Languages and techniques:
