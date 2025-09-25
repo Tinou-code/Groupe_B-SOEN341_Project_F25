@@ -38,4 +38,44 @@ Core Features
 4. Notification and Alert system
 - Event reminders for students 
 - Notify organizers when ticket sales are nearing capacity, when new attendees register or cancelled tickets
-- Allow users to set how they wish to receive notifications (email, SMS) 
+- Allow users to set how they wish to receive notifications (email, SMS)
+
+
+
+
+
+
+
+
+Team info (real name, student number, and GitHub user name)
+
+- IBRAHIM AHMAD - 40279224 - Ibrahimrocks
+  
+- SAEED RAMEZ FAKHOURI - 40308146 - SF30-fa
+  
+- ABDOUL KONE - 40307505 - osrlazlo
+  
+- Ryan Abdalla - 40243555- rayanabdalla
+  
+- Abderraouf El Khalil Karoun - 40315753
+  
+- Madona Beshara -40316641- madonabeshara5-ui
+  
+- Mbog Wendy -40259455-wenm983
+
+
+
+
+
+Languages and techniques
+
+- Javascript,
+   
+- HTML,
+ 
+- CSS,
+  
+- SQL
+
+
+
