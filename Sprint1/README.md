@@ -1,6 +1,4 @@
 Team info: 
-
-- Ibrahim Ahmad - 40279224 - Ibrahimrocks
   
 - Saeed Ramez Fakhouri - 40308146 - SF30-fa
   
