@@ -4,17 +4,17 @@ Core Features
 
 Core Features
 1. Student: 
--Each student should be able to browse and search events with filters (date, category, organization).
--Save events to a personal calendar.
--Claim tickets (free or mock paid).
--Receive a digital ticket with a unique QR code.
+- Each student should be able to browse and search events with filters (date, category, organization).
+- Save events to a personal calendar.
+- Claim tickets (free or mock paid).
+- Receive a digital ticket with a unique QR code.
 
 
 2. Organizers
--Enter event details: title, description, date/time, location, ticket capacity, ticket type (free or paid).
--Have a Dashboard per event with stats: tickets issued, attendance rates, and remaining capacity.
--Be able to export the attendee list in CSV.
--Need an Integrated QR scanner for ticket validation (for simplicity, we can assume the QR code image can be provided via file upload).
+- Enter event details: title, description, date/time, location, ticket capacity, ticket type (free or paid).
+- Have a Dashboard per event with stats: tickets issued, attendance rates, and remaining capacity.
+- Be able to export the attendee list in CSV.
+- Need an Integrated QR scanner for ticket validation (for simplicity, we can assume the QR code image can be provided via file upload).
 
 
 
