@@ -3,14 +3,6 @@ Core Features
 -Description of the project
 
 Core Features
-We identify three primary users: Students, Organizers, and Administrators.
-
-Objectives:
-The objective of this project is to help us get a taste of software development skills firsthand, while using the Agile development approach and get used to working with Github.
-
-Our goal is to create a Campus Events & Ticketing Web Application designed to help students discover, organize, and attend events on campus. This application has different types of users and each of them has different things they can do. Our job is to create this app and make sure all the core features of the users are implemented.
-
-Core Features
 1. Student: 
 -Each student should be able to browse and search events with filters (date, category, organization).
 -Save events to a personal calendar.
