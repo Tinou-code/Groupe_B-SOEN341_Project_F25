@@ -6,7 +6,7 @@ Team info:
   
 - Ryan Abdalla - 40243555- rayanabdalla
   
-- Abderraouf El Khalil Karoun - 40315753
+- Abderraouf El Khalil Karoun - 40315753- Khalil-Krn
   
 - Madona Beshara -40316641- madonabeshara5-ui
   
