@@ -17,9 +17,28 @@ export default function Event({id, title, tickets}) {
 
     const {currentUser, claimedTickets, setClaimedTickets} = useContext(UserContext)
     
-    function claimTicket() {
+
+        
+    function claimTicket(eventId) {
         //write function to claim ticket
-        setClaimedTickets(s => [...s, {ticketNum:"001", eventId:"123"}])
+     
+        setEvents(prevEvents =>
+    prevEvents.map(event => {
+      if (event.id === eventId && event.remainingTickets > 0) {
+        // Reduce the ticket count
+        return { ...event, remainingTickets: event.remainingTickets - 1 };
+      }
+      return event;
+    })
+  );
+
+  setClaimedTickets(prevTickets => {
+    // Get current count for generating next ticket number
+    const nextTicketNum = String(prevTickets.length + 1).padStart(3, "0");
+    return [...prevTickets, { ticketNum: nextTicketNum, eventId }];
+  });
+}
+
     }
 
     return(
@@ -33,4 +52,3 @@ export default function Event({id, title, tickets}) {
             <button onClick={()=>claimTicket()}>claim ticket</button>
         </div>
     )
-}
