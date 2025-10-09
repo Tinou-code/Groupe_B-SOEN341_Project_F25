@@ -8,22 +8,22 @@ export const UserContext = createContext()
 
 function App() {
 
-  //list of events
+  //mockup list of events
   const events = [
-    new EventObject(1000, "event 1", 10),
+    new EventObject(1000, "event 1", 1),
     new EventObject(1001, "event 2", 5),
     new EventObject(1002, "event 3", 6),
   ]
 
-  const [claimedTickets, setClaimedTickets] = useState("");
+  //mockup user
   const currentUser = {id:12345, name:"my name"};
+  const [claimedTickets, setClaimedTickets] = useState("");
 
   return (
     <UserContext.Provider value={{currentUser, claimedTickets, setClaimedTickets}}>
     <User/>
     {events.map(e => (
-      <Event key={e.id} id={e.id} title={e.title} 
-            tickets={e.tickets} available_tickets={e.available_tickets}/>
+      <Event key={e.id} event={e}/>
     ))}
     </UserContext.Provider>
   )

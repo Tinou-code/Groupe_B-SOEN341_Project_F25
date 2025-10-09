@@ -6,11 +6,6 @@ export default function User() {
     
     const {currentUser, claimedTickets} = useContext(UserContext)
 
-    function listTickets(tickets) {
-      
-        
-    }
-
     return(
         <div className="user">
             <span>
@@ -20,8 +15,8 @@ export default function User() {
                 tickets:   
                     {!claimedTickets ? "no tickets claimed yet" : 
                     claimedTickets.map(t => (
-                        <Ticket key={`${t.eventId}-${t.ticketNum}`} 
-                        ticketNum={t.ticketNum} eventId={t.eventId}/>
+                        <Ticket key={`${t.event.id}-${t.ticketNum}`} 
+                        ticketNum={t.ticketNum} event={t.event} user={currentUser}/>
                     ))}
             </span>
         </div>

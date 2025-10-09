@@ -7,48 +7,48 @@ export function EventObject(id, title, tickets) {
     this.title = title;
     this.tickets = tickets;
   }
-export default function Event({id, title, tickets}) {
+
+//event component
+export default function Event({event}) {
 
     const [availableTickets, setAvailableTickets] = useState()
 
     useEffect(() =>{
-        setAvailableTickets(t => tickets)
+        setAvailableTickets(t => event.tickets)
     },[])
 
     const {currentUser, claimedTickets, setClaimedTickets} = useContext(UserContext)
-    
-
         
-    function claimTicket(eventId) {
-        //write function to claim ticket
-     
-        setEvents(prevEvents =>
-    prevEvents.map(event => {
-      if (event.id === eventId && event.remainingTickets > 0) {
-        // Reduce the ticket count
-        return { ...event, remainingTickets: event.remainingTickets - 1 };
+    function claimTicket() {
+      //write function to claim ticket
+      if (availableTickets < 1) {
+        alert("no more tickets to claim"); 
+        return;
       }
-      return event;
-    })
-  );
 
-  setClaimedTickets(prevTickets => {
-    // Get current count for generating next ticket number
-    const nextTicketNum = String(prevTickets.length + 1).padStart(3, "0");
-    return [...prevTickets, { ticketNum: nextTicketNum, eventId }];
-  });
-}
-
+      if (claimedTickets && claimedTickets.some(t => t.event.id === event.id)) {
+        alert("you already have a ticket for this event"); 
+        return;
+      }
+ 
+      // Reduce the ticket count
+      setAvailableTickets(t => t-1);
+      
+      // Get current count for generating next ticket number
+      const nextTicketNum = String(Number(event.tickets)-Number(availableTickets)+1).padStart(3, "0");
+      setClaimedTickets(t => t = [...t, { user: currentUser, ticketNum: nextTicketNum, event: event}]);
     }
 
-    return(
+    return (
         <div className="event">
             <span>
                 Event<br/>
-                id: {id}<br/>
-                title: {title}<br/>
-                tickets: {`${availableTickets}/${tickets}`}
+                id: {event.id}<br/>
+                title: {event.title}<br/>
+                tickets: {`${availableTickets}/${event.tickets}`}
             </span>
             <button onClick={()=>claimTicket()}>claim ticket</button>
         </div>
     )
+
+  }
