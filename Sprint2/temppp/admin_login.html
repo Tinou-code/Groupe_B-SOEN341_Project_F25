@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Event login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>CampusX</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="events.html" class="nav-link active">Events</a></li>
+            <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+            <li><a href="QR.html" class="nav-link">QR Code</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Login Button -->
+        <div class="login-container">
+            <div class="login-dropdown">
+                <button class="btn-login" onclick="toggleDropdown()">Login</button>
+                <div class="dropdown-content" id="loginDropdown">
+                    <a href="#" class="dropdown-item">Student Login</a>
+                    <a href="#" class="dropdown-item">Organizer Login</a>
+                    <a href="#" class="dropdown-item">Administrator Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="d3">
+            <p id="errorMessage" style="color: rgb(171, 171, 121);"></p>
+              <form action="/login" method="post" id="loginForm">
+                  <h2>Login here:</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username1" name="username" required><br>
+              <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password1" required><br>
+              <br>
+                <button type="submit">Login</button>
+              </form>
+          </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Campus Events. All rights reserved.</p>
+    </footer>
+</body>
+</html>

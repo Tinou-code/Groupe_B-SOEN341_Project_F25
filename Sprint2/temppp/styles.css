@@ -8,8 +8,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    min-height: 100px;
     display: flex;
+    flex-direction: column;
 }
 
 /* Sidebar Navigation */
@@ -159,6 +160,8 @@ body {
     padding: 20px 40px;
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    margin-left: 280px;
 }
 
 /* Header (for other pages) */
@@ -445,4 +448,10 @@ body {
         font-size: 60px;
     }
 }
+@media (max-width: 576px) {
+    .footer {
+      margin-left: 0;
+    }
+  }
+  
 
