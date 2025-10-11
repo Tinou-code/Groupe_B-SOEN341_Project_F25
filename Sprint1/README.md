@@ -12,6 +12,10 @@ Team info:
   
 - Mbog Wendy -40259455-wenm983
 
+- Etienne Vorms - 40286823 - Tinou-code
+
+- Ibrahim Ahmad - 40279224 - ibrahimrocks
+
 Core Features:
 1. Student: 
 - Each student should be able to browse and search events with filters (date, category, organization).
