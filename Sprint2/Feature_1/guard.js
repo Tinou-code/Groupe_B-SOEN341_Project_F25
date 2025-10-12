@@ -1,3 +1,5 @@
+//guard.js file
+//Function that checks for if user is logged in and their role
 (function guard() {
     try {
       const isLoggedIn = localStorage.getItem("loggedIn") === "true";
