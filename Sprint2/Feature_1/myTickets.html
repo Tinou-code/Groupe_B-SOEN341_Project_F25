@@ -3,25 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>View Events</title>
+  <title>CampusX - Events</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="view-events.js"></script>
 </head>
-<body>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h2>Student Event Hub</h2>
-    </div>
-    <ul class="nav-menu">
-      <li><a href="home.html" class="nav-link">Home</a></li>
-      <li><a href="events.html" class="nav-link active">Events</a></li>
-      <li><a href="mySavedEvents.html" class="nav-link">My Saved Events</a></li>
-      <li><a href="calendar.html" class="nav-link">Calendar</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
-  </aside>
 
 <body>
   <!-- Sidebar -->
@@ -33,7 +17,7 @@
       <li><a href="home.html" class="nav-link">Home</a></li>
       <li><a href="events.html" class="nav-link active">Events</a></li>
       <li><a href="mySavedEvents.html" class="nav-link active">My Saved Events</a></li>
-      <li><a href="myTickets.html" class="nav-link active">My Tickets</a></li>
+      <li><a href="myTcikets.html" class="nav-link active">My Tickets</a></li>
       <li><a href="calendar.html" class="nav-link">Calendar</a></li>
       <li><a href="QR.html" class="nav-link">QR Code</a></li>
       <li><a href="about.html" class="nav-link">About</a></li>
@@ -62,7 +46,7 @@
       </h1>
 
       <section id="eventsSection" style="display:none;">
-        <h1 class="page-header">List of events</h1>
+        <h1 class="page-header">My tickets</h1>
         <div id="eventsGrid" class="events-container"></div>
       </section>
     </div>
@@ -76,7 +60,7 @@
   <!-- JS (all external) -->
   <script src="function.js" defer></script>
   <script src="guard.js" defer></script>
-  <script src="events.js" defer></script>
+  <script src="myTickets.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 </body>
 </html>
-

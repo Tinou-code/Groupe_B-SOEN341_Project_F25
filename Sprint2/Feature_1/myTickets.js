@@ -8,21 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loggedIn) {
       if (notLoggedInMessage) notLoggedInMessage.style.display = "none";
       if (eventsSection) eventsSection.style.display = "block";
-      renderEvents(events);
+      renderTickets(events);
   
-      // Attach search listener
-      if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          const filtered = events.filter((ev) =>
-            [ev.title, ev.category, ev.organizer, ev.location]
-              .join(" ")
-              .toLowerCase()
-              .includes(query)
-          );
-          renderEvents(filtered);
-        });
-      }
     } else {
       if (notLoggedInMessage) notLoggedInMessage.style.display = "block";
       if (eventsSection) eventsSection.style.display = "none";
@@ -122,94 +109,44 @@ document.addEventListener("DOMContentLoaded", () => {
     location:
       '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
   };
-
-  async function saveEvent(eventId) {
-    let user = JSON.parse(localStorage.getItem("user"));    
-      try {
-      const resp = await fetch("/save_event", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: user.id, eventId:eventId}),
-      });
-
-      const data = await resp.json();
-
-      if (resp.ok && data.ok) {
-        if (!user.savedEvents) user.savedEvents = [];
-        user.savedEvents.push(eventId);
-        localStorage.setItem("user", {...user, savedEvents:[...user.savedEvents, eventId]})
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-async function claimTicket(eventId) {
-    // Get user from localStorage with error handling
-    let user;
-    try {
-        const userData = localStorage.getItem("user");
-        if (!userData) {
-            alert("Please log in to claim tickets");
-            return;
-        }
-        user = JSON.parse(userData);
-    } catch (error) {
-        console.error("Error parsing user data:", error);
-        alert("Error accessing user data");
-        return;
-    }
-
-    try {
-        const resp = await fetch("/claim_tickets", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                userId: user.id,
-                eventId: eventId
-            })
-        });
-
-        if (!resp.ok) {
-            throw new Error(`HTTP error! status: ${resp.status}`);
-        }
-
-        const data = await resp.json();
-        
-        if (data.ok) {
-        
-            if (!user.claimedTickets) {
-                user.claimedTickets = [];
-            }
-            user.claimedTickets.push(eventId);
-            localStorage.setItem("user", JSON.stringify(user));
-            alert("Ticket claimed successfully!");
-        } else {
-            throw new Error(data.message || "Failed to claim ticket");
-        }
-    } catch (err) {
-        console.error("Error claiming ticket:", err);
-        alert("Error claiming ticket: " + err.message);
-    }
-}
   
-  function renderEvents(eventList) {
+  async function renderTickets(eventList) {
     const grid = document.getElementById("eventsGrid");
     if (!grid) return;
   
     if (!eventList.length) {
       grid.innerHTML =
-        '<div class="no-events">No matching events found.</div>';
+        '<div class="no-events">No claimed tickets.</div>';
       return;
     }
+    try {
+    const resp = await fetch("/claimed_tickets");
+    const data = await resp.json();
+    console.log("data", data.events);
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log("user", user)
+    if (resp.ok && data.ok) {
+     
+      let claimedTickets = new Set();
+      data.events.map(e => {
+        if (e.userId === user.id) claimedTickets.add(e.eventId);
+    })
+      console.log("claimed tickets", claimedTickets)
+      const claimedTicketsList = eventList.filter(ev => 
+        claimedTickets.has(ev.id)
+      );
+
+      if (!claimedTicketsList.length) {
+        grid.innerHTML = '<div class="no-events">No saved events.</div>';
+        return;
+      }
   
-    grid.innerHTML = eventList
+    grid.innerHTML = claimedTicketsList
       .map(
         (ev) => `
         <div class="event-card">
-          <img src="${ev.image}" alt="${ev.title}" class="event-image" />
+          <div id=${ev.id}></div>
           <div class="event-content">
             <span class="event-category">${ev.category}</span>
             <h2 class="event-title">${ev.title}</h2>
@@ -221,11 +158,21 @@ async function claimTicket(eventId) {
             <div class="event-footer">
               <span class="event-organizer">by ${ev.organizer}</span>
             </div>
-            <button onclick="saveEvent(${ev.id})">Save event</button>
-            <button onclick="claimTicket(${ev.id})">Claim ticket</button>
           </div>
         </div>`
       )
-      .join("");
+      .join("");   
+    
+    claimedTicketsList.map((e) => {
+         const textToEncode = `${e.id}-${user.id}`;
+        const qrcode = new QRCode(document.getElementById(e.id), {
+        text: textToEncode,
+    })})
   }
-  
+    } catch (err) {
+    console.error('Error fetching saved events:', err);
+    grid.innerHTML = '<div class="error">Error loading saved events</div>';
+  }
+}
+
+ 
