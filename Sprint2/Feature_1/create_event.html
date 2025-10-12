@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Event</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script_events.js"></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Student Event Hub</h2>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="home.html" class="nav-link">Home</a></li>
+      <li><a href="create_event.html" class="nav-link active">Create Event</a></li>
+      <li><a href="events.html" class="nav-link">View Events</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="header">
+      <div class="header-title">
+        <h1>Create a New Event</h1>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-header">
+        <p>Fill in the form below to create your event</p>
+      </div>
+
+      <form action="/save-event" method="POST" class="event-form">
+        <div class="form-group">
+          <label for="name" class="form-label">Event Name:</label>
+          <input type="text" id="name" name="name" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="date" class="form-label">Date:</label>
+          <input type="date" id="date" name="date" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="time" class="form-label">Time:</label>
+          <input type="time" id="time" name="time" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="location" class="form-label">Location:</label>
+          <input type="text" id="location" name="location" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">Description:</label>
+          <textarea id="description" name="description" class="form-input" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Event</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Student Event Hub</p>
+    </footer>
+  </div>
+</body>
+</html>
+

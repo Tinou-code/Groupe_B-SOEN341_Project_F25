@@ -555,4 +555,188 @@ body {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
   }
-  
+  /* ===== Events Page Styles ===== */
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card design */
+.event-card {
+  background: linear-gradient(135deg, #ffffff, #f9f9ff);
+  border: 1px solid #e0e0f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(120, 120, 180, 0.1);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(100, 100, 200, 0.2);
+}
+
+.event-card h3 {
+  color: #4b4ba1;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.event-card p {
+  margin: 6px 0;
+  color: #333;
+}
+
+.event-card strong {
+  color: #555;
+}
+
+.event-card .createdAt {
+  margin-top: 10px;
+  font-size: 0.85em;
+  color: #777;
+  text-align: right;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+}
+/* ---------------- Create Event Form ---------------- *(update to make the organizer page fit with the website)/
+.event-form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(245, 245, 245, 0.15); /* gris doux semi-transparent */
+    padding: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    color: #2d2d2d;
+}
+
+.event-form input,
+.event-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.85); /* gris clair */
+    color: #2d2d2d;
+}
+
+.event-form input:focus,
+.event-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+}
+
+.event-form button {
+    background-color: #667eea; /* bleu principal */
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.event-form button:hover {
+    background-color: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ---------------- Event Cards for View Events Page ---------------- */
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.9); /* blanc doux pour contraster avec le fond */
+    border: 1px solid #ddd; /* gris clair */
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    color: #2d2d2d;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(100, 100, 150, 0.2);
+}
+
+.event-card h3 {
+    color: #667eea; /* bleu principal */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.event-card p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 0.95em;
+}
+
+/* Button group inside event cards */
+.button-group {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    background-color: #68d391; /* vert doux */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #4c9e71;
+}
+
+.delete-btn {
+    background-color: #fc8181; /* rouge doux */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e53e3e;
+}
+
+/* Message when no events are available */
+.no-events {
+    color: #2d2d2d;               /* texte sombre pour contraste */
+    background: #f5f5f5;          /* même gris que la sidebar */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* léger relief */
+}
+
+.no-events a.btn {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #667eea;    /* bleu principal pour bouton */
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.no-events a.btn:hover {
+    background-color: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+

@@ -24,4 +24,7 @@ INSTRUCTIONS TO USE WEBSITE - SPRINT 2 EDITION
 
 -When creating account, you will be able to see list of events when you click on events, and with search bar make it easier for you to navigate.
 
+CLAIMING TICKETS 
+- To claim a ticket, the user simply needs to click the “Claim” button. Each time a ticket is claimed, the total number of available tickets decreases by one, reflecting the updated count in real time. At the same time, the ticket ID automatically increases, ensuring that every new ticket receives a unique, sequential identifier.
+-
 - GUYS CONTINUEZ VOS PARTS ICI.

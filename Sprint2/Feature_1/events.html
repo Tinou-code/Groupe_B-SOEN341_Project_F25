@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CampusX - Events</title>
+  <title>View Events</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="view-events.js"></script>
 </head>
-
 <body>
   <!-- Sidebar -->
-  <nav class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-header">
-      <h2>CampusX</h2>
+      <h2>Student Event Hub</h2>
     </div>
     <ul class="nav-menu">
       <li><a href="home.html" class="nav-link">Home</a></li>
@@ -22,51 +22,28 @@
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
-  </nav>
+  </aside>
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Top Login Dropdown -->
-    <div class="login-container">
-      <div class="login-dropdown">
-        <button class="btn-login" onclick="toggleDropdown()">Login</button>
-        <div class="dropdown-content" id="loginDropdown">
-          <a href="student_login.html" class="dropdown-item">Student Login</a>
-          <a href="organizer_login.html" class="dropdown-item">Organizer Login</a>
-          <a href="admin_login.html" class="dropdown-item">Administrator Login</a>
-        </div>
+    <header class="header">
+      <div class="header-title">
+        <h1>All Events</h1>
       </div>
-    </div>
+    </header>
 
-    <!-- Conditional content -->
-    <div class="content">
-      <h1 class="page-header" id="notLoggedInMessage" style="text-align:center; color:white; padding-top: 40px;">
-        Sorry, you need to be logged in in order to see the content.
-      </h1>
+    <main class="content">
+      <div class="page-header">
+        <p>Here are all the events created so far:</p>
+      </div>
 
-      <section id="eventsSection" style="display:none;">
-        <h1 class="page-header">Upcoming Campus Events</h1>
-        <div class="search-container">
-            <input
-              type="text"
-              id="eventSearch"
-              class="search-input"
-              placeholder="Search by title, category, or location..."
-            />
-          </div>
-        <div id="eventsGrid" class="events-container"></div>
-      </section>
-    </div>
+      <div id="eventList" class="event-list"></div>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2025 CampusX Events. All rights reserved.</p>
+      <p>&copy; 2025 Student Event Hub</p>
     </footer>
   </div>
-
-  <!-- JS (all external) -->
-  <script src="function.js" defer></script>
-  <script src="guard.js" defer></script>
-  <script src="events.js" defer></script>
 </body>
 </html>
+
