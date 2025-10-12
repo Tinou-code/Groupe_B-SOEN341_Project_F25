@@ -1,4 +1,5 @@
-// ---------------- Dropdown toggle ----------------
+//function.js file
+//Dropdown toggle
 function toggleDropdown() {
     const dropdown = document.getElementById('loginDropdown');
     dropdown.classList.toggle('show');
@@ -17,7 +18,7 @@ function toggleDropdown() {
     }
   };
   
-  // ---------------- LOGIN STATE MANAGEMENT ----------------
+  //Logged in/out management
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('.btn-login');
     const dropdown = document.getElementById('loginDropdown');
@@ -26,19 +27,19 @@ function toggleDropdown() {
     const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
   
     if (isLoggedIn) {
-      // --- Logged in: hide dropdown, make button a logout button
+      // If Logged in, hide dropdown, make button a logout button
       if (dropdown) dropdown.classList.remove('show'); // ensure hidden
       btn.textContent = 'Logout';
       btn.onclick = handleLogout;
     } else {
-      // --- Logged out: restore login dropdown behavior
+      // If Logged out, restore login dropdown behavior
       if (dropdown) dropdown.classList.remove('show'); // keep hidden by default
       btn.textContent = 'Login';
       btn.onclick = toggleDropdown;
     }
   });
   
-  // ---------------- LOGOUT ----------------
+  //Logout function
   function handleLogout() {
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('role');

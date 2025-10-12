@@ -1,3 +1,4 @@
+//event.js file
 document.addEventListener("DOMContentLoaded", () => {
     const loggedIn = localStorage.getItem("loggedIn") === "true";
     const notLoggedInMessage = document.getElementById("notLoggedInMessage");
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-  // ---------------- EVENTS DATA ----------------
+  //Listed events
   const events = [
     {
       id: 1,
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
   
-  // ---------------- HELPERS ----------------
+  //List of events support
   function formatDate(dateString) {
     const date = new Date(dateString);
     const options = { month: "short", day: "numeric", year: "numeric" };
