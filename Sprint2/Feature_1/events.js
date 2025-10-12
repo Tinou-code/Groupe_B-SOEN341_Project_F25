@@ -122,6 +122,27 @@ document.addEventListener("DOMContentLoaded", () => {
     location:
       '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
   };
+
+    async function saveEvent(eventId) {
+    let user = JSON.parse(localStorage.getItem("user"));    
+      try {
+      const resp = await fetch("/save_event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id, eventId:eventId}),
+      });
+
+      const data = await resp.json();
+
+      if (resp.ok && data.ok) {
+        if (!user.savedEvents) user.savedEvents = [];
+        user.savedEvents.push(eventId);
+        localStorage.setItem("user", {...user, savedEvents:[...user.savedEvents, eventId]})
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
   
   function renderEvents(eventList) {
     const grid = document.getElementById("eventsGrid");
@@ -149,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="event-footer">
               <span class="event-organizer">by ${ev.organizer}</span>
             </div>
+            <button onclick="saveEvent(${ev.id})">Save event</button>
           </div>
         </div>`
       )

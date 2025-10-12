@@ -1,0 +1,125 @@
+/* Login Box Styling */
+.login-box-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    overflow: hidden;
+}
+
+.user-type-box, .user-type-box-active {
+    background-color: #a7b7ff;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.user-type-box-active {
+    background-color: royalblue;
+    color: white;
+}
+
+.login-box {
+    max-width: 400px;
+    margin: 120px auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.6s ease;
+  }
+  
+  .login-box h2 {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+  
+  .error-msg {
+    color: #ffb3b3;
+    font-size: 15px;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .register-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  .register-link {
+    color: #a7b7ff;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+
+  .btn-back-home {
+    background-color: white;
+    color: royalblue;
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    position: absolute;
+    top: 15px;
+    left: 15px;  
+  }
+
+.btn-back-home:hover {
+    background-color: hsl(0, 0%, 90%);  
+  }
+
+/* Form Styles */
+
+.form-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #002fff;
+}
