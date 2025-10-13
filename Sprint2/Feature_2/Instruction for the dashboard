@@ -1,0 +1,3 @@
+The dashboard is still a prototype for now it is open by using live server on vs code. 
+When adding events will be possible it will be updated to use these events.
+But by having the events objects in a JSON form in a text file it will be very easy to implement and read.
