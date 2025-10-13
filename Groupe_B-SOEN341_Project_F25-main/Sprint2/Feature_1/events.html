@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Events</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="view-events.js"></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Student Event Hub</h2>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="home.html" class="nav-link">Home</a></li>
+      <li><a href="create_event.html" class="nav-link">Create Event</a></li>
+      <li><a href="events.html" class="nav-link active">View Events</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="header">
+      <div class="header-title">
+        <h1>All Events</h1>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-header">
+        <p>Here are all the events created so far:</p>
+      </div>
+
+      <div class="filters">
+        <select id = "priceFilter">
+          <option value="all">All Prices</option>
+          <option value="free">Free</option>
+          <option value="paid">Paid</option>
+        </select>
+
+        <select id = "categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="technology">Technology</option>
+          <option value="career">Career</option>
+          <option value="entertainement">Entertainement</option>
+          <option value="workshop">Workshop</option>
+          <option value="culture">Culture</option>
+        </select>
+
+        <select id = "organizationFilter">
+          <option value="all">All Organizations</option>
+          <option value="Tech Club">Tech Club</option>
+          <option value="Career Services">Career Services</option>
+          <option value="Music Society">Music Society</option>
+          <option value="Entrepreneurship Club">Entrepreneurship Club</option>
+          <option value="International Students Association">International Students Association</option>
+          <option value="AI Research Group">AI Research Group</option>
+          </select>
+
+          <button id = "filterBtn">Apply Filters</button>
+      </div>
+
+      <div id="eventList" class="event-list"></div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Student Event Hub</p>
+    </footer>
+  </div>
+</body>
+</html>
+
