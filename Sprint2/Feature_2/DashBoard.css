@@ -1,0 +1,72 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(255, 255, 255);
+    margin:0;
+    padding:0;
+    color:black; 
+}
+header{
+    position:sticky;
+    background-color: hsl(198, 61%, 63%);
+    color:white;
+    padding:20px 30px;
+    text-align: center;
+    font-size: 2em;
+    font-weight:bold;
+    width:100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+div{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    padding:0;
+}
+main{
+    max-width:180vh;
+    background-color:aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding:20px;
+    width:90%;
+}
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:5px;
+    font-size:1.2em;
+}
+select{
+    width:100%;
+    padding:10px;
+    border:1px solid black;
+    border-radius:7px;
+    margin-bottom:20px;
+    font-size: 1em;
+}
+
+select:focus {
+    outline: none;
+    border-color: hsl(198, 61%, 63%);
+    box-shadow: 0 0 5px rgba(56, 139, 253, 0.5);
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    background-color: white;
+}
+tbody tr:hover {
+    background-color: #e8f3fe;
+}
+th,td{
+    padding:12px 10px;
+    text-align:center;
+    border:1px solid hsl(0, 0%, 22%);
+}
+th{
+    background-color: hsl(45, 100%, 62%);
+}
+#eventTable td{
+    font-weight:bold;
+}
