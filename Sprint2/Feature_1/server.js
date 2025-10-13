@@ -104,6 +104,129 @@ app.post("/login", (req, res) => {
   });
 });
 
+//saving events
+app.post("/save_event", async (req, res) => {
+  const filePath = path.join(__dirname, "savedEvents.txt");
+  try {
+  const {userId, eventId} = req.body;
+  console.log(userId, eventId)
+  await fs.appendFile(filePath, `${userId}:${eventId}\n`, (error) => {
+    if (error) throw new Error(error);
+      console.log("event saved");
+      return res.status(200);
+    })
+  } 
+      catch(error) {
+        console.error("Error", error);
+        return res.status(400);
+      }
+    }
+  )  
+  
+//get saved events
+app.get('/saved_events', (req, res) => {
+  const filePath = path.join(__dirname, 'savedEvents.txt');
+  
+  if (!fs.existsSync(filePath)) {
+    return res.json({ ok: true, events: [] });
+  }
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading saved events:', err);
+      return res.status(500).json({
+        ok: false,
+        message: 'Error reading saved events'
+      });
+    }
+
+    try {
+      const events = data
+        .split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+          const [userId, eventId] = line.split(':');
+          return {
+            userId: userId,
+            eventId: parseInt(eventId)
+          };
+        });
+
+      res.json({
+        ok: true,
+        events: events
+      });
+    } catch (parseError) {
+      console.error('Error parsing saved events:', parseError);
+      res.status(500).json({
+        ok: false,
+        message: 'Error parsing saved events'
+      });
+    }
+  });
+});
+
+//claiming tickets
+app.post("/claim_tickets", async (req, res) => {
+  const filePath = path.join(__dirname, "claimedTickets.txt");
+  try {
+  const {userId, eventId} = req.body;
+  console.log(userId, eventId)
+  await fs.appendFile(filePath, `${userId}:${eventId}\n`, (error) => {
+    if (error) throw new Error(error);
+      console.log("ticket saved");
+      return res.status(200);
+    })
+  } 
+      catch(error) {
+        console.error("Error", error);
+        return res.status(400);
+      }
+    }
+  )  
+  
+//get claimed tickets
+app.get('/claimed_tickets', (req, res) => {
+  const filePath = path.join(__dirname, 'claimedTickets.txt');
+  
+  if (!fs.existsSync(filePath)) {
+    return res.json({ ok: true, events: [] });
+  }
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading saved events:', err);
+      return res.status(500).json({
+        ok: false,
+        message: 'Error reading saved events'
+      });
+    }
+
+    try {
+      const events = data
+        .split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+          const [userId, eventId] = line.split(':');
+          return {
+            userId: userId,
+            eventId: parseInt(eventId)
+          };
+        });
+
+      res.json({
+        ok: true,
+        events: events
+      });
+    } catch (parseError) {
+      console.error('Error parsing saved events:', parseError);
+      res.status(500).json({
+        ok: false,
+        message: 'Error parsing saved events'
+      });
+    }
+  });
+});
 
 
 app.listen(PORT, () => {
