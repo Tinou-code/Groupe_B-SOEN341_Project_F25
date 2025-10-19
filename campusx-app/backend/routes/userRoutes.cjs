@@ -197,7 +197,7 @@ userRoutes.route("/users/claim").patch(async (req, res) => {
         //give ticket to user - event id, ticket id
         let mongoUser = {
             $set:{
-                claimedTickets: [...user.claimedTickets, {eventId: event.eventId, ticketId}]
+                claimedTickets: [...user.claimedTickets, {eventId: event.eventId, ticketId, date: event.date}]
             }
         }
 

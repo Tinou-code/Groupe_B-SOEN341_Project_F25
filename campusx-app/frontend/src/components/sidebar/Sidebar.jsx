@@ -10,7 +10,7 @@ const studentNavLinks = [
     {path:"/events", name:"Browse Events"},
     {path:"/myevents", name:"My Saved Events"},
     {path:"/mytickets", name:"My Tickets"},
-    {path:"/calendar", name:"My Calendar"},  
+    {path:"/mycalendar", name:"My Calendar"},  
 ]
 
 const orgNavLinks = [

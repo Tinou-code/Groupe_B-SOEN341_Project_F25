@@ -11,6 +11,7 @@ import RegisterPage from './components/pages/login-page/RegisterPage';
 import ScreenNotification from './components/utils/screen_notification/Notification';
 import CreateEventPage from './components/pages/user-pages/organizer/CreateEventPage';
 import TicketsPage from './components/pages/user-pages/student/TicketsPage';
+import CalendarPage from './components/pages/user-pages/student/CalendarPage';
 
 export const CurrentUserContext = createContext();
 export const ScreenNotificationContext = createContext()
@@ -28,6 +29,7 @@ const pageRouter = createBrowserRouter([
   //student pages
   {path:"/myevents", element: <SavedEventsPage/>},
   {path:"/mytickets", element: <TicketsPage/>},
+  {path:"/mycalendar", element: <CalendarPage/>},
 
   //organizer pages
   {path:"/dashboard", element: <TempPage/>},

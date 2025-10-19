@@ -23,7 +23,7 @@ export default function TicketsPage() {
                         <div className="content-paragraphs">
                             <p>You have no claimed tickets yet</p>
                         </div>: 
-                        currentUser.claimedTickets.map(t =>
+                        currentUser.claimedTickets.sort((a,b) => new Date(a.date) - new Date(b.date)).map(t =>
                         <TicketCard user={currentUser} ticketId={t.ticketId} eventId={t.eventId}/>)    
                     }
                 
