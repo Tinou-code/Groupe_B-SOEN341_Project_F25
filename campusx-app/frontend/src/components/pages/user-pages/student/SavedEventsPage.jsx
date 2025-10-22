@@ -4,7 +4,7 @@ import Sidebar from "../../../sidebar/Sidebar"
 import HeroBanner from "../../home-page/HeroBanner"
 import Footer from "../../../footer/Footer"
 import EventCard from "../../events-page/EventCard"
-import NoAcessMsg from "../../noAccessMsg"
+import NoAcessMsg from "../../../noAccessMsg"
 import { getEvent } from "../../../../../../api/events"
 
 

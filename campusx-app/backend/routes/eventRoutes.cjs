@@ -22,7 +22,7 @@ eventRoutes.route("/events/:id").get(async (req, res) => {
     let db = database.getDb();
     try {
         let data = await db.collection("events").findOne({eventId: req.params.id});
-        if (data.length < 1) return res.status(404).json({msg: "Data not found" });
+        if (!data || data.length < 1) return res.status(404).json({msg: "Data not found" });
         res.status(200).json({data, msg: "Success"});
     }
     catch (error) {

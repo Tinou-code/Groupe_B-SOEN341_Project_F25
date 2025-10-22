@@ -1,7 +1,7 @@
 import FormStatusMsg from "../../../utils/formStatusMsg";
 import Sidebar from "../../../sidebar/Sidebar";
 import Footer from "../../../footer/Footer";
-import NoAcessMsg from "../../noAccessMsg";
+import NoAcessMsg from "../../../noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState } from "react";
 import { handleCreateEvent } from "../../../../../../api/events";

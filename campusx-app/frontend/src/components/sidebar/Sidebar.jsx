@@ -16,8 +16,14 @@ const studentNavLinks = [
 const orgNavLinks = [
     {path:"/dashboard", name:"Dashboard"},
     {path:"/events/create", name:"Create an Event"},
-    {path:"/createdevents", name:"My Organization Events"}, 
+    {path:"/organizer/events", name:"My Organization Events"}, 
     {path:"/events", name:"Browse All Events"},
+]
+
+const adminNavLinks = [
+    {path:"/admin/dashboard", name:"Dashboard"}, 
+    {path:"/admin/organizers", name:"Manage Organizers"}, 
+    {path:"/events", name:"Browse Events"},
 ]
 
 export default function Sidebar() {
@@ -56,6 +62,7 @@ export default function Sidebar() {
                                 Some options are hidden because your account has not been approved yet. 
                                 Please login again later or contact the administration.</p>):""}
 
+                        {currentUser.type === "admin" ? adminNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>):""}
                     <li className="logout-nav-link" onClick={() => logout()}>Logout</li>
                     </div> : 
                     <li><SidebarLink path="/login/student" name="Login"/></li>}
@@ -67,6 +74,7 @@ export default function Sidebar() {
     )
 }
 
+//component for sidebar buttons
 function SidebarLink({path, name}) {
     const location = useLocation();
     const currentPath = location.pathname;

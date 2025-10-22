@@ -82,11 +82,15 @@
     background-color: #68d391;
 }
 
-.event-title {
+.event-title, .event-page-title {
     color: #2d3748;
     font-size: 24px;
     margin-bottom: 18px;
-    font-weight: 600;
+    font-weight: bold;
+}
+
+.event-page-title {
+    text-align: center;
 }
 
 .event-details {
@@ -188,6 +192,41 @@
 .event-user-options .unclaim:active {
     background-color: hsl(19, 73%, 47%);
 }
+
+  /* ---------------- SEARCH BAR ---------------- */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: fit-content;
+    padding: 15px;
+    background-color: rgb(219, 219, 219);
+  }
+  
+  .search-input {
+    width: 60%;
+    padding: 12px 18px 12px 45px;
+    border: 1px solid #cbd5e0;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+    background-size: 20px 20px; 
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  }
+
+  .search-date input {
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
+  }
 
 
 

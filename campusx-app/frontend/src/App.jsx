@@ -5,20 +5,21 @@ import HomePage from './components/pages/home-page/HomePage'
 import LoginPage from './components/pages/login-page/LoginPage';
 import BrowseEventsPage from './components/pages/events-page/BrowseEventsPage';
 import SavedEventsPage from './components/pages/user-pages/student/SavedEventsPage';
-import TempPage from './components/pages/tempPage';
 import EventPage from './components/pages/events-page/EventPage';
 import RegisterPage from './components/pages/login-page/RegisterPage';
 import ScreenNotification from './components/utils/screen_notification/Notification';
 import CreateEventPage from './components/pages/user-pages/organizer/CreateEventPage';
 import TicketsPage from './components/pages/user-pages/student/TicketsPage';
 import CalendarPage from './components/pages/user-pages/student/CalendarPage';
+import ErrorPage from './components/ErrorPage';
+
 
 export const CurrentUserContext = createContext();
 export const ScreenNotificationContext = createContext()
 
 
 const pageRouter = createBrowserRouter([
-  {path:"/", element: <HomePage/>, errorElement:<TempPage/>},
+  {path:"/", element: <HomePage/>, errorElement:<ErrorPage/>},
   {path:"/login", element: <LoginPage/>},
   {path:"/login/:userType", element: <LoginPage/>},
   {path:"/register", element: <RegisterPage/>},
@@ -32,7 +33,7 @@ const pageRouter = createBrowserRouter([
   {path:"/mycalendar", element: <CalendarPage/>},
 
   //organizer pages
-  {path:"/dashboard", element: <TempPage/>},
+  {path:"/dashboard", element: <ErrorPage/>},
   {path:"/events/create", element: <CreateEventPage/>},
 ]);
 
@@ -52,12 +53,14 @@ export default function App() {
   }, [])
 
   return (
+   
     <ScreenNotificationContext.Provider value={{notifyUser, screenNotification, setScreenNotification}}>
     <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
         <ScreenNotification/>
         <RouterProvider router={pageRouter}/>
     </CurrentUserContext.Provider>
     </ScreenNotificationContext.Provider>
+ 
   )
 }
 

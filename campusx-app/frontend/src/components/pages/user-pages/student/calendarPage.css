@@ -2,4 +2,94 @@
     background-color: white;
     padding: 20px;
     border-radius: 15px;
+    width: 70%;
+    min-width: 600px;
+    min-height: 500px;
+}
+
+.fc-toolbar {
+   display: flex;
+   flex-wrap: nowrap;
+}
+
+.fc-toolbar-chunk {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#fc-dom-2578 {
+    color: royalblue;
+    font-size: 120%;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.fc .fc-button-primary {
+    background-color: royalblue;
+}
+
+.upcoming-event-list {
+    background-color: white;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 15px;
+    overflow: scroll;
+    height: fit-content;
+    max-height: 500px;
+}
+
+.upcoming-event-list .event-list-item  {
+    margin-bottom: 5px;
+    text-decoration: none;
+    width: fit-content;
+    width: 80%;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 15px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.upcoming-event-list .event-list-item:hover {
+    background-color: hsl(0, 0%, 93%);
+    transform: translateX(-8px);
+}
+
+.upcoming-event-list .event-list-item:active {
+    background-color: hsl(0, 0%, 103%);
+    transform: translateX(-8px);
+}
+
+.upcoming-event-list .link  {
+    text-decoration: none;
+    color: black;
+}
+
+.upcoming-event-list .event-list-item .title {
+    font-weight: bold;
+}
+
+.upcoming-event-list .event-list-item .location {
+    font-style: italic;
+}
+
+.my-events-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 30px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.reservations-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }

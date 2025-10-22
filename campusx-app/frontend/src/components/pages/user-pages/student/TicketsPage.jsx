@@ -1,6 +1,6 @@
 import Footer from "../../../footer/Footer"
 import Sidebar from "../../../sidebar/Sidebar"
-import NoAcessMsg from "../../noAccessMsg"
+import NoAcessMsg from "../../../noAccessMsg"
 import { CurrentUserContext } from "../../../../App"
 import { useContext } from "react"
 import TicketCard from "./TicketCard"
@@ -24,7 +24,7 @@ export default function TicketsPage() {
                             <p>You have no claimed tickets yet</p>
                         </div>: 
                         currentUser.claimedTickets.sort((a,b) => new Date(a.date) - new Date(b.date)).map(t =>
-                        <TicketCard user={currentUser} ticketId={t.ticketId} eventId={t.eventId}/>)    
+                        <TicketCard key={t.ticketId} user={currentUser} ticketId={t.ticketId} eventId={t.eventId}/>)    
                     }
                 
                     </div> : <NoAcessMsg/>}

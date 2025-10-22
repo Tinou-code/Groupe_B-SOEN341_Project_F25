@@ -21,7 +21,10 @@ export default function TicketCard({user, ticketId, eventId}) {
 
     function generateQR(){
         //write function to generate ticket qr
-        QRCode.toDataURL(ticketCode, (err, ticketCode) => {
+        QRCode.toDataURL(ticketCode, {
+            width: 400,
+            margin: 2
+        }, (err, ticketCode) => {
             if (err) return console.error(err);
             setQrcode(q => ticketCode);
         })
@@ -37,9 +40,13 @@ export default function TicketCard({user, ticketId, eventId}) {
         <div className="ticket-card" onClick={(e) => {setShowpopup(p => !p); e.stopPropagation()}}>
            
             <div className="qrcode">
-                <img src={qrcode} alt="ticket-qr"/>
+                <img id="qrcode-image" src={qrcode} alt="ticket-qr"/>
             </div>
+
             <div className="ticket-info">
+                <div className="info">
+                <span className="title">Event:&nbsp;</span> <span>{`${event?.eventId} - ${event?.title}`}</span>
+                </div>
                 <div className="info">
                 <span className="title">Name:&nbsp;</span> <span>{`${user.lastName.toUpperCase()}, ${user.firstName.toUpperCase()}`}</span>
                 </div>
@@ -49,11 +56,12 @@ export default function TicketCard({user, ticketId, eventId}) {
                 <div className="info">
                 <span className="title">Ticket #&nbsp;</span> <span>{ticketId}</span>
                 </div>
-                <div className="info">
-                <span className="title">Event:&nbsp;</span> <span>{`${event?.eventId} - ${event?.title}`}</span>
-                </div>
+                
                 <div className="info">
                 <span className="title">Event Date:&nbsp;</span> <span>{event?.date}</span>
+                </div> 
+                <div className="info">
+                <span className="title">Event Location:&nbsp;</span> <span>{event?.location}</span>
                 </div>           
             </div>
         </div>
@@ -61,6 +69,7 @@ export default function TicketCard({user, ticketId, eventId}) {
     )
 }
 
+//ticket popup - display qrcode for scanning or downloading
 function TicketPopUp({qrcode, user, eventId, ticketId, showpopup, title, setShowpopup}) {
 
     const ticketPopupRef = useRef();
@@ -91,7 +100,7 @@ function TicketPopUp({qrcode, user, eventId, ticketId, showpopup, title, setShow
                 <span className="title">Name:&nbsp;</span> <span>{`${user.lastName.toUpperCase()}, ${user.firstName.toUpperCase()}`}</span>
                 </div>
                 <div className="info">
-                <span className="title"> ID:&nbsp;</span> <span>{user.userId}</span>
+                <span className="title">ID:&nbsp;</span> <span>{user.userId}</span>
                 </div>
                 <div className="info">
                 <span className="title">Ticket #&nbsp;</span> <span>{ticketId}</span>

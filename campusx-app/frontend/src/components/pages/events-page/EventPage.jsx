@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom"
-import { formatDate, formatTime } from "../../../../../api/events";
-import { CurrentUserContext } from "../../../App";
+import { formatDate, formatTime, handleCancelTicket, handleClaimTicket, handleSaveEvent, handleUnsaveEvent } from "../../../../../api/events";
+import { CurrentUserContext, ScreenNotificationContext } from "../../../App";
 import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../sidebar/Sidebar";
 import Footer from "../../footer/Footer";
 import { getEvent } from "../../../../../api/events";
+import NoAcessMsg from "../../noAccessMsg";
 
 export default function EventPage() {
     const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
+    const {notifyUser} = useContext(ScreenNotificationContext);
+    const [error, setError] = useState();
     const params = useParams();
     const eventId = params.eventId;
 
@@ -16,48 +19,54 @@ export default function EventPage() {
           useEffect(() => {
               async function fetchEvent() {
                   const response = await getEvent(eventId);
-                  console.log("get event res", response); 
+                  console.log("get event res", response);
+                  if (response.status !== 200) setError(response)
                   setEvent(e => response.event);
               }
               fetchEvent()   
           }, [])
 
      async function saveEvent() {
-       const response = await handleSaveEvent(currentUser.userId, ev?.eventId);
+       const response = await handleSaveEvent(currentUser?.userId, ev?.eventId);
        console.log("save event res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function unsaveEvent() {
-       const response = await handleUnsaveEvent(currentUser.userId, ev?.eventId);
+       const response = await handleUnsaveEvent(currentUser?.userId, ev?.eventId);
        console.log("unsave event res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function claimTicket() {
-       const response = await handleClaimTicket(currentUser.userId, ev?.eventId);
+       const response = await handleClaimTicket(currentUser?.userId, ev?.eventId);
        console.log("claim ticket res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function unclaimTicket() {
-        const response = await handleCancelTicket(currentUser.userId, ev?.eventId);
+        const response = await handleCancelTicket(currentUser?.userId, ev?.eventId);
        console.log("claim ticket res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      useEffect(() => {
-       sessionStorage.setItem("loggedUser", JSON.stringify(currentUser));
+       if (currentUser) sessionStorage.setItem("loggedUser", JSON.stringify(currentUser));
      }, [currentUser])
+
+
+    if (error) throw new Error(error.msg);
 
     return(
         <div className="page-container">
             <Sidebar/>
             <div className="main-content">
+
+              {currentUser?.isLoggedIn ? <>
               <div className="page-header"><h2>{ev?.title}</h2></div>
               <div className="event-page">
                 <img src={ev?.imagePath} alt={ev?.title} className="event-image" />
@@ -66,7 +75,7 @@ export default function EventPage() {
                     <span className="event-tag">{ev?.category}</span>
                     <span className="event-tag">{ev?.type}</span>
                   </div>
-                  <h2 className="event-title">{ev?.title}</h2>
+                  <h2 className="event-page-title">{ev?.title} <br/> ID: {ev?.eventId}</h2>
                   
                   <div className="event-desc"><p>{ev?.desc}</p></div>
 
@@ -80,22 +89,21 @@ export default function EventPage() {
                     <span className="event-organizer">Organized by {ev?.organizer}</span>
                   
 
-                  {currentUser.type === "student" ? 
+                  {currentUser?.type === "student" ? 
                   <div className="event-user-options">
-                      {!currentUser.savedEvents?.find(e => e === ev?.eventId) ?
+                      {!currentUser?.savedEvents?.find(e => e === ev?.eventId) ?
                         <button className="save" onClick={() => {saveEvent()}}>Save Event</button>
                         :<button className="unsave" onClick={() => {unsaveEvent()}}>Unsave Event</button>}
                       
-                      {!currentUser.claimedTickets?.find(e => e.eventId === ev?.eventId) ?
+                      {!currentUser?.claimedTickets?.find(e => e.eventId === ev?.eventId) ?
                         <button className="claim" onClick={() => claimTicket()}>Claim a Ticket</button>
                         :<button className="unclaim" onClick={() => unclaimTicket()}>Cancel Reservation</button>}
                   </div>:""}
 
                     <span className="event-organizer">Date added: {new Date(ev?.dateAdded).toLocaleString()}</span>
                 </div>
-
-            
-              </div>
+                </div>
+                </>: <><div className="page-header"><h2>Event Page</h2></div><NoAcessMsg/></>}
               <Footer/>
             </div>
             
