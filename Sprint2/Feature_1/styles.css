@@ -602,11 +602,11 @@ body {
   border-top: 1px solid #eee;
   padding-top: 8px;
 }
-/* ---------------- Create Event Form ---------------- *(update to make the organizer page fit with the website)/
+/* ---------------- Create Event Form ---------------- *(update to make the organizer page fit with the website)*/
 .event-form {
     max-width: 600px;
     margin: 50px auto;
-    background-color: rgba(245, 245, 245, 0.15); /* gris doux semi-transparent */
+    background-color: rgba(245, 245, 245, 0.15); 
     padding: 30px;
     border-radius: 12px;
     backdrop-filter: blur(10px);
