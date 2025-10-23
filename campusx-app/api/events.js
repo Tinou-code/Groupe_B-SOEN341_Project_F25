@@ -1,4 +1,4 @@
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
 
  export async function handleCreateEvent(title,date,time,location,category,organizer,tickets,type,image,desc) { 
      if (!title || !date || !time || !location || !category || !organizer || !tickets || !type || !desc) //image is treated as optional for now
@@ -33,7 +33,7 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URL;
      try {
          const response = await fetch(`${SERVER_URL}/events`, options);
          let fetchResult = await response.json();
-         console.log("response", fetchResult, response.status);
+         //console.log("response", fetchResult, response.status);
          if (fetchResult.data) 
              return {status:response.status, event:fetchResult.data, msg:fetchResult.msg}
          else return {status:response.status, msg:fetchResult.msg}
@@ -57,7 +57,7 @@ export async function getEvents() {
      try {
          const response = await fetch(`${SERVER_URL}/events`, options);
          let fetchResult = await response.json();
-         console.log("response", fetchResult, response.status);
+         //console.log("response", fetchResult, response.status);
          if (fetchResult) 
              return {status:response.status, events:fetchResult.data, msg:fetchResult.msg}
          else return {status:response.status, msg:fetchResult.msg}
@@ -80,7 +80,7 @@ export async function getEvent(eventId) {
      try {
          const response = await fetch(`${SERVER_URL}/events/${eventId}`, options);
          let fetchResult = await response.json();
-         console.log("response", fetchResult, response.status);
+         //console.log("response", fetchResult, response.status);
          if (fetchResult) 
              return {status:response.status, event:fetchResult.data, msg:fetchResult.msg}
          else return {status:response.status, msg:fetchResult.msg}

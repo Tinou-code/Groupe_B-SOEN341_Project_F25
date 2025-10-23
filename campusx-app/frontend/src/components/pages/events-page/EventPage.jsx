@@ -5,12 +5,13 @@ import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../sidebar/Sidebar";
 import Footer from "../../footer/Footer";
 import { getEvent } from "../../../../../api/events";
-import NoAcessMsg from "../../noAccessMsg";
+import NoAcessMsg from "../../error-page/noAccessMsg";
+import { ErrorContext } from "../../../App"; 
 
 export default function EventPage() {
     const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
     const {notifyUser} = useContext(ScreenNotificationContext);
-    const [error, setError] = useState();
+    const {error, setError} = useContext(ErrorContext);
     const params = useParams();
     const eventId = params.eventId;
 
@@ -25,31 +26,33 @@ export default function EventPage() {
               }
               fetchEvent()   
           }, [])
+    
+          if (error) throw new Error(error.msg);
 
      async function saveEvent() {
        const response = await handleSaveEvent(currentUser?.userId, ev?.eventId);
-       console.log("save event res", response);
+       //console.log("save event res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function unsaveEvent() {
        const response = await handleUnsaveEvent(currentUser?.userId, ev?.eventId);
-       console.log("unsave event res", response);
+       //console.log("unsave event res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function claimTicket() {
        const response = await handleClaimTicket(currentUser?.userId, ev?.eventId);
-       console.log("claim ticket res", response);
+       //console.log("claim ticket res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
      async function unclaimTicket() {
         const response = await handleCancelTicket(currentUser?.userId, ev?.eventId);
-       console.log("claim ticket res", response);
+       //console.log("claim ticket res", response);
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
@@ -58,15 +61,12 @@ export default function EventPage() {
        if (currentUser) sessionStorage.setItem("loggedUser", JSON.stringify(currentUser));
      }, [currentUser])
 
-
-    if (error) throw new Error(error.msg);
-
     return(
         <div className="page-container">
             <Sidebar/>
             <div className="main-content">
 
-              {currentUser?.isLoggedIn ? <>
+              {currentUser && currentUser.isLoggedIn ? <>
               <div className="page-header"><h2>{ev?.title}</h2></div>
               <div className="event-page">
                 <img src={ev?.imagePath} alt={ev?.title} className="event-image" />

@@ -18,7 +18,7 @@ export default function RegisterPage() {
     const acceptedUserType = ["student", "organizer"];
 
     useEffect(() => {
-        console.log(params);
+        //console.log(params);
         if (!params.userType) navigate("/login/student");
         else if (!acceptedUserType.includes(params.userType)) navigate("/error");
         setRegisterStatus(l => 0);
@@ -38,7 +38,7 @@ export default function RegisterPage() {
     const register = async (event) => {
         event.preventDefault();
         const response = await handleRegister(params.userType, getIdPrefix(params)+userName, password, firstName, lastName, email, phoneNumber, organization);
-        console.log("register result", response);
+        //console.log("register result", response);
         setRegisterStatus(response.status);
         setErrMsg(response.msg);
         notifyUser(response.msg);
@@ -47,7 +47,7 @@ export default function RegisterPage() {
     useEffect(() => {
         if (registerStatus === 201) {
             setTimeout(() => {
-                console.log("nav login");
+                //console.log("nav login");
                 navigate("/login");  
             },3000);  
         }

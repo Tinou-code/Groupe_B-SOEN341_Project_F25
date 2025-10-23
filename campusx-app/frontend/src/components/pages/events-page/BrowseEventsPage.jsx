@@ -6,7 +6,7 @@ import EventCard from "./EventCard"
 import "./eventsPage.css"
 import { CurrentUserContext } from "../../../App"
 import { useContext, useEffect, useState } from "react"
-import NoAccessMsg from "../../noAccessMsg"
+import NoAccessMsg from "../../error-page/noAccessMsg"
 import { getEvents } from "../../../../../api/events"
 
 //Event page - display event components
@@ -35,7 +35,7 @@ export default function BrowseEventsPage() {
     useEffect(() => {
         async function fetchEvents() {
             const response = await getEvents();
-            console.log("response2", response); 
+            //console.log("response2", response); 
             setEvents(e => response.events);
         }
         fetchEvents()   
@@ -60,7 +60,7 @@ export default function BrowseEventsPage() {
                     placeholder="Search by title, category, or location..."
                     />
                     <div className="search-date">
-                    <input type="date" value={searchDate} defaultValue={new Date()} onChange={e => {setSearchDate(d => e.target.value); console.log("date", e.target.value)}}/>
+                    <input type="date" value={searchDate} onChange={e => {setSearchDate(d => e.target.value)}}/>
                     </div>
                     </div>
 

@@ -1,7 +1,7 @@
 import FormStatusMsg from "../../../utils/formStatusMsg";
 import Sidebar from "../../../sidebar/Sidebar";
 import Footer from "../../../footer/Footer";
-import NoAcessMsg from "../../../noAccessMsg";
+import NoAcessMsg from "../../../error-page/noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState } from "react";
 import { handleCreateEvent } from "../../../../../../api/events";
@@ -30,7 +30,7 @@ export default function CreateEventPage() {
             imagePath,
             desc
         );
-        console.log("create event result", response);
+        //console.log("create event result", response);
         setEventStatus(response.status);
         setErrMsg(response.msg);
         notifyUser(response.msg);

@@ -1,4 +1,4 @@
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
 
 export async function handleLogin(userType, userName, password) {
     
@@ -23,7 +23,7 @@ export async function handleLogin(userType, userName, password) {
     try {
         const response = await fetch(`${SERVER_URL}/users/${userName}`, options);
         let fetchResult = await response.json();
-        console.log("response", fetchResult, response.status);
+        //console.log("response", fetchResult, response.status);
         if (fetchResult.data) 
             return {status:response.status, user:fetchResult.data, msg:fetchResult.msg}
         else return {status:response.status, msg:fetchResult.msg}

@@ -11,36 +11,47 @@ import ScreenNotification from './components/utils/screen_notification/Notificat
 import CreateEventPage from './components/pages/user-pages/organizer/CreateEventPage';
 import TicketsPage from './components/pages/user-pages/student/TicketsPage';
 import CalendarPage from './components/pages/user-pages/student/CalendarPage';
-import ErrorPage from './components/ErrorPage';
+import ErrorPage from './components/error-page/ErrorPage';
+import ErrorBoundaryLayout from './components/error-page/ErrorBoundaryLayout';
 
 
+export const ErrorContext = createContext()
 export const CurrentUserContext = createContext();
 export const ScreenNotificationContext = createContext()
 
 
 const pageRouter = createBrowserRouter([
-  {path:"/", element: <HomePage/>, errorElement:<ErrorPage/>},
-  {path:"/login", element: <LoginPage/>},
-  {path:"/login/:userType", element: <LoginPage/>},
-  {path:"/register", element: <RegisterPage/>},
-  {path:"/register/:userType", element: <RegisterPage/>},
-  {path:"/events", element: <BrowseEventsPage/>},
-  {path:"/events/:eventId", element: <EventPage/>},
+  { element: <ErrorBoundaryLayout/>, 
+    errorElement: <ErrorPage/>,
+    children: [ 
+      {path:"/", element: <HomePage/>},
+      {path:"/login", element: <LoginPage/>},
+      {path:"/login/:userType", element: <LoginPage/>},
+      {path:"/register", element: <RegisterPage/>},
+      {path:"/register/:userType", element: <RegisterPage/>},
+      {path:"/events", element: <BrowseEventsPage/>},
+      {path:"/events/:eventId", element: <EventPage/>},
 
-  //student pages
-  {path:"/myevents", element: <SavedEventsPage/>},
-  {path:"/mytickets", element: <TicketsPage/>},
-  {path:"/mycalendar", element: <CalendarPage/>},
+      //student pages
+      {path:"/myevents", element: <SavedEventsPage/>},
+      {path:"/mytickets", element: <TicketsPage/>},
+      {path:"/mycalendar", element: <CalendarPage/>},
 
-  //organizer pages
-  {path:"/dashboard", element: <ErrorPage/>},
-  {path:"/events/create", element: <CreateEventPage/>},
+      //organizer pages
+      {path:"/dashboard", element: <ErrorPage/>},
+      {path:"/organizer/create", element: <CreateEventPage/>},
+    ],
+  },
+  
 ]);
 
 
 export default function App() {
+
+
   const [currentUser, setCurrentUser] = useState()
   const [screenNotification, setScreenNotification] = useState();
+  const [error, setError] = useState();
   
   function notifyUser(msg) {
     setScreenNotification(m => msg)
@@ -48,18 +59,22 @@ export default function App() {
 
   useEffect(() => {
     const savedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
-    console.log(savedUser)
-    if (savedUser) setCurrentUser(u => u = {...savedUser, isLoggedIn:true, savedEvents:savedUser.savedEvents? savedUser.savedEvents:[]});
+    //console.log(savedUser)
+    if (savedUser) setCurrentUser(u => u = {...savedUser, isLoggedIn:true});
   }, [])
 
   return (
    
+    <ErrorContext.Provider value={{error, setError}}>
     <ScreenNotificationContext.Provider value={{notifyUser, screenNotification, setScreenNotification}}>
     <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
         <ScreenNotification/>
-        <RouterProvider router={pageRouter}/>
+        
+          <RouterProvider router={pageRouter}/>
+        
     </CurrentUserContext.Provider>
     </ScreenNotificationContext.Provider>
+    </ErrorContext.Provider>
  
   )
 }

@@ -4,7 +4,7 @@ import Sidebar from "../../../sidebar/Sidebar"
 import HeroBanner from "../../home-page/HeroBanner"
 import Footer from "../../../footer/Footer"
 import EventCard from "../../events-page/EventCard"
-import NoAcessMsg from "../../../noAccessMsg"
+import NoAcessMsg from "../../../error-page/noAccessMsg"
 import { getEvent } from "../../../../../../api/events"
 
 
@@ -27,7 +27,7 @@ export default function SavedEventsPage() {
                     return response.event;
             }))
 
-            console.log("event list", eventList);
+            //console.log("event list", eventList);
 
             setEvents(e => eventList);
         }

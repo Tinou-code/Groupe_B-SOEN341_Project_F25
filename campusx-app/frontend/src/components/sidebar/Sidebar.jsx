@@ -14,8 +14,8 @@ const studentNavLinks = [
 ]
 
 const orgNavLinks = [
-    {path:"/dashboard", name:"Dashboard"},
-    {path:"/events/create", name:"Create an Event"},
+    {path:"/organizer/dashboard", name:"Dashboard"},
+    {path:"/organizer/create", name:"Create an Event"},
     {path:"/organizer/events", name:"My Organization Events"}, 
     {path:"/events", name:"Browse All Events"},
 ]

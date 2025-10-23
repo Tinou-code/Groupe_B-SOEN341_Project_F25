@@ -1,5 +1,5 @@
 //register.js file
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
 
 export async function handleRegister(userType, userName, password, firstName, lastName, email, phoneNumber, organization) {
     if (userType && userType === "organizer" && !organization) return {status: 400, msg: "Missing fields"};  
@@ -41,7 +41,7 @@ export async function handleRegister(userType, userName, password, firstName, la
     try {
         const response = await fetch(`${SERVER_URL}/users`, options);
         let fetchResult = await response.json();
-        console.log("response", fetchResult, response.status);
+        //console.log("response", fetchResult, response.status);
         if (fetchResult.data) 
             return {status:response.status, user:fetchResult.data, msg:fetchResult.msg}
         else return {status:response.status, msg:fetchResult.msg}

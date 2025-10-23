@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../../../App";
 import { useContext, useState, useEffect } from "react";
 import Sidebar from "../../../sidebar/Sidebar";
 import Footer from "../../../footer/Footer";
-import NoAcessMsg from "../../../noAccessMsg";
+import NoAcessMsg from "../../../error-page/noAccessMsg";
 
 import { formatDate, getEvent } from "../../../../../../api/events";
 import FullCalendar from "@fullcalendar/react";
@@ -34,11 +34,11 @@ export default function CalendarPage() {
                         let start = moment(`${event.date}T${event.time}`).toDate();
                         let end = moment(`${event.date}T${event.time}`).add(2, "hour").toDate();
                         let listItem = {title: event.title, start, end, eventId: event.eventId, location: event.location};
-                        console.log("listItem", listItem)
+                        //console.log("listItem", listItem)
                         return listItem;
                 }))
     
-                console.log("event list", eventList);
+                //console.log("event list", eventList);
     
                 setEvents(e => eventList);
             }

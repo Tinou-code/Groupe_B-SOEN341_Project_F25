@@ -1,10 +1,10 @@
-import LoginButton from "../../buttons/LoginButton"
 import Footer from "../../footer/Footer"
 import Sidebar from "../../sidebar/Sidebar"
 import HeroBanner from "./HeroBanner"
 import "./homePage.css"
 
 export default function HomePage() {
+
     return(
     <div className="page-container">
         <Sidebar/>

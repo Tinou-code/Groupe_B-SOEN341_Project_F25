@@ -1,7 +1,9 @@
 .sidebar {
     background-color: white;
     padding-top: 0px;
-    height: 100%;
+    height: auto;
+    width: 25vw;
+    max-width: 300px;
     min-width: 200px;
 }
 
@@ -138,4 +140,17 @@
     font-style: italic;
     padding: 10px;
     color: grey;
+}
+
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 100%;
+        min-width: none;
+        max-width: none;
+        height: fit-content;
+        box-sizing: border-box;
+    }
+
 }

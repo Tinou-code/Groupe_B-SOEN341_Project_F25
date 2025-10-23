@@ -1,6 +1,6 @@
 import Footer from "../../../footer/Footer"
 import Sidebar from "../../../sidebar/Sidebar"
-import NoAcessMsg from "../../../noAccessMsg"
+import NoAcessMsg from "../../../error-page/noAccessMsg"
 import { CurrentUserContext } from "../../../../App"
 import { useContext } from "react"
 import TicketCard from "./TicketCard"

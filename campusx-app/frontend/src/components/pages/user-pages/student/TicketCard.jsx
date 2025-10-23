@@ -10,7 +10,7 @@ export default function TicketCard({user, ticketId, eventId}) {
        useEffect(() => {
            async function fetchEvent() {
                const response = await getEvent(eventId);
-               console.log("get event res", response); 
+               //console.log("get event res", response); 
                setEvent(e => response.event);
            }
            fetchEvent()   

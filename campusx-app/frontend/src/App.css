@@ -1,3 +1,5 @@
+
+
 body {
     width: 98vw;
     padding: 0px;
@@ -7,12 +9,12 @@ body {
 
 .page-container {
     position: absolute;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+    display: flex;
+    flex-wrap: nowrap;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     box-sizing: border-box;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -20,10 +22,13 @@ body {
 /* Main Content Area */
 .main-content {
     display: grid;
-    width: 80vw;
+    width: 100%;
+    min-width: 80vw;
+    height: 100%;
     grid-template-rows: 100px 1fr 150px;
     overflow: scroll;
     box-sizing: border-box;
+    flex: 1;
 }
 
 .page-header {
@@ -103,4 +108,17 @@ body {
 .form-input:focus {
     outline: none;
     border-color: #002fff;
+}
+
+
+@media (max-width: 768px) {
+    .page-container {
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        min-width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
 }

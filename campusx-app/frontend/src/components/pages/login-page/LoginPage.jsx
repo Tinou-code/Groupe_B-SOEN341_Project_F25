@@ -19,7 +19,7 @@ export default function LoginPage() {
          const acceptedUserType = ["student", "organizer", "admin"];
      
          useEffect(() => {
-             console.log(params);
+             //console.log(params);
              if (!params.userType) navigate("/login/student");
              else if (!acceptedUserType.includes(params.userType)) navigate("/error");
              setLoginStatus(l => 0);
@@ -35,7 +35,7 @@ export default function LoginPage() {
         const login = async (event) => {
             event.preventDefault();
             const response = await handleLogin(params.userType, getIdPrefix(params)+userName, password)
-            console.log("login result", response)
+            //console.log("login result", response)
             if (response.status === 200) {
                 setCurrentUser(u => u = {...response.user, isLoggedIn:true})
                 sessionStorage.setItem("loggedUser", JSON.stringify(response.user))
@@ -49,7 +49,7 @@ export default function LoginPage() {
         useEffect(() => {
             if (loginStatus === 200) {
                 setTimeout(() => {
-                  console.log("nav home")
+                  //console.log("nav home")
                   navigate("/");  
                 },3000);  
             }
