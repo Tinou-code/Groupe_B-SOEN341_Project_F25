@@ -1,0 +1,124 @@
+
+
+body {
+    width: 98vw;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.page-container {
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Main Content Area */
+.main-content {
+    display: grid;
+    width: 100%;
+    min-width: 80vw;
+    height: 100%;
+    grid-template-rows: 100px 1fr 150px;
+    overflow: scroll;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.page-header {
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+    text-align: center;
+}
+
+/* Utility Classes */
+.btn, .btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #718096;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4a5568;
+}
+
+/* Form Styles */
+
+.form-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #002fff;
+}
+
+
+@media (max-width: 768px) {
+    .page-container {
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        min-width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,156 @@
+.sidebar {
+    background-color: white;
+    padding-top: 0px;
+    height: auto;
+    width: 25vw;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.sidebar-header {
+    font-size: 26px;
+    color: #5a67d8;
+}
+
+.sidebar-header h2 {
+    background-color: lightgray;
+    height: 100px;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.nav-link, .nav-link-active, .logout-nav-link {
+    display: block;
+    padding: 18px 25px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: #667eea;
+    color: white;
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.nav-link-active {
+    background-color: #5a67d8;
+    color: white;
+    font-weight: bold;
+}
+
+.logout-nav-link:hover {
+    color:white;
+    font-weight: bold;
+    background-color: lightcoral;
+    padding-left: 15px;
+}
+
+.logout-message, .logout-message-active {
+    border: 1px solid black;
+    position: absolute;
+    top: 10px;
+    left: 40vw;
+    z-index: 1;
+    background-color: white;
+    width: 20vw;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.logout-message-active {
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+
+.user-icon {
+    box-sizing: border-box;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    margin: 0;
+    border-top: 5px solid royalblue;
+    border-bottom: 5px solid royalblue;
+}
+
+.user-info {
+    box-sizing: border-box;
+    color:  black;
+    margin-left: 10px;
+}
+
+.user-info p {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: bold;
+    width: 100%;
+}
+
+#user-id {font-size: small;}
+.user-info #role, .user-info #organization {
+    font-size: smaller; 
+    color: grey;
+    font-style: italic;
+}
+
+#status-approved, #status-unapproved {
+    font-size: x-small;
+    color: rgb(255, 88, 88);
+}
+
+#status-approved {
+    color: rgb(6, 179, 0);
+}
+
+#user-icon {
+    font-size: 40px;
+    color: lightgrey;
+}
+
+#org-unapproved-msg {
+    box-sizing: border-box;
+    font-size: small;
+    font-style: italic;
+    padding: 10px;
+    color: grey;
+}
+
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 100%;
+        min-width: none;
+        max-width: none;
+        height: fit-content;
+        box-sizing: border-box;
+    }
+
+}

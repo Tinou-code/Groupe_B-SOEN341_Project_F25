@@ -1,0 +1,233 @@
+/* Event Cards Container */
+.events-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 30px;
+    justify-items: center;
+    justify-content: center;
+}
+
+/* Event Card */
+.event-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 30vw;
+    min-width: 300px;
+    max-width: 400px;
+   
+}
+
+.event-card-link {
+     text-decoration: none;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background-color: hsl(0, 0%, 90%);
+    border: 1px solid blue;
+}
+
+.event-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.event-content {
+    padding: 24px;
+}
+
+.event-page-content {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-tags {
+   display: flex;
+   gap: 10px;
+}
+
+.event-tag {
+    display: inline-block;
+    background-color: #667eea;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.event-tag-career {
+    background-color: #f6ad55;
+}
+
+.event-tag-music {
+    background-color: #fc8181;
+}
+
+.event-tag-workshop {
+    background-color: #68d391;
+}
+
+.event-title, .event-page-title {
+    color: #2d3748;
+    font-size: 24px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.event-page-title {
+    text-align: center;
+}
+
+.event-details {
+    margin-top: 15px;
+    color: #718096;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.event-detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.event-organizer {
+    color: #a0aec0;
+    font-size: 14px;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.event-page  {
+    background-color: aliceblue;
+}
+
+.available-tickets {
+    box-sizing: border-box;
+    padding: 5px 5px 5px 0px;
+    color: #2d3748;
+    font-weight: bold;
+}
+
+.event-user-options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.event-user-options .save, .event-user-options .unsave, .event-user-options .claim, .event-user-options .unclaim {
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    background-color: royalblue;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.event-user-options .save:hover {
+    background-color: hsl(225, 73%, 67%);
+}
+
+.event-user-options .save:active {
+    background-color: hsl(225, 73%, 47%);
+}
+
+.event-user-options .unsave {
+    background-color: hsl(4, 73%, 67%);
+}
+
+.event-user-options .unsave:hover {
+    background-color: hsl(19, 73%, 67%);
+}
+
+.event-user-options .unsave:active {
+    background-color: hsl(19, 73%, 47%);
+}
+
+.event-user-options .claim {
+    background-color: hsl(125, 100%, 28%);
+}
+
+.event-user-options .claim:hover {
+    background-color:  hsl(125, 100%, 38%);
+}
+
+.event-user-options .claim:active {
+    background-color:  hsl(125, 100%, 18%);
+}
+
+.event-user-options .unclaim {
+    background-color: hsl(4, 73%, 67%);
+}
+
+.event-user-options .unclaim:hover {
+    background-color: hsl(19, 73%, 67%);
+}
+
+.event-user-options .unclaim:active {
+    background-color: hsl(19, 73%, 47%);
+}
+
+  /* ---------------- SEARCH BAR ---------------- */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: fit-content;
+    padding: 15px;
+    background-color: rgb(219, 219, 219);
+  }
+  
+  .search-input {
+    width: 60%;
+    padding: 12px 18px 12px 45px;
+    border: 1px solid #cbd5e0;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+    background-size: 20px 20px; 
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  }
+
+  .search-date input {
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
+  }
+
+
+
+

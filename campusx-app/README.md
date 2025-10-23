@@ -1,16 +1,48 @@
-# React + Vite
+# CAMPUSX Web App
+try the app online (render server may take a minute to load) : https://campusx-app.onrender.com/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### test users - Use following info to login and test user features
+User ID - Password - User type<br>
+S12345 - 12345 - Student<br>
+S1212 - 1212 - Student<br>
+O12345 - 12345 - Organizer (unapproved)<br>
+O45678 - 45678 - Organizer (approved)<br>
+A12345 - 12345 - Admin<br>
 
-Currently, two official plugins are available:
+### frontend 
+ReactJS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### backend 
+MongoDB database, ExpressJS server 
 
-## React Compiler
+### api
+allows frontend to communnicate with backend
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### calendar 
+handled with [fullcalendar js](https://fullcalendar.io/docs/getting-started)
 
-## Expanding the ESLint configuration
+### run locally
+to run locally, you need to:
+- run "pnpm install" to add neccessary node modules (if pnpm not found, run "npm install pnpm" first)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- create ".env.local" file in frontend folder and add the following variable in it 
+    - VITE_SERVER_URL = http://localhost:3000 
+    - this is to access backend server 
+
+- create ".env.local" file in backend folder and add the following variable in it
+    - ATLAS_URI=mongodb+srv://<username>:<password>@cluster-url.mongodb.net/
+    - this is to connect to database, you can contact dev team to get access to app database or create your own free mongodb atlas cluster
+    - To set up your own database
+        - initial setup currently requires 2 collections, "events" and "users"
+        - "events" collection needs 1 initial document with attribute "nextEventId" that can be initialized to any positive int
+        - admin users must be added manually to database, with following attributes :
+            - { userId, email, firstName, lastName, password, phoneNumber, type: "admin" }
+            - "type" must be set to "admin", "userId" and "password" cannot be null, rest can be ommited
+
+- start local server in dev mode -> run "pnpm dev"
+    - this starts a server for frontend on port:5173 and a server to handle backend requests on port:3000 
+    - to use app in dev mode navigate to http://localhost:5173/ 
+
+- start local server in prod mode -> run "pnpm build", then "pnpm test"
+    - this builds the static files for frontend then serves it on port:3000 along with the backend
+    - to use app in dev mode navigate to http://localhost:3000/ 
