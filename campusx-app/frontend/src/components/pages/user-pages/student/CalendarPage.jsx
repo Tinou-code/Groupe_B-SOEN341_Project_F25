@@ -54,12 +54,12 @@ export default function CalendarPage() {
             <div className="main-content">              
                 
                 <div className="page-header"><h3>My Calendar</h3></div>
-                {currentUser && currentUser.isLoggedIn && currentUser.type === "student" ? 
+                {currentUser && currentUser?.isLoggedIn && currentUser?.type === "student" ? 
                 <div className="my-events-container">
-                {   !currentUser.claimedTickets | currentUser?.claimedTickets?.length === 0 ? 
+                {   !currentUser?.claimedTickets | currentUser?.claimedTickets?.length === 0 ? 
                     <div className="content-paragraphs">
                         <p>You have no claimed tickets. 
-                            When you claim a ticket, the evnt will appear on your calendar.</p>
+                            When you claim a ticket, the event will appear on your calendar.</p>
                     </div>:
                     <div className="reservations-container">
                         <div className="calendar-container" style={{height: "60vh"}}>

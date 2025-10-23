@@ -66,7 +66,7 @@ export default function EventPage() {
             <Sidebar/>
             <div className="main-content">
 
-              {currentUser && currentUser.isLoggedIn ? <>
+              {currentUser && currentUser?.isLoggedIn ? <>
               <div className="page-header"><h2>{ev?.title}</h2></div>
               <div className="event-page">
                 <img src={ev?.imagePath} alt={ev?.title} className="event-image" />

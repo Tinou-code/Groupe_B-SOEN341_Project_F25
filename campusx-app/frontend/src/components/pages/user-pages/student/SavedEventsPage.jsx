@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { CurrentUserContext } from "../../../../App"
 import Sidebar from "../../../sidebar/Sidebar"
-import HeroBanner from "../../home-page/HeroBanner"
 import Footer from "../../../footer/Footer"
 import EventCard from "../../events-page/EventCard"
 import NoAcessMsg from "../../../error-page/noAccessMsg"
@@ -12,7 +11,6 @@ import { getEvent } from "../../../../../../api/events"
 export default function SavedEventsPage() {
 
     const {currentUser} = useContext(CurrentUserContext)
-    const eventIds = currentUser.savedEvents;
     const [events, setEvents] = useState(); 
 
     useEffect(() => {
@@ -22,7 +20,7 @@ export default function SavedEventsPage() {
             if (!currentUser) return;
 
             const eventList = await Promise.all(
-                eventIds.map(async id => {
+                currentUser?.savedEvents.map(async id => {
                     const response = await getEvent(id);
                     return response.event;
             }))
@@ -34,7 +32,7 @@ export default function SavedEventsPage() {
 
         fetchEvents()
 
-    },[])
+    },[currentUser])
     
 
     return(
@@ -44,9 +42,9 @@ export default function SavedEventsPage() {
         <div className="main-content">              
             
             <div className="page-header"><h3>My Saved Events</h3></div>
-            {currentUser && currentUser.isLoggedIn && currentUser.type === "student" ? 
+            {currentUser && currentUser?.isLoggedIn && currentUser?.type === "student" ? 
             <div className="events-container">
-            {   !currentUser.savedEvents | currentUser?.savedEvents?.length === 0 ? 
+            {   !currentUser?.savedEvents | currentUser?.savedEvents?.length === 0 ? 
                 <div className="content-paragraphs">
                     <p>You have not saved events yet</p>
                 </div>:

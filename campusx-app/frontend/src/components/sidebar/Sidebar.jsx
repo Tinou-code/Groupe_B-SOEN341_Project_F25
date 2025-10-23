@@ -51,18 +51,18 @@ export default function Sidebar() {
             <div>
             <ul className="nav-menu">
                 <li><SidebarLink path="/" name="Home"/></li>
-                {currentUser && currentUser.isLoggedIn ? 
+                {currentUser && currentUser?.isLoggedIn ? 
                     <div className="user-specific-links">
 
-                        {currentUser.type === "student" ? studentNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>):""}
-                        {currentUser.type === "organizer" ? 
-                            (currentUser.isApproved ? 
+                        {currentUser?.type === "student" ? studentNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>):""}
+                        {currentUser?.type === "organizer" ? 
+                            (currentUser?.isApproved ? 
                                 orgNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>)
                             :<p id="org-unapproved-msg">
                                 Some options are hidden because your account has not been approved yet. 
                                 Please login again later or contact the administration.</p>):""}
 
-                        {currentUser.type === "admin" ? adminNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>):""}
+                        {currentUser?.type === "admin" ? adminNavLinks.map(l => <li key={l.name}><SidebarLink path={l.path} name={l.name}/></li>):""}
                     <li className="logout-nav-link" onClick={() => logout()}>Logout</li>
                     </div> : 
                     <li><SidebarLink path="/login/student" name="Login"/></li>}

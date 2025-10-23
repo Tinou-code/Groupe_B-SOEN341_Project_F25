@@ -16,14 +16,14 @@ export default function TicketsPage() {
                 <div className="main-content">              
                     
                     <div className="page-header"><h3>My Tickets</h3></div>
-                    {currentUser && currentUser.isLoggedIn && currentUser.type === "student" ? 
+                    {currentUser && currentUser?.isLoggedIn && currentUser?.type === "student" ? 
                     <div className="events-container">
 
                     {currentUser?.claimedTickets.length === 0 ?
                         <div className="content-paragraphs">
                             <p>You have no claimed tickets yet</p>
                         </div>: 
-                        currentUser.claimedTickets.sort((a,b) => new Date(a.date) - new Date(b.date)).map(t =>
+                        currentUser?.claimedTickets.sort((a,b) => new Date(a.date) - new Date(b.date)).map(t =>
                         <TicketCard key={t.ticketId} user={currentUser} ticketId={t.ticketId} eventId={t.eventId}/>)    
                     }
                 

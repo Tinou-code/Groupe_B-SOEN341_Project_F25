@@ -50,7 +50,7 @@ export default function BrowseEventsPage() {
                 {currentUser?
                
                 <div>
-                    <div class="search-container">
+                    <div className="search-container">
                     <input
                     type="text"
                     id="eventSearch"

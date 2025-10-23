@@ -12,28 +12,28 @@ export default function Event({ev}) {
   
 
   async function saveEvent() {
-    const response = await handleSaveEvent(currentUser.userId, ev.eventId);
+    const response = await handleSaveEvent(currentUser?.userId, ev.eventId);
     //console.log("save event res", response);
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
   async function unsaveEvent() {
-    const response = await handleUnsaveEvent(currentUser.userId, ev.eventId);
+    const response = await handleUnsaveEvent(currentUser?.userId, ev.eventId);
     //console.log("unsave event res", response);
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
   async function claimTicket() {
-    const response = await handleClaimTicket(currentUser.userId, ev.eventId);
+    const response = await handleClaimTicket(currentUser?.userId, ev.eventId);
     //console.log("claim ticket res", response);
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
   async function unclaimTicket() {
-     const response = await handleCancelTicket(currentUser.userId, ev.eventId);
+     const response = await handleCancelTicket(currentUser?.userId, ev.eventId);
     //console.log("claim ticket res", response);
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
@@ -64,13 +64,13 @@ export default function Event({ev}) {
             </div>
           </div>
         </Link>
-        {currentUser.type === "student" ? 
+        {currentUser?.type === "student" ? 
           <div className="event-user-options">
-              {!currentUser.savedEvents?.find(e => e === ev.eventId) ?
+              {!currentUser?.savedEvents?.find(e => e === ev.eventId) ?
                 <button className="save" onClick={() => {saveEvent()}}>Save Event</button>
                 :<button className="unsave" onClick={() => {unsaveEvent()}}>Unsave Event</button>}
               
-              {!currentUser.claimedTickets?.find(e => e.eventId === ev.eventId) ?
+              {!currentUser?.claimedTickets?.find(e => e.eventId === ev.eventId) ?
                 <button className="claim" onClick={() => claimTicket()}>Claim a Ticket</button>
                 :<button className="unclaim" onClick={() => unclaimTicket()}>Cancel Reservation</button>}
           </div>:""}

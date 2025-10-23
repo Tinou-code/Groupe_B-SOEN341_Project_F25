@@ -9,14 +9,14 @@ export default function UserIcon() {
         <div className="user-icon">
             <FaUserAlt id="user-icon"/>
             <div className="user-info">
-                <p id="name">{String(currentUser.firstName).toUpperCase()}</p>
-                <p id="user-id">{currentUser.userId}</p>
-                <p id="role">{String(currentUser.type).toUpperCase()}</p>
-                {currentUser.type === "organizer" ? 
+                <p id="name">{String(currentUser?.firstName).toUpperCase()}</p>
+                <p id="user-id">{currentUser?.userId}</p>
+                <p id="role">{String(currentUser?.type).toUpperCase()}</p>
+                {currentUser?.type === "organizer" ? 
                     <>
-                    <p id="organization">{String(currentUser.organization).toUpperCase()}</p>
-                    <p id={"status"+(currentUser.isApproved? "-approved":"-unapproved")}>
-                        Status: {currentUser.isApproved ? "Approved":"Not Approved"}</p>
+                    <p id="organization">{String(currentUser?.organization).toUpperCase()}</p>
+                    <p id={"status"+(currentUser?.isApproved? "-approved":"-unapproved")}>
+                        Status: {currentUser?.isApproved ? "Approved":"Not Approved"}</p>
                     </>
                     :""}
             </div>

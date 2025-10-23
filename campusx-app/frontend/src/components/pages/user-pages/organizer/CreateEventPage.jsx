@@ -65,7 +65,7 @@ export default function CreateEventPage() {
                 Fill in the form below to create a new event
                 </h3></div>
                 
-            {currentUser && currentUser.isLoggedIn && currentUser.type === "organizer" ? 
+            {currentUser && currentUser?.isLoggedIn && currentUser?.type === "organizer" ? 
                 
 
                 <form onSubmit={createEvent} className="event-form">
