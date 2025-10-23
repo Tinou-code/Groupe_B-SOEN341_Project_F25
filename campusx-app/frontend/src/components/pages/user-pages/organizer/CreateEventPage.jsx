@@ -5,7 +5,7 @@ import NoAcessMsg from "../../../noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState } from "react";
 import { handleCreateEvent } from "../../../../../../api/events";
-import "./createEventpage.css"
+import "./createEventPage.css"
 
 
 export default function CreateEventPage() {
