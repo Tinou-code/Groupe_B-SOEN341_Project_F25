@@ -29,25 +29,38 @@ Final app is in campusx-app - it contains the following subfolders:
       - access app by going to http://localhost:300/
 
 ## Team info: 
-
-<table>  
-<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa</td></tr>
-<tr> <td>Abdoul Kone</td> <td>40307505</td> <td>osrlazlo</td>
-<tr> <td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla</td>
-<tr> <td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td>  
-<tr> <td>Madona Beshara</td> <td>40316641</td> <td>madonabeshara5-ui</td>
-<tr> <td>Mbog Wendy</td> <td> 40259455</td> <td>wenm983<td></td>
-<tr> <td>Etienne Vorms</td> <td>40286823</td> <td>Tinou-code</td>
-<tr> <td>Ibrahim Ahmad</td> <td>40279224</td> <td>ibrahimrocks</td>
-</table>
-
 <table>
-<tr><td>User ID</td> <td>Password</td> <td>User type</td>
-<tr><td>S12345</td> <td>12345</td> <td>Student</td>
-<tr><td>S1212</td> <td>1212</td> <td>Student</td>
-<tr><td>O12345</td> <td>12345</td> <td>Organizer (unapproved)</td>
-<tr><td>O45678</td> <td>45678</td> <td>Organizer (approved)</td>
-<tr><td>A12345</td> <td>12345</td> <td>Admin</td>
+<tr><td>Saeed Ramez Fakhouri</td> 
+	<td>40308146</td> 
+	<td>SF30-fa</td>
+	
+<tr><td>Abdoul Kone</td> 
+	<td>40307505</td> 
+	<td>osrlazlo</td>
+	
+<tr><td>Ryan Abdalla</td> 
+	<td>40243555</td> 
+	<td>rayanabdalla</td>
+	
+<tr><td>Abderraouf El Khalil Karoun</td> 
+	<td>40315753</td> 
+	<td>Khalil-Krn</td>
+	
+<tr><td>Madona Beshara</td> 
+	<td>4031664</td> 
+	<td>madonabeshara5-ui</td>
+	
+<tr><td>Mbog Wendy</td> 
+	<td>40259455</td> 
+	<td>wenm983</td>
+	
+<tr><td>Etienne Vorms</td> 
+	<td>40286823</td> 
+	<td>Tinou-code</td>
+	
+<tr><td>Ibrahim Ahmad</td> 
+	<td>40279224</td> 
+	<td>ibrahimrocks</td>
 </table>
 
 ## Core Features:
