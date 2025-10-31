@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../../../App"
 import Sidebar from "../../../sidebar/Sidebar"
 import Footer from "../../../footer/Footer"
 import EventCard from "../../events-page/EventCard"
-import NoAcessMsg from "../../../error-page/noAccessMsg"
+import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { getEvent } from "../../../../../../api/events"
 
 
@@ -50,7 +50,7 @@ export default function SavedEventsPage() {
                 </div>:
                 events?.map(event => <EventCard key={event.eventId} ev={event} />)
             }
-            </div> : <NoAcessMsg/>}
+            </div> : <NoAccessMsg/>}
             
             <Footer/>
         </div>

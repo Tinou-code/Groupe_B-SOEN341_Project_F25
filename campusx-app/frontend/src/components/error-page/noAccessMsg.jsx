@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-export default function NoAcessMsg() {
+export default function NoAccessMsg() {
     return(
         <div className="content-paragraphs">
                 <p>You need to <Link to="/login/student">login</Link> to access to this content</p>

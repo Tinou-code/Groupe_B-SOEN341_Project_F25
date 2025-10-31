@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../sidebar/Sidebar";
 import Footer from "../../footer/Footer";
 import { getEvent } from "../../../../../api/events";
-import NoAcessMsg from "../../error-page/noAccessMsg";
+import NoAccessMsg from "../../error-page/noAccessMsg";
 import { ErrorContext } from "../../../App"; 
 
 export default function EventPage() {
@@ -103,7 +103,7 @@ export default function EventPage() {
                     <span className="event-organizer">Date added: {new Date(ev?.dateAdded).toLocaleString()}</span>
                 </div>
                 </div>
-                </>: <><div className="page-header"><h2>Event Page</h2></div><NoAcessMsg/></>}
+                </>: <><div className="page-header"><h2>Event Page</h2></div><NoAccessMsg/></>}
               <Footer/>
             </div>
             

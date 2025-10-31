@@ -22,8 +22,8 @@ const orgNavLinks = [
 
 const adminNavLinks = [
     {path:"/admin/dashboard", name:"Dashboard"}, 
-    {path:"/admin/organizers", name:"Manage Organizers"}, 
-    {path:"/events", name:"Browse Events"},
+    {path:"/admin/organizers", name:"Manage Organizations"}, 
+    {path:"/events", name:"Browse All Events"},
 ]
 
 export default function Sidebar() {

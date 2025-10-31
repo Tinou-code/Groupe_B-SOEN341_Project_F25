@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../../../App";
 import { useContext, useState, useEffect } from "react";
 import Sidebar from "../../../sidebar/Sidebar";
 import Footer from "../../../footer/Footer";
-import NoAcessMsg from "../../../error-page/noAccessMsg";
+import NoAccessMsg from "../../../error-page/noAccessMsg";
 
 import { formatDate, getEvent } from "../../../../../../api/events";
 import FullCalendar from "@fullcalendar/react";
@@ -88,7 +88,7 @@ export default function CalendarPage() {
                         </div>
                     </div>
                 }
-                </div> : <NoAcessMsg/>}
+                </div> : <NoAccessMsg/>}
                 
                 <Footer/>
             </div>
