@@ -21,9 +21,9 @@ allows frontend to communnicate with backend
 ### calendar 
 handled with [fullcalendar js](https://fullcalendar.io/docs/getting-started)
 
-### run locally
+### to run locally
 to run locally, you need to:
-- run "pnpm install" to add neccessary node modules (if pnpm not found, run "npm install pnpm" first)
+- run ``` pnpm install ``` to add neccessary node modules (if pnpm not found, run ``` npm install pnpm ``` first)
 
 - create ".env.local" file in frontend folder and add the following variable in it 
     - VITE_SERVER_URL = http://localhost:3000 
@@ -36,13 +36,21 @@ to run locally, you need to:
         - initial setup currently requires 2 collections, "events" and "users"
         - "events" collection needs 1 initial document with attribute "nextEventId" that can be initialized to any positive int
         - admin users must be added manually to database, with following attributes :
-            - { userId, email, firstName, lastName, password, phoneNumber, type: "admin" }
+            ``` 
+            { userId, email, firstName, lastName, password, phoneNumber, type: "admin" } 
+            
+            ```
             - "type" must be set to "admin", "userId" and "password" cannot be null, rest can be ommited
 
-- start local server in dev mode -> run "pnpm dev"
+- start local server in dev mode -> run ``` pnpm dev ```
     - this starts a server for frontend on port:5173 and a server to handle backend requests on port:3000 
     - to use app in dev mode navigate to http://localhost:5173/ 
 
-- start local server in prod mode -> run "pnpm build", then "pnpm test"
+- start local server in prod mode -> run 
+    ``` 
+    pnpm build
+    pnpm test
+
+    ```
     - this builds the static files for frontend then serves it on port:3000 along with the backend
     - to use app in dev mode navigate to http://localhost:3000/ 

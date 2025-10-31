@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (resp.ok && data.ok) {
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("role", data.role);
+        localStorage.setItem("user", JSON.stringify({id:username, savedEvents:[], claimedTickets:[]}))
         window.location.href = "events.html";
       } else {
         errorMessage.textContent = data.message || "Invalid credentials.";

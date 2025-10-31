@@ -11,6 +11,16 @@ importers:
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
+    devDependencies:
+      jest:
+        specifier: ^30.2.0
+        version: 30.2.0(@types/node@24.9.2)
+      mongodb-memory-server:
+        specifier: ^10.2.3
+        version: 10.2.3
+      supertest:
+        specifier: ^7.1.4
+        version: 7.1.4
 
   backend:
     dependencies:
@@ -26,16 +36,7 @@ importers:
       mongodb:
         specifier: ^6.20.0
         version: 6.20.0
-    devDependencies:
-      jest:
-        specifier: ^30.2.0
-        version: 30.2.0(@types/node@24.9.2)
-      mongodb-memory-server:
-        specifier: ^10.2.3
-        version: 10.2.3
-      supertest:
-        specifier: ^7.1.4
-        version: 7.1.4
+    
 
   frontend:
     dependencies:

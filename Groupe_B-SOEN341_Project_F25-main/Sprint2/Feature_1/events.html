@@ -7,68 +7,88 @@
   <link rel="stylesheet" href="styles.css" />
   <script defer src="view-events.js"></script>
 </head>
+
 <body>
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <nav class="sidebar">
     <div class="sidebar-header">
-      <h2>Student Event Hub</h2>
+      <h2>CampusX</h2>
     </div>
     <ul class="nav-menu">
       <li><a href="home.html" class="nav-link">Home</a></li>
-      <li><a href="create_event.html" class="nav-link">Create Event</a></li>
-      <li><a href="events.html" class="nav-link active">View Events</a></li>
+      <li><a href="events.html" class="nav-link active">Events</a></li>
+      <li><a href="mySavedEvents.html" class="nav-link ">My Saved Events</a></li>
+      <li><a href="myTickets.html" class="nav-link ">My Tickets</a></li>
+      <li><a href="calendar.html" class="nav-link">Calendar</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
-  </aside>
+  </nav>
 
   <!-- Main Content -->
   <div class="main-content">
-    <header class="header">
-      <div class="header-title">
-        <h1>All Events</h1>
+    <!-- Top Login Dropdown -->
+    <div class="login-container">
+      <div class="login-dropdown">
+        <button class="btn-login" onclick="toggleDropdown()">Login</button>
+        <div class="dropdown-content" id="loginDropdown">
+          <a href="student_login.html" class="dropdown-item">Student Login</a>
+          <a href="organizer_login.html" class="dropdown-item">Organizer Login</a>
+          <a href="admin_login.html" class="dropdown-item">Administrator Login</a>
+        </div>
       </div>
-    </header>
+    </div>
 
-    <main class="content">
-      <div class="page-header">
-        <p>Here are all the events created so far:</p>
-      </div>
+    <!-- Conditional content -->
+    <div class="content">
+      <h1 class="page-header" id="notLoggedInMessage" style="text-align:center; color:white; padding-top: 40px;">
+        Sorry, you need to be logged in in order to see the content.
+      </h1>
 
-      <div class="filters">
-        <select id = "priceFilter">
-          <option value="all">All Prices</option>
-          <option value="free">Free</option>
-          <option value="paid">Paid</option>
-        </select>
+      <section id="eventsSection" style="display:none;">
+        <h1 class="page-header">List of events</h1>
+        <div class="search-bar" style="display: flex; justify-content: center; margin: 1.5rem 0;">
+          <div style="
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          ">
+            <span style="margin-right: 0.5rem; color: #666; font-size: 1.2rem;">&#128269;</span>
+            <input
+              id="eventSearch"
+              type="text"
+              placeholder="Search events..."
+              style="
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: 1rem;
+                background: transparent;
+              "
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div id="eventsGrid" class="events-container"></div>
+      </section>
+    </div>
 
-        <select id = "categoryFilter">
-          <option value="all">All Categories</option>
-          <option value="technology">Technology</option>
-          <option value="career">Career</option>
-          <option value="entertainement">Entertainement</option>
-          <option value="workshop">Workshop</option>
-          <option value="culture">Culture</option>
-        </select>
-
-        <select id = "organizationFilter">
-          <option value="all">All Organizations</option>
-          <option value="Tech Club">Tech Club</option>
-          <option value="Career Services">Career Services</option>
-          <option value="Music Society">Music Society</option>
-          <option value="Entrepreneurship Club">Entrepreneurship Club</option>
-          <option value="International Students Association">International Students Association</option>
-          <option value="AI Research Group">AI Research Group</option>
-          </select>
-
-          <button id = "filterBtn">Apply Filters</button>
-      </div>
-
-      <div id="eventList" class="event-list"></div>
-    </main>
-
+    <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2025 Student Event Hub</p>
+      <p>&copy; 2025 CampusX Events. All rights reserved.</p>
     </footer>
   </div>
+
+  <!-- JS (all external) -->
+  <script src="function.js" defer></script>
+  <script src="guard.js" defer></script>
+  <script src="events.js" defer></script>
 </body>
 </html>
 

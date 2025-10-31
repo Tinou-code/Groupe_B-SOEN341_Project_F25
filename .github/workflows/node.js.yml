@@ -4,14 +4,13 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
-
+    if: github.head_ref == 'react-app'
     runs-on: ubuntu-latest
 
     strategy:
@@ -44,5 +43,5 @@ jobs:
       run: pnpm install --frozen-lockfile
   
     - name: Run tests
-      working-directory: campusx-app/backend
-      run: pnpm --dir backend test
+      working-directory: campusx-app
+      run: pnpm test

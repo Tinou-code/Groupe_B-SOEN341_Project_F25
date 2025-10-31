@@ -7,11 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const name = document.getElementById("name").value.trim();
       const date = document.getElementById("date").value;
-      const category = document.getElementById("category").value;
-      const organization = document.getElementById("organization").value;
       const time = document.getElementById("time").value;
       const location = document.getElementById("location").value.trim();
-      const price = document.getElementById("price").value;
       const description = document.getElementById("description").value.trim();
 
       if (!name || !date || !time || !location || !description) {
@@ -22,9 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const newEvent = {
         name,
         date,
-        category,
-        organization,
-        price,
         time,
         location,
         description,
