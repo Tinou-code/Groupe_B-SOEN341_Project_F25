@@ -1,6 +1,6 @@
 import Footer from "../../../footer/Footer"
 import Sidebar from "../../../sidebar/Sidebar"
-import NoAcessMsg from "../../../error-page/noAccessMsg"
+import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { CurrentUserContext } from "../../../../App"
 import { useContext } from "react"
 import TicketCard from "./TicketCard"
@@ -27,7 +27,7 @@ export default function TicketsPage() {
                         <TicketCard key={t.ticketId} user={currentUser} ticketId={t.ticketId} eventId={t.eventId}/>)    
                     }
                 
-                    </div> : <NoAcessMsg/>}
+                    </div> : <NoAccessMsg/>}
                     
                     <Footer/>
                 </div>

@@ -1,3 +1,0 @@
-S40,0000,saeed,fkh,sasa@gmail.com,1234932819
-S123,S123,khalil,Karoun,khalil@gmail.com,1234567890
-S4030,12345,A,K,a@gmail.com,1231231234

@@ -27,44 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (notLoggedInMessage) notLoggedInMessage.style.display = "block";
       if (eventsSection) eventsSection.style.display = "none";
     }
-
-  const filterBtn = document.getElementById("filterBtn");
-  const priceFilter = document.getElementById("priceFilter");
-  const categoryFilter = document.getElementById("categoryFilter");
-  const organizationFilter = document.getElementById("organizerFilter");
-
-  if(filterBtn){
-    filterBtn.addEventListener("click", () => {
-      const selectedPrice = priceFilter.value;
-      const selectedCategory = categoryFilter.value;
-      const selectedOrganizer = organizatiionFilter.value;
-
-      let filtered = events.filter((ev) => {
-        const matchPrice =
-          selectedPrice === "all" ||
-         (selectedPrice === "free" && ev.price === "free") ||
-         (selectedPrice === "paid" && ev.price === "paid");
-          
-        const matchCategory =
-          selectedCategory === "all" ||
-          ev.category.toLowerCase() === selectedCategory.toLowerCase();
-
-        const matchOrganizer =
-          selectedOrganizer === "all" ||
-          ev.organizer.toLowerCase() === selectedOrganizer.toLowerCase();
-
-        return matchPrice && matchCategory && matchOrganizer;
-    });
-
-    filtered.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
-
-      // Step 3: Display filtered/sorted events
-      renderEvents(filtered);
-    });
-  }
-
   });
   
   //Listed events
@@ -77,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Hall Building 101",
       category: "Technology",
       organizer: "Tech Club",
-      price: "paid",
       image:
         "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
     },
@@ -89,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Library Building Main Floor",
       category: "Career",
       organizer: "Career Services",
-      price: "free",
       image:
         "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=400&fit=crop",
     },
@@ -101,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Hall Building 531",
       category: "Entertainment",
       organizer: "Music Society",
-      price: "paid",
       image:
         "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&h=400&fit=crop",
     },
@@ -113,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Hall Building 823",
       category: "Workshop",
       organizer: "Entrepreneurship Club",
-      price: "paid",
       image:
         "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
     },
@@ -125,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Hall Building 507",
       category: "Culture",
       organizer: "International Students Association",
-      price: "free",
       image:
         "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=400&fit=crop",
     },
@@ -137,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location: "Hall Building 507",
       category: "Technology",
       organizer: "AI Research Group",
-      price: "paid",
       image:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
     },
@@ -166,6 +122,78 @@ document.addEventListener("DOMContentLoaded", () => {
     location:
       '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
   };
+
+  async function saveEvent(eventId) {
+    let user = JSON.parse(localStorage.getItem("user"));    
+      try {
+      const resp = await fetch("/save_event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id, eventId:eventId}),
+      });
+
+      const data = await resp.json();
+
+      if (resp.ok && data.ok) {
+        if (!user.savedEvents) user.savedEvents = [];
+        user.savedEvents.push(eventId);
+        localStorage.setItem("user", {...user, savedEvents:[...user.savedEvents, eventId]})
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+async function claimTicket(eventId) {
+    // Get user from localStorage with error handling
+    let user;
+    try {
+        const userData = localStorage.getItem("user");
+        if (!userData) {
+            alert("Please log in to claim tickets");
+            return;
+        }
+        user = JSON.parse(userData);
+    } catch (error) {
+        console.error("Error parsing user data:", error);
+        alert("Error accessing user data");
+        return;
+    }
+
+    try {
+        const resp = await fetch("/claim_tickets", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: user.id,
+                eventId: eventId
+            })
+        });
+
+        if (!resp.ok) {
+            throw new Error(`HTTP error! status: ${resp.status}`);
+        }
+
+        const data = await resp.json();
+        
+        if (data.ok) {
+        
+            if (!user.claimedTickets) {
+                user.claimedTickets = [];
+            }
+            user.claimedTickets.push(eventId);
+            localStorage.setItem("user", JSON.stringify(user));
+            alert("Ticket claimed successfully!");
+        } else {
+            throw new Error(data.message || "Failed to claim ticket");
+        }
+    } catch (err) {
+        console.error("Error claiming ticket:", err);
+        alert("Error claiming ticket: " + err.message);
+    }
+}
   
   function renderEvents(eventList) {
     const grid = document.getElementById("eventsGrid");
@@ -180,29 +208,24 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.innerHTML = eventList
       .map(
         (ev) => `
-      <div class="event-card">
-        <img src="${ev.image}" alt="${ev.title}" class="event-image" />
-        <div class="event-content">
-          <span class="event-category">${ev.category}</span>
-          <h2 class="event-title">${ev.title}</h2>
-          <div class="event-details">
-            <div class="event-detail">${icons.calendar}<span>${formatDate(ev.date)}</span></div>
-            <div class="event-detail">${icons.clock}<span>${formatTime(ev.time)}</span></div>
-            <div class="event-detail">${icons.location}<span>${ev.location}</span></div>
+        <div class="event-card">
+          <img src="${ev.image}" alt="${ev.title}" class="event-image" />
+          <div class="event-content">
+            <span class="event-category">${ev.category}</span>
+            <h2 class="event-title">${ev.title}</h2>
+            <div class="event-details">
+              <div class="event-detail">${icons.calendar}<span>${formatDate(ev.date)}</span></div>
+              <div class="event-detail">${icons.clock}<span>${formatTime(ev.time)}</span></div>
+              <div class="event-detail">${icons.location}<span>${ev.location}</span></div>
+            </div>
+            <div class="event-footer">
+              <span class="event-organizer">by ${ev.organizer}</span>
+            </div>
+            <button onclick="saveEvent(${ev.id})">Save event</button>
+            <button onclick="claimTicket(${ev.id})">Claim ticket</button>
           </div>
-          <div class="event-footer">
-            <span class="event-organizer">by ${ev.organizer}</span>
-            <span class="event-price">${ev.price === "free" ? "Free" : "Paid"}</span>
-          </div>
-        </div>
-      </div>`
-    )
+        </div>`
+      )
       .join("");
   }
   
- 
-  
-
-
-
-

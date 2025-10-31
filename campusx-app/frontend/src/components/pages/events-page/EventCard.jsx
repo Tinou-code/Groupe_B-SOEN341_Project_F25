@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 //Event component
-export default function Event({ev}) {
+export default function EventCard({ev}) {
 
   const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
   const {notifyUser} = useContext(ScreenNotificationContext);

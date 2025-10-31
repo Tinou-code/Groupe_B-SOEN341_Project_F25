@@ -1,7 +1,7 @@
 import FormStatusMsg from "../../../utils/formStatusMsg";
 import Sidebar from "../../../sidebar/Sidebar";
 import Footer from "../../../footer/Footer";
-import NoAcessMsg from "../../../error-page/noAccessMsg";
+import NoAccessMsg from "../../../error-page/noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState } from "react";
 import { handleCreateEvent } from "../../../../../../api/events";
@@ -152,7 +152,7 @@ export default function CreateEventPage() {
                     <button type="submit" className="btn btn-primary">Create Event</button>
                 </form>
 
-            : <NoAcessMsg/>}
+            : <NoAccessMsg/>}
                 
                 <Footer/>
             </div>

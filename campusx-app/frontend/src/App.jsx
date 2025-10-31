@@ -13,6 +13,9 @@ import TicketsPage from './components/pages/user-pages/student/TicketsPage';
 import CalendarPage from './components/pages/user-pages/student/CalendarPage';
 import ErrorPage from './components/error-page/ErrorPage';
 import ErrorBoundaryLayout from './components/error-page/ErrorBoundaryLayout';
+import ManageOrgPage from './components/pages/user-pages/admin/ManageOrgPage';
+import OrgDashboard from './components/pages/user-pages/organizer/OrgDashboard';
+import MyOrgEvents from './components/pages/user-pages/organizer/MyOrgEvents';
 
 
 export const ErrorContext = createContext()
@@ -38,8 +41,12 @@ const pageRouter = createBrowserRouter([
       {path:"/mycalendar", element: <CalendarPage/>},
 
       //organizer pages
-      {path:"/dashboard", element: <ErrorPage/>},
+      {path:"/organizer/dashboard", element: <OrgDashboard/>},
+      {path:"/organizer/events", element: <MyOrgEvents/>},
       {path:"/organizer/create", element: <CreateEventPage/>},
+
+      //admin pages
+      {path:"/admin/organizers", element: <ManageOrgPage/>},
     ],
   },
   

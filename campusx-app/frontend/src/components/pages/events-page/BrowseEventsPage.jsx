@@ -39,7 +39,7 @@ export default function BrowseEventsPage() {
             setEvents(e => response.events);
         }
         fetchEvents()   
-    }, [currentUser])
+    }, [currentUser]);
 
     return(
        <div className="page-container">
