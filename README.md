@@ -31,21 +31,21 @@ Final app is in campusx-app - it contains the following subfolders:
 ## Team info: 
 
 <table>  
-<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa<td><tr>
+<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa</td></tr>
   
-<tr><td>Abdoul Kone</td> <td>40307505</td> <td>osrlazlo<td><tr>
+<tr><td>Abdoul Kone</td> <td>40307505</td> <td>osrlazlo</td></tr>
   
-<tr><td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla<td><tr>
+<tr><td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla</td></tr>
   
-<tr><td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td><tr>
+<tr><td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td></tr>
   
-<tr><td>Madona Beshara</td> <td>40316641</td> <td>madonabeshara5-ui<td><tr>
+<tr><td>Madona Beshara</td> <td>40316641</td> <td>madonabeshara5-ui</td></tr>
   
-<tr><td>Mbog Wendy</td> <td> 40259455</td> <td>wenm983<td><tr>
+<tr><td>Mbog Wendy</td> <td> 40259455</td> <td>wenm983<td></td></tr>
 
-<tr><td>Etienne Vorms</td> <td>40286823</td> <td>Tinou-code<td><tr>
+<tr><td>Etienne Vorms</td> <td>40286823</td> <td>Tinou-code</td></tr>
 
-<tr><td>Ibrahim Ahmad</td> <td>40279224</td> <td>ibrahimrocks<td><tr>
+<tr><td>Ibrahim Ahmad</td> <td>40279224</td> <td>ibrahimrocks</td></tr>
 </table>
 
 ## Core Features:
