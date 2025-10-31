@@ -1,9 +1,9 @@
 ### CAMPUSX-APP
 Final app is in campusx-app - it contains the following subfolders: 
-	•	api/ - code to allow communication between frontend and backend
-	•	backend/ - code for backend (to read and write data)
-	•	frontend/ - code for website frontend
-	•	tests/ - code for CI tests, 
+   - api/ - code to allow communication between frontend and backend
+	-	backend/ - code for backend (to read and write data)
+	-	frontend/ - code for website frontend
+	-	tests/ - code for CI tests, 
 		- currently there are tests for (each with various edge cases) :
 			- Login route 
 			- Register route
@@ -37,7 +37,7 @@ Final app is in campusx-app - it contains the following subfolders:
   
 <tr><td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla<td><tr>
   
-<tr><td>Abderraouf El Khalil Karoun</td> <td>40315753- Khalil-Krn<td><tr>
+<tr><td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td><tr>
   
 <tr><td>Madona Beshara</td> <td>40316641</td> <td>madonabeshara5-ui<td><tr>
   
