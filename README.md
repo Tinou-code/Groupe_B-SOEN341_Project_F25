@@ -1,4 +1,4 @@
-### CAMPUSX-APP
+## CAMPUSX-APP
 Final app is in campusx-app - it contains the following subfolders: 
 - api/ - code to allow communication between frontend and backend
 - backend/ - code for backend (to read and write data) 
@@ -8,7 +8,7 @@ Final app is in campusx-app - it contains the following subfolders:
 		- Login route 
 		- Register route
 
-### to run the app locally
+## To run the app locally
 
 - A list of test users to try the app is available in ``` campusx-app/README.md ```
 
