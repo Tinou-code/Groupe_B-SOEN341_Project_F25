@@ -41,7 +41,7 @@ jobs:
         
     - name: install dependencies 
       working-directory: campusx-app
-      run: pnpm install --frozen-lockfile
+      run: pnpm install
   
     - name: Run tests
       working-directory: campusx-app/backend
