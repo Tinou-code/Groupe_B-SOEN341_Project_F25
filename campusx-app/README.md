@@ -1,7 +1,7 @@
 ### CAMPUSX Web App
 try the app online (render server may take a minute to load) : https://campusx-app.onrender.com/
 
-## test users - Use following info to login and test user features
+### test users - Use following info to login and test user features
 <table>
 <tr><td>User ID</td> <td>Password</td> <td>User type</td>
 <tr><td>S12345</td> <td>12345</td> <td>Student</td>
