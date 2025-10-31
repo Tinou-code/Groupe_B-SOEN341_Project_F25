@@ -41,6 +41,15 @@ Final app is in campusx-app - it contains the following subfolders:
 <tr> <td>Ibrahim Ahmad</td> <td>40279224</td> <td>ibrahimrocks</td>
 </table>
 
+<table>
+<tr><td>User ID</td> <td>Password</td> <td>User type</td>
+<tr><td>S12345</td> <td>12345</td> <td>Student</td>
+<tr><td>S1212</td> <td>1212</td> <td>Student</td>
+<tr><td>O12345</td> <td>12345</td> <td>Organizer (unapproved)</td>
+<tr><td>O45678</td> <td>45678</td> <td>Organizer (approved)</td>
+<tr><td>A12345</td> <td>12345</td> <td>Admin</td>
+</table>
+
 ## Core Features:
 1. Student: 
 - Each student should be able to browse and search events with filters (date, category, organization).
