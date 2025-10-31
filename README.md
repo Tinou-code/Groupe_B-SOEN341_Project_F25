@@ -15,7 +15,7 @@ Final app is in campusx-app - it contains the following subfolders:
 1. pull from main
 2. run ``` cd campusx-app ``` to navigate to app folder
 3. run ``` pnpm install ``` to install required node modules
-  - if you get the error ``` pnpm not found ``` run ``` npm install pnpm ``` to install pnpm, then try the command again
+  a. if you get the error ``` pnpm not found ``` run ``` npm install pnpm ``` to install pnpm, then try the command again
 4. start local server
   a. in dev mode 
     - run ``` pnpm dev ```
