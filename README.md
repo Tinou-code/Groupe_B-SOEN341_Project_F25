@@ -1,12 +1,12 @@
 ### CAMPUSX-APP
 Final app is in campusx-app - it contains the following subfolders: 
-   - api/ - code to allow communication between frontend and backend
-	-	backend/ - code for backend (to read and write data)
-	-	frontend/ - code for website frontend
-	-	tests/ - code for CI tests, 
-		- currently there are tests for (each with various edge cases) :
-			- Login route 
-			- Register route
+- api/ - code to allow communication between frontend and backend
+- backend/ - code for backend (to read and write data) 
+- frontend/ - code for website frontend
+- tests/ - code for CI tests, 
+	- currently there are tests for (each with various edge cases) :
+		- Login route 
+		- Register route
 
 ### to run the app locally
 
