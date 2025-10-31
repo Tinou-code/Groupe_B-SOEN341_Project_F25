@@ -31,7 +31,7 @@ Final app is in campusx-app - it contains the following subfolders:
 ## Team info: 
 
 <table>  
-<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa</td>
+<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa</td></tr>
 <tr> <td>Abdoul Kone</td> <td>40307505</td> <td>osrlazlo</td>
 <tr> <td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla</td>
 <tr> <td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td>  
