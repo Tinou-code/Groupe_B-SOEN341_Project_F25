@@ -16,7 +16,7 @@ import ErrorBoundaryLayout from './components/error-page/ErrorBoundaryLayout';
 import ManageOrgPage from './components/pages/user-pages/admin/ManageOrgPage';
 import OrgDashboard from './components/pages/user-pages/organizer/OrgDashboard';
 import MyOrgEvents from './components/pages/user-pages/organizer/MyOrgEvents';
-import OrganizationPage from './components/pages/user-pages/admin/Organizationpage';
+import OrganizationPage from './components/pages/user-pages/admin/OrganizationPage';
 
 
 export const ErrorContext = createContext()
