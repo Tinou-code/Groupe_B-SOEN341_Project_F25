@@ -3,6 +3,7 @@ import { formatDate, formatTime, handleCancelTicket, handleClaimTicket, handleSa
 import { CurrentUserContext, ScreenNotificationContext } from "../../../App"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import img404 from "/event-placeholder.svg";
 
 //Event component
 export default function EventCard({ev}) {
@@ -14,6 +15,7 @@ export default function EventCard({ev}) {
   async function saveEvent() {
     const response = await handleSaveEvent(currentUser?.userId, ev.eventId);
     //console.log("save event res", response);
+    if (response.user)
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
@@ -21,6 +23,7 @@ export default function EventCard({ev}) {
   async function unsaveEvent() {
     const response = await handleUnsaveEvent(currentUser?.userId, ev.eventId);
     //console.log("unsave event res", response);
+    if (response.user)
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
@@ -28,6 +31,7 @@ export default function EventCard({ev}) {
   async function claimTicket() {
     const response = await handleClaimTicket(currentUser?.userId, ev.eventId);
     //console.log("claim ticket res", response);
+    if (response.user)
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
@@ -35,6 +39,7 @@ export default function EventCard({ev}) {
   async function unclaimTicket() {
      const response = await handleCancelTicket(currentUser?.userId, ev.eventId);
     //console.log("claim ticket res", response);
+    if (response.user)
     setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
@@ -46,7 +51,10 @@ export default function EventCard({ev}) {
     return(
       <div className="event-card">
         <Link to={`/events/${ev.eventId}`} className="event-card-link">
-          <img src={ev.imagePath} alt={ev.title} className="event-image" />
+          <img src={ev.imagePath} alt={ev.title} 
+            onError={e => {
+              e.target.onerror = null
+              e.target.src = img404}} className="event-image" />
           <div className="event-content">
             <div className="event-tags">
               <span className="event-tag">{ev.category}</span>

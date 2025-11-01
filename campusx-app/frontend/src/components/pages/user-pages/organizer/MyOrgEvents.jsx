@@ -18,7 +18,7 @@ export default function MyOrgEvents() {
     useEffect(() => {
         async function fetchEvents() {
             const response = await getEvents();
-            console.log("response2", response.events.filter(e => e.organizer === currentUser?.organization)); 
+            //console.log("response2", response.events.filter(e => e.organizer === currentUser?.organization)); 
             setEvents(e => response.events.filter(e => e.organizer === currentUser?.organization));
         }
         fetchEvents()   

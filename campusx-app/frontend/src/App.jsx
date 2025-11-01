@@ -16,6 +16,7 @@ import ErrorBoundaryLayout from './components/error-page/ErrorBoundaryLayout';
 import ManageOrgPage from './components/pages/user-pages/admin/ManageOrgPage';
 import OrgDashboard from './components/pages/user-pages/organizer/OrgDashboard';
 import MyOrgEvents from './components/pages/user-pages/organizer/MyOrgEvents';
+import OrganizationPage from './components/pages/user-pages/admin/Organizationpage';
 
 
 export const ErrorContext = createContext()
@@ -47,6 +48,7 @@ const pageRouter = createBrowserRouter([
 
       //admin pages
       {path:"/admin/organizers", element: <ManageOrgPage/>},
+      {path:"/admin/organizers/:organization", element: <OrganizationPage/>},
     ],
   },
   

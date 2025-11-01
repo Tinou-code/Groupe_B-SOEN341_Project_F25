@@ -9,11 +9,12 @@ userRoutes.route("/users").get(async (req, res) => {
     try {
         let data = await db.collection("users").find({},
             {projection:{_id:0, password:0}}).toArray();
-        if (data.length < 1) throw new Error("Data not found");
-        res.json(data);
+        if (data.length < 1) return res.status(404).json({ msg: "Data not found" });
+        res.status(200).json(data);
     }
     catch (error) {
         console.error(error);
+        return res.status(500).json({ msg: "Server error"});
     }
 });
 
@@ -28,7 +29,7 @@ userRoutes.route("/users/:id").get(async (req, res) => {
         if (!data) {
             return res.status(404).json({ msg: "User not found" });
         }
-        return res.json(data);
+        return res.status(200).json(data);
     }
     catch (error) {
         console.error(error);
@@ -142,7 +143,7 @@ userRoutes.route("/users/save").patch(async (req, res) => {
     }
 });
 
-//save an event
+//unsave an event
 userRoutes.route("/users/unsave").patch(async (req, res) => {
     try {
 
@@ -250,6 +251,23 @@ userRoutes.route("/users/cancel").patch(async (req, res) => {
 
         let updatedUser = await db.collection("users").findOne({userId: req.body.userId}, {projection: {_id:0, password:0}});
         return res.status(200).json({data, user:updatedUser, msg:"Reservation cancelled successfully!"}); 
+    }
+        
+    catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "500 - Server error"});
+    }
+});
+
+//approve or disable a user account
+userRoutes.route("/users/approve").patch(async (req, res) => {
+    try {
+        let db = database.getDb();
+        let mongoUser = {$set:{isApproved:req.body.isApproved}}
+
+        let data = await db.collection("users").updateOne({userId: req.body.userId, type:"organizer"}, mongoUser);
+        let updatedUser = await db.collection("users").findOne({userId: req.body.userId}, {projection: {_id:0, password:0}});
+        return res.status(201).json({data, user:updatedUser, msg:"User account updated successfully!"}); 
     }
         
     catch (error) {
