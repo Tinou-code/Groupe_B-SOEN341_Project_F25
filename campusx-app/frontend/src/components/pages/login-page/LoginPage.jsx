@@ -51,7 +51,7 @@ export default function LoginPage() {
                 setTimeout(() => {
                   //console.log("nav home")
                   navigate("/");  
-                },3000);  
+                },1000);  
             }
         },[loginStatus])
 

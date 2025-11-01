@@ -49,19 +49,19 @@ Final app is in campusx-app - it contains the following subfolders:
 </table>
 
 ## Core Features:
-1. Student: 
+### 1. Student: 
 - Each student should be able to browse and search events with filters (date, category, organization).
 - Save events to a personal calendar.
 - Claim tickets (free or mock paid).
 - Receive a digital ticket with a unique QR code.
 
-2. Organizers
+### 2. Organizers
 - Enter event details: title, description, date/time, location, ticket capacity, ticket type (free or paid).
 - Have a Dashboard per event with stats: tickets issued, attendance rates, and remaining capacity.
 - Be able to export the attendee list in CSV.
 - Need an Integrated QR scanner for ticket validation (for simplicity, we can assume the QR code image can be provided via file upload).
 
-3. Administrators
+### 3. Administrators
 - Be able to approve organizer accounts.
 - Moderate event listings for policy compliance.
 - View global stats: number of events, tickets issued, and participation trends.
@@ -74,7 +74,7 @@ Final app is in campusx-app - it contains the following subfolders:
    - Organizer: Can create and manage events, see attendance, and view analytics.
    - Staff/Moderator: Helps with events (like scanning tickets) but can’t edit or create events.
 
-4. Notification and Alert system
+### 4. Notification and Alert system
 - Event reminders for students 
 - Notify organizers when ticket sales are nearing capacity, when new attendees register or cancelled tickets
 - Allow users to set how they wish to receive notifications (email, SMS)
