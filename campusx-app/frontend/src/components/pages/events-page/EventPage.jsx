@@ -32,6 +32,7 @@ export default function EventPage() {
      async function saveEvent() {
        const response = await handleSaveEvent(currentUser?.userId, ev?.eventId);
        //console.log("save event res", response);
+       if (response.user)
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
@@ -39,6 +40,7 @@ export default function EventPage() {
      async function unsaveEvent() {
        const response = await handleUnsaveEvent(currentUser?.userId, ev?.eventId);
        //console.log("unsave event res", response);
+       if (response.user)
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
@@ -46,6 +48,7 @@ export default function EventPage() {
      async function claimTicket() {
        const response = await handleClaimTicket(currentUser?.userId, ev?.eventId);
        //console.log("claim ticket res", response);
+       if (response.user)
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
@@ -53,6 +56,7 @@ export default function EventPage() {
      async function unclaimTicket() {
         const response = await handleCancelTicket(currentUser?.userId, ev?.eventId);
        //console.log("claim ticket res", response);
+       if (response.user)
        setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }

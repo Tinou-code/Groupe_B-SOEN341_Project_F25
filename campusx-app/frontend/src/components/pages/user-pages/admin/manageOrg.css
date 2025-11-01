@@ -1,0 +1,60 @@
+.org-members .action {
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+.disable-account, .approve-account {
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.approve-account {
+    background-color: hsl(125, 100%, 28%);
+}
+
+.approve-account:hover {
+    background-color:  hsl(125, 100%, 38%);
+}
+
+.approve-account:active {
+    background-color:  hsl(125, 100%, 18%);
+}
+
+.disable-account {
+    background-color: hsl(4, 73%, 67%);
+}
+
+.disable-account:hover {
+    background-color: hsl(19, 73%, 67%);
+}
+
+.disable-account:active {
+    background-color: hsl(19, 73%, 47%);
+}
+
+.status-approved, .status-unapproved {
+    font-size: small;
+    padding: 5px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.status-approved {
+    background-color: rgb(5, 170, 5);
+}
+
+.status-unapproved {
+    background-color: rgb(255, 94, 94);
+}

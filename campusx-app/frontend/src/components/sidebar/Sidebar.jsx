@@ -37,7 +37,7 @@ export default function Sidebar() {
         handleLogout();
         setCurrentUser(u => undefined)
         navigate("/");
-        }, 4000);
+        }, 1000);
     }
 
     return(
