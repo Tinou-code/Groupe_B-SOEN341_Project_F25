@@ -1,4 +1,4 @@
-### CAMPUSX-APP
+## CAMPUSX-APP
 Final app is in campusx-app - it contains the following subfolders: 
 - api/ - code to allow communication between frontend and backend
 - backend/ - code for backend (to read and write data) 
@@ -8,7 +8,7 @@ Final app is in campusx-app - it contains the following subfolders:
 		- Login route 
 		- Register route
 
-### to run the app locally
+## To run the app locally
 
 - A list of test users to try the app is available in ``` campusx-app/README.md ```
 
@@ -29,23 +29,38 @@ Final app is in campusx-app - it contains the following subfolders:
       - access app by going to http://localhost:300/
 
 ## Team info: 
-
-<table>  
-<tr><td>Saeed Ramez Fakhouri</td> <td>40308146</td> <td>SF30-fa<td><tr>
-  
-<tr><td>Abdoul Kone</td> <td>40307505</td> <td>osrlazlo<td><tr>
-  
-<tr><td>Ryan Abdalla</td> <td>40243555</td> <td>rayanabdalla<td><tr>
-  
-<tr><td>Abderraouf El Khalil Karoun</td> <td>40315753</td> <td> Khalil-Krn</td><tr>
-  
-<tr><td>Madona Beshara</td> <td>40316641</td> <td>madonabeshara5-ui<td><tr>
-  
-<tr><td>Mbog Wendy</td> <td> 40259455</td> <td>wenm983<td><tr>
-
-<tr><td>Etienne Vorms</td> <td>40286823</td> <td>Tinou-code<td><tr>
-
-<tr><td>Ibrahim Ahmad</td> <td>40279224</td> <td>ibrahimrocks<td><tr>
+<table>
+<tr><td>Saeed Ramez Fakhouri</td> 
+	<td>40308146</td> 
+	<td>SF30-fa</td>
+	
+<tr><td>Abdoul Kone</td> 
+	<td>40307505</td> 
+	<td>osrlazlo</td>
+	
+<tr><td>Ryan Abdalla</td> 
+	<td>40243555</td> 
+	<td>rayanabdalla</td>
+	
+<tr><td>Abderraouf El Khalil Karoun</td> 
+	<td>40315753</td> 
+	<td>Khalil-Krn</td>
+	
+<tr><td>Madona Beshara</td> 
+	<td>4031664</td> 
+	<td>madonabeshara5-ui</td>
+	
+<tr><td>Mbog Wendy</td> 
+	<td>40259455</td> 
+	<td>wenm983</td>
+	
+<tr><td>Etienne Vorms</td> 
+	<td>40286823</td> 
+	<td>Tinou-code</td>
+	
+<tr><td>Ibrahim Ahmad</td> 
+	<td>40279224</td> 
+	<td>ibrahimrocks</td>
 </table>
 
 ## Core Features:
