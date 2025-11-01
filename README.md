@@ -17,16 +17,15 @@ Final app is in campusx-app - it contains the following subfolders:
 3. run ``` pnpm install ``` to install required node modules
   - if you get the error ``` pnpm not found ``` run ``` npm install pnpm ``` to install pnpm, then try the command again
 4. start local server
-  a. in dev mode 
-    - run ``` pnpm dev ```
-      - it should start a local server for frontend on port 5173 and backend on port 3000
-      - access app by going to http://localhost:5173/
-
-  b. in prod mode 
-    - run ``` pnpm build ``` to build static frontend files
-    - run ``` pnpm start ``` to start server
-      - it should start a local server to serve frontend and backend on port 3000
-      - access app by going to http://localhost:300/
+   - in dev mode
+      - run ``` pnpm dev ```
+         - it should start a local server for frontend on port 5173 and backend on port 3000
+         - access app by going to http://localhost:5173/
+   - in prod mode 
+      - run ``` pnpm build ``` to build static frontend files
+      - run ``` pnpm start ``` to start server
+         - it should start a local server to serve frontend and backend on port 3000
+         - access app by going to http://localhost:300/
 
 ## Team info: 
 <table>
