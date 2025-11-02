@@ -53,7 +53,7 @@ export default function EventCard({event}) {
       ev ? 
       <div className="event-card">
         <Link to={`/events/${event.eventId}`} className="event-card-link">
-          <img src={event.imagePath} alt={event.title} 
+          <img src={event.imagePath ? event.imagePath : img404} alt={event.title} 
             onError={e => {
               e.target.onerror = null
               e.target.src = img404}} className="event-image" />
@@ -63,7 +63,7 @@ export default function EventCard({event}) {
               <span className="event-tag">{event.category}</span>
               <span className="event-tag">{event.type}</span>
             </div>
-            {currentUser.type === "admin" ? 
+            {currentUser.type === "admin" || (currentUser.type === "organizer" && currentUser.organization === ev.organizer) ? 
             <p id={"status"+(ev?.isApproved? "-approved":"-unapproved")}>
                         Status: {ev?.isApproved ? "Approved":"Not Approved"}</p>:""}
 

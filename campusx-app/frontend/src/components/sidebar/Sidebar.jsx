@@ -81,7 +81,7 @@ function SidebarLink({path, name}) {
     const currentPath = location.pathname;
 
     return(
-        path === "/" ?
+        path === "/" || path === "/events" ?
          <Link  
             to={path} className={"nav-link"+(currentPath === path ? "-active":"")}>{name}
         </Link>:

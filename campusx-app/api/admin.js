@@ -61,11 +61,36 @@ export async function getOrganizations() {
          let fetchResult = await response.json();
          const org = await fetch(`${SERVER_URL}/organizations/${orgId}`, options);
          let orgResult = await org.json();
-         console.log("response", fetchResult, orgResult);
+         //console.log("response", fetchResult, orgResult);
          if (fetchResult) {
             const members = new Set();
-            fetchResult.map(m => m.organization === orgResult.data.name ? members.add(m):null);
-            return {status:response.status, members, msg:fetchResult.msg}}
+            fetchResult.data.map(m => m.organization === orgResult.data.name ? members.add(m):null);
+            return {status:response.status, members:[...members], msg:fetchResult.msg}}
+         else return {status:response.status, msg:fetchResult.msg}
+     }
+     catch (err) {
+         console.error(err);
+         return {status:500, msg:"500 - Server error"}
+     }
+ }
+
+ export async function getStudents() {
+  const options = {
+         method: "GET",
+         headers: {
+             "Content-Type": "application/json",
+             accept: "application/json"
+         }
+      }
+ 
+     try {
+         const response = await fetch(`${SERVER_URL}/users`, options);
+         let fetchResult = await response.json();
+         //console.log("response", fetchResult, orgResult);
+         if (fetchResult) {
+            const students = new Set();
+            fetchResult.data.map(s => s.type === "student" ? students.add(s.userId):null);
+            return {status:response.status, students:[...students], msg:fetchResult.msg}}
          else return {status:response.status, msg:fetchResult.msg}
      }
      catch (err) {

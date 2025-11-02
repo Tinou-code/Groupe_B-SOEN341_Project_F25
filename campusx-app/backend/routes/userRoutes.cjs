@@ -10,7 +10,7 @@ userRoutes.route("/users").get(async (req, res) => {
         let data = await db.collection("users").find({},
             {projection:{_id:0, password:0}}).toArray();
         if (data.length < 1) return res.status(404).json({ msg: "Data not found" });
-        res.status(200).json(data);
+        res.status(200).json({data, msg:"Success"});
     }
     catch (error) {
         console.error(error);
@@ -29,7 +29,7 @@ userRoutes.route("/users/:id").get(async (req, res) => {
         if (!data) {
             return res.status(404).json({ msg: "User not found" });
         }
-        return res.status(200).json(data);
+        return res.status(200).json({data, msg:"Success"});
     }
     catch (error) {
         console.error(error);

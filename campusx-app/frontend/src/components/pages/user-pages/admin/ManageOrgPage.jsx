@@ -17,7 +17,7 @@ export default function ManageOrgPage() {
     useEffect(() => {
         async function fetchOrgs() {
             const response = await getOrganizations();
-            console.log("response2", response.organizations); 
+            //console.log("response2", response.organizations); 
             setOrganizations(e => [...response.organizations].sort());
         }
         fetchOrgs()   

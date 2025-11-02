@@ -17,7 +17,7 @@ export default function TicketCard({user, ticketId, eventId}) {
        }, [])
 
     const [qrcode, setQrcode] = useState(null);
-    const ticketCode = `${ticketId}-${user.userId}`;
+    const ticketCode = `${ticketId}`;
 
     function generateQR(){
         //write function to generate ticket qr

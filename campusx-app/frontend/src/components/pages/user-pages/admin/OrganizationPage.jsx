@@ -27,8 +27,8 @@ export default function OrganizationPage() {
         }
         async function fetchMembers() {
             const response = await getMembers(params.organization);
-            //console.log("members", response.members);
-            let members = [...response.members].sort((a,b) => a.lastName - b.lastName);
+            //console.log("members", response);
+            let members = response.members.sort((a,b) => a.lastName - b.lastName);
             if (members.length === 0) setMembers(m => undefined);
             else setMembers(m => members);
         }
@@ -52,7 +52,7 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => [...response.members].sort((a,b) => a.lastName - b.lastName));
+            setMembers(m => response.members.sort((a,b) => a.lastName - b.lastName));
         } 
     }
 
@@ -61,7 +61,7 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => [...response.members].sort((a,b) => a.lastName - b.lastName));
+            setMembers(m => response.members.sort((a,b) => a.lastName - b.lastName));
         } 
     }
 
@@ -95,7 +95,7 @@ export default function OrganizationPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {members?.map(m => 
+                    {members?.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(m => 
                     <tr key={m.userId}>
                         <td>{m.userId}</td>
                         <td>{`${m.lastName}, ${m.firstName}`}</td>
@@ -137,8 +137,8 @@ export default function OrganizationPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {events?.map(e => 
-                    <tr key={e.event}>
+                    {events?.sort((a,b) => a.title.localeCompare(b.title)).map(e => 
+                    <tr key={e.eventId}>
                         <td>{e.eventId}</td>
                         <td>{e.title}</td>
                         <td>{e.date}</td>

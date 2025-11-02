@@ -5,6 +5,7 @@ import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState, useEffect } from "react";
 import { getEvents } from "../../../../../../api/events";
 import "../organizer/orgDashboard.css"
+import { getOrganizations, getStudents } from "../../../../../../api/admin";
 
 export default function AdminDashboard() {
 
@@ -14,7 +15,9 @@ export default function AdminDashboard() {
     const [events, setEvents] = useState();
     const [ticketsIssued, setTicketsIssued] = useState();
     const [avgParticipation, setAvgParticipation] = useState();
-    
+    const [organizations, setOrganizations] = useState();
+    const [students, setStudents] = useState();
+
     //fetch events from database when component mounts and/or when user saves/claims a ticket
     useEffect(() => {
         async function fetchEvents() {
@@ -22,7 +25,18 @@ export default function AdminDashboard() {
             //console.log("fetchevents", response); 
             setEvents(e => response.events);
         }
-        fetchEvents();   
+        async function fetchOrgs() {
+            const response = await getOrganizations();
+            //console.log("response2", response.organizations); 
+            setOrganizations(e => [...response.organizations].sort());
+        }
+        async function fetchStudents() {
+            const response = await getStudents();
+            setStudents(s => response.students);
+        }
+        fetchEvents(); 
+        fetchOrgs()
+        fetchStudents();  
     }, []);
 
     useEffect(() => {
@@ -35,7 +49,7 @@ export default function AdminDashboard() {
             numOfTickets += Number(e.tickets)-Number(e.remainingTickets);
             //only include past events as there is no participation data for upcoming events yet
             if (new Date(e.date) < new Date()) {
-                console.log(`${e.eventId}`, Number(e.attendees.length), Number(e.tickets), Number(e.remainingTickets));
+                //console.log(`${e.eventId}`, Number(e.attendees.length), Number(e.tickets), Number(e.remainingTickets));
                 participation += Number(e.attendees.length)/(Number(e.tickets)-Number(e.remainingTickets));
                 numOfPastEvents++;
             }
@@ -54,21 +68,55 @@ export default function AdminDashboard() {
             <div className="dashboard-container">
                 <table id="event-table">
                     <tbody>
-                        {events ? 
+                        {events && students ? 
                         <>
                         <tr>
                             <td colSpan="2" className="table-head">Global Stats</td>
                         </tr>
-                        <tr><td className="data-title">Number of events</td><td>{events.length}</td></tr>
-                        <tr><td className="data-title">Total Tickets Issued</td><td>{ticketsIssued}</td></tr>
-                        <tr><td className="data-title">Average Participation Rate</td><td>{`${avgParticipation}%`}</td></tr>
+                        <tr><td className="data-title">Total number of students</td><td>{students.length}</td></tr>
+                        <tr><td className="data-title">Total number of events</td><td>{events.length}</td></tr>
+                        <tr><td className="data-title">Total number of tickets issued</td><td>{ticketsIssued}</td></tr>
+                        <tr><td className="data-title">Average participation rate</td><td>{`${avgParticipation}%`}</td></tr>
                         </>
                         :
                         <tr>
                             <td colSpan="2">No Data Found</td>
                         </tr>}
                     </tbody>
-                </table>                
+                </table>   
+
+              {organizations ?
+            <table className="org-members">
+                <thead>
+                     <tr>
+                        <td colSpan="5" className="table-head">All Organizations {`(${organizations.length})`}</td>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Members</th>
+                        <th>Events</th>
+                        <th>Organizations Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {organizations?.sort((a,b) => a.name.localeCompare(b.name)).map(o => 
+                    <tr key={o.id}>
+                        <td>{o.id}</td>
+                        <td>{o.name}</td>
+                        <td>{o.members.length}</td>
+                        <td>{events?.filter(e => e.organizer === o.name).length}</td>
+                        <td>
+                            <span className="action">
+                            <span className={"status" + (o.isApproved ? "-approved":"-unapproved")}>{o.isApproved ? "Approved":"Not Approved"}</span>
+                            </span>
+                        </td>
+                    </tr>
+                    )}
+                </tbody>
+                </table> : <div className="content-paragraphs">
+                            <p>No data found</p>
+                            </div>}             
             </div>
             : <NoAccessMsg/>}
                 <Footer/>

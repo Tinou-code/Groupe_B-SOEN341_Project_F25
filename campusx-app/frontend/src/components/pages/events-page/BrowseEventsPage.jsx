@@ -27,6 +27,7 @@ export default function BrowseEventsPage() {
             String(e.location).toLowerCase().includes(searchStr) ||
             String(e.organizer).toLowerCase().includes(searchStr));
         if (searchDate) filteredEvents = filteredEvents.filter(e => new Date(e.date) >= new Date(searchDate));
+        if (currentUser.type === "student") filteredEvents = filteredEvents.filter(e => e.isApproved);
         return filteredEvents.sort((a,b) => new Date(a.date) - new Date(b.date));
     }
 
