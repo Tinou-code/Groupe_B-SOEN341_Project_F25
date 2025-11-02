@@ -1,9 +1,0 @@
-This acceptance test is for the following user stories and features
-US.12 As an administrator, I want to view global statistics such as total events, tickets issued, and participation trends, so that I can understand overall platform usage
-
-
-Steps and expected results
-Login as an administrator. You can login with the following info:
-Admin ID : A12345
-Password: 12345
-
