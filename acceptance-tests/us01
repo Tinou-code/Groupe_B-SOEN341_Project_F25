@@ -1,0 +1,61 @@
+Acceptance Test
+
+This acceptance test is for the following user stories and features:
+US.01 – Browse Upcoming Events
+Feature – Create Event Initializer (browse, view, and delete your events)
+
+Steps and Expected Results
+
+Login as an organizer.
+You can log in with the following info:
+
+ id: O1123
+
+password : oidhw
+
+Click on “Browse Events” in the sidebar.
+This will show you a list of upcoming events. Each event is displayed as an event card containing the event name, date, and organizer.
+
+View event details.
+Click on an event card to open its details page, which displays the event’s description, date, location, and any other relevant information.
+
+Expected result:
+
+The event details are displayed correctly and correspond to the selected event.
+
+Delete one of your own events.
+If you are the event organizer or the event creator, click on the Delete button.
+
+Expected results:
+
+The selected event is removed from the event list.
+
+An on-screen notification confirms that the event has been deleted successfully.
+
+The event is no longer visible in the event list after deletion.
+
+Attempt to delete an event you did not create.
+Expected results:
+
+The system prevents the deletion.
+
+An on-screen notification appears: “You can only delete events that you created.”
+
+Optional: Refresh or revisit the Browse Events page.
+Expected results:
+
+The event list remains accurate and updated (deleted events do not reappear).
+
+Additional Feature – Event Management for Organizers
+
+If you log in as an organizer, you can:
+
+Create a new event using the “Create Event” button.
+
+Edit or delete your previously created events directly from the list.
+
+Expected results:
+
+New events appear immediately in the Browse Events list.
+
+Deleting or editing an event updates it across all users’ views.
