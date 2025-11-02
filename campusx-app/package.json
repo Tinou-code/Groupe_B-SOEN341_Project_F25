@@ -12,11 +12,14 @@
     "preview": "vite preview",
     "test": "jest --runInBand"
   },
-   "jest": {
+  "jest": {
     "testEnvironment": "node"
   },
   "dependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "node": "^25.1.0",
+    "nodemon": "^3.1.10",
+    "pnpm": "^10.20.0"
   },
   "devDependencies": {
     "jest": "^30.2.0",
