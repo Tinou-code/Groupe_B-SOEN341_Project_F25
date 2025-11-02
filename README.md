@@ -15,7 +15,9 @@ Final app is in campusx-app - it contains the following subfolders:
 1. pull from main
 2. run ``` cd campusx-app ``` to navigate to app folder
 3. run ``` pnpm install ``` to install required node modulesa
-   - if you get the error ``` pnpm not found ``` run ``` npm install pnpm ``` to install pnpm, then try the command again
+   - if you get the error ``` pnpm not found ```
+      - on WINDOWS, run ``` npm install -g pnpm ``` to install pnpm, then try the command again
+      - on MAC, run ``` brew install pnpm ``` to install pnpm, then try the command again
 4. start local server
    - in dev mode
       - run ``` pnpm dev ```
@@ -25,7 +27,7 @@ Final app is in campusx-app - it contains the following subfolders:
       - run ``` pnpm build ``` to build static frontend files
       - run ``` pnpm start ``` to start server
          - it should start a local server to serve frontend and backend on port 3000
-         - access app by going to http://localhost:300/
+         - access app by going to http://localhost:3000/
 
 ## Team info: 
 <table>
