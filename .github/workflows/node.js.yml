@@ -5,19 +5,18 @@ name: Node.js CI
 
 on:
   push: 
-    branches: [ "main", "react-app" ]
+    branches: [ "react-app" ]
   pull_request:
     branches: [ "main" ]
     types: [opened, synchronize, reopened]
 
 jobs:
   build:
-    if: github.head_ref == 'react-app'
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [ 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -46,3 +45,7 @@ jobs:
     - name: Run tests
       working-directory: campusx-app
       run: pnpm test
+
+    - name: Run build test
+      working-directory: campusx-app
+      run: pnpm build

@@ -7,6 +7,7 @@ import { getEvents } from "../../../../../../api/events";
 import "./orgDashboard.css"
 import { getUser } from "../../../../../../api/users";
 import{ CSVLink } from "react-csv";
+import ScanQR from "./ScanQR";
 
 
 export default function OrgDashboard() {
@@ -17,6 +18,7 @@ export default function OrgDashboard() {
     const [events, setEvents] = useState();
     const [selectEvent, setSelectEvent] = useState();
     const [guests, setGuests] = useState();
+    const [showpopup, setShowpopup] = useState(false);
     
     //fetch events from database when component mounts and/or when user saves/claims a ticket
     useEffect(() => {
@@ -35,9 +37,9 @@ export default function OrgDashboard() {
                 selectEvent.guestList.map(async g => {
                     //console.log("guest", g.studentId);
                     const response = await getUser(g.studentId);
-                    return response.user;
+                    return response.user.data;
             }));
-            //console.log("guest list", guestList);
+            console.log("guest list", guestList);
             let data = []
             guestList.map(g => data.push({
                 studentId:g.userId, 
@@ -61,6 +63,7 @@ export default function OrgDashboard() {
     ];
 
     return(
+        <>
         <div className="page-container">
             <Sidebar/>
 
@@ -72,7 +75,10 @@ export default function OrgDashboard() {
             {currentUser && currentUser?.isLoggedIn && currentUser?.type === "organizer" && currentUser.isApproved ? 
                 
          
-            <div className="dashboard-container">
+            <div className="dashboard-container"> 
+
+                <ScanQR showpopup={showpopup} setShowpopup={setShowpopup} guests={guests}/>
+
                 <select id="event-select" 
                     onChange={e => {
                     const eventId = e.target.value;
@@ -107,7 +113,15 @@ export default function OrgDashboard() {
                             <td className="data-title">Attendance Rate</td>
                             <td>{new Date(selectEvent.date) < new Date() ? `${100*(Number(selectEvent.attendees.length)/Number(Number(selectEvent.tickets) - Number(selectEvent.remainingTickets)))}%` 
                             : <i>This data is unavailable for the moment</i>}</td>
-                            </tr>
+                        </tr>
+                        <tr>
+                            <td className="data-title">Event Status</td>
+                            <td>
+                                <span className="action">
+                                <span className={"status" + (selectEvent.isApproved ? "-approved":"-unapproved")}>{selectEvent.isApproved ? "Approved":"Not Approved"}</span>
+                                </span>
+                            </td>
+                        </tr>
                         </>
                         :
                         <tr>
@@ -125,8 +139,13 @@ export default function OrgDashboard() {
                             <div className="table-header">
                                 <span>{`Guest List - ${selectEvent.title} - ${selectEvent.eventId}`}</span>
                                 {guests?
+                                    <>
                                     <CSVLink className="export-button" data={guests? guests:""} headers={csvHeaders} filename={`${selectEvent.eventId}-guestList.csv`}>
-                                        Export CSV</CSVLink>
+                                        Export CSV
+                                    </CSVLink>
+                                    <button className="export-button"
+                                        onClick={(e) => {setShowpopup(p => !p); e.stopPropagation()}}>Scan a Ticket</button>
+                                    </> 
                                     :""}
                             </div>
                             </td>
@@ -154,14 +173,12 @@ export default function OrgDashboard() {
                             <td colSpan="2"><i>No guests</i></td>
                         </tr>}
                     </tbody>
-                </table>
-                
+                </table>  
             </div>
-           
-            : <NoAccessMsg/>}
-                
+            : <NoAccessMsg/>} 
                 <Footer/>
             </div>
         </div>
+        </>
     )
 }

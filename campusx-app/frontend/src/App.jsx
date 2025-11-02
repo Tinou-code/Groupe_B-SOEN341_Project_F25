@@ -17,6 +17,7 @@ import ManageOrgPage from './components/pages/user-pages/admin/ManageOrgPage';
 import OrgDashboard from './components/pages/user-pages/organizer/OrgDashboard';
 import MyOrgEvents from './components/pages/user-pages/organizer/MyOrgEvents';
 import OrganizationPage from './components/pages/user-pages/admin/OrganizationPage';
+import AdminDashboard from './components/pages/user-pages/admin/AdminDashboard';
 
 
 export const ErrorContext = createContext()
@@ -47,8 +48,11 @@ const pageRouter = createBrowserRouter([
       {path:"/organizer/create", element: <CreateEventPage/>},
 
       //admin pages
-      {path:"/admin/organizers", element: <ManageOrgPage/>},
-      {path:"/admin/organizers/:organization", element: <OrganizationPage/>},
+      {path:"/admin/organizers", element: <ManageOrgPage/>, 
+        children: [
+          {path:"/admin/organizers/:organization", element: <OrganizationPage/>},
+        ]},
+      {path:"/admin/dashboard", element: <AdminDashboard/>},
     ],
   },
   

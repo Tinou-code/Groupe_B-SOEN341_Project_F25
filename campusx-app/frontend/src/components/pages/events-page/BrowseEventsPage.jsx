@@ -14,7 +14,7 @@ export default function BrowseEventsPage() {
     const {currentUser} = useContext(CurrentUserContext);
     const [events, setEvents] = useState();
     const [search, setSearch] = useState("");
-    const [searchDate, setSearchDate] = useState(new Date());
+    const [searchDate, setSearchDate] = useState(currentUser.type === "admin" ? null:new Date());
 
     //handle user search
     function handleSearch(events) {
@@ -27,6 +27,7 @@ export default function BrowseEventsPage() {
             String(e.location).toLowerCase().includes(searchStr) ||
             String(e.organizer).toLowerCase().includes(searchStr));
         if (searchDate) filteredEvents = filteredEvents.filter(e => new Date(e.date) >= new Date(searchDate));
+        if (currentUser.type === "student") filteredEvents = filteredEvents.filter(e => e.isApproved);
         return filteredEvents.sort((a,b) => new Date(a.date) - new Date(b.date));
     }
 
@@ -65,7 +66,7 @@ export default function BrowseEventsPage() {
                     </div>
 
                     <div className="events-container">
-                    {events? handleSearch(events).map(event => <EventCard key={event.eventId} ev={event} />):"No Events Found"}
+                    {events? handleSearch(events).map(event => <EventCard key={event.eventId} event={event} />):"No Events Found"}
                     </div>
                 </div>:
                 <NoAccessMsg/>}

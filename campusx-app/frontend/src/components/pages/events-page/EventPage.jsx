@@ -7,6 +7,7 @@ import Footer from "../../footer/Footer";
 import { getEvent } from "../../../../../api/events";
 import NoAccessMsg from "../../error-page/noAccessMsg";
 import { ErrorContext } from "../../../App"; 
+import img404 from "/event-placeholder.svg";
 
 export default function EventPage() {
     const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
@@ -20,12 +21,12 @@ export default function EventPage() {
           useEffect(() => {
               async function fetchEvent() {
                   const response = await getEvent(eventId);
-                  console.log("get event res", response);
+                  //console.log("get event res", response);
                   if (response.status !== 200) setError(response)
                   setEvent(e => response.event);
               }
               fetchEvent()   
-          }, [])
+          }, [currentUser])
     
           if (error) throw new Error(error.msg);
 
@@ -70,15 +71,23 @@ export default function EventPage() {
             <Sidebar/>
             <div className="main-content">
 
-              {currentUser && currentUser?.isLoggedIn ? <>
+              {ev && currentUser && currentUser?.isLoggedIn ? <>
               <div className="page-header"><h2>{ev?.title}</h2></div>
               <div className="event-page">
-                <img src={ev?.imagePath} alt={ev?.title} className="event-image" />
+                <img src={ev?.imagePath ? ev.imagePath : img404} alt={ev?.title} 
+                            onError={e => {
+                              e.target.onerror = null
+                              e.target.src = img404}} className="event-image" />
                 <div className="event-page-content">
                   <div className="event-tags">
                     <span className="event-tag">{ev?.category}</span>
                     <span className="event-tag">{ev?.type}</span>
                   </div>
+
+                  {currentUser.type === "admin" || (currentUser.type === "organizer" && currentUser.organization === ev.organizer) ? 
+                    <p id={"status"+(ev?.isApproved? "-approved":"-unapproved")}>
+                        Status: {ev?.isApproved ? "Approved":"Not Approved"}</p>:""}
+
                   <h2 className="event-page-title">{ev?.title} <br/> ID: {ev?.eventId}</h2>
                   
                   <div className="event-desc"><p>{ev?.desc}</p></div>
@@ -87,13 +96,10 @@ export default function EventPage() {
                   
                     <div className="event-detail"><span>{formatDate(ev?.date)}</span></div>
                     <div className="event-detail"><span>{formatTime(ev?.time)}</span></div>
-                    <div className="event-detail"><span>{ev?.location}</span></div>
-                  
-                 
+                    <div className="event-detail"><span>{ev?.location}</span></div>                 
                     <span className="event-organizer">Organized by {ev?.organizer}</span>
-                  
 
-                  {currentUser?.type === "student" ? 
+                  {currentUser?.type === "student" && new Date(ev.date) >= new Date() ? 
                   <div className="event-user-options">
                       {!currentUser?.savedEvents?.find(e => e === ev?.eventId) ?
                         <button className="save" onClick={() => {saveEvent()}}>Save Event</button>

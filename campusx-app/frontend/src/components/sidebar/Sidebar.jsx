@@ -76,12 +76,17 @@ export default function Sidebar() {
 
 //component for sidebar buttons
 function SidebarLink({path, name}) {
+
     const location = useLocation();
     const currentPath = location.pathname;
 
     return(
+        path === "/" || path === "/events" ?
+         <Link  
+            to={path} className={"nav-link"+(currentPath === path ? "-active":"")}>{name}
+        </Link>:
         <Link  
-            to={path} className={"nav-link"+(currentPath === path? "-active":"")}>{name}
+            to={path} className={"nav-link"+(currentPath === path || currentPath.includes(path) ? "-active":"")}>{name}
         </Link>
     )
 }

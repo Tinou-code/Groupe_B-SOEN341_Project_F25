@@ -1,8 +1,12 @@
 .org-members .action {
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+}
+
+.org-members {
+    border-radius: 15px;
     border: none;
-    border-bottom: 1px solid grey;
 }
 
 .disable-account, .approve-account {
@@ -47,14 +51,35 @@
     font-size: small;
     padding: 5px;
     border-radius: 15px;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
 }
 
 .status-approved {
-    background-color: rgb(5, 170, 5);
+    border: 2px solid rgb(0, 136, 0);
 }
 
 .status-unapproved {
-    background-color: rgb(255, 94, 94);
+    border: 2px solid rgb(255, 24, 24);
+}
+
+.org-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.table-title {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: large;
+    color: white;
 }
