@@ -9,12 +9,10 @@
 			- Register
 		- CI tests are run automatically on every push to ```react-app``` and pull requests to ```main```
 
--> Milestones have been set for Sprint 3.
+-> Milestones have been set for Sprint 4.
 
--> For Sprint 2, please refer to the Sprint2 folder — it contains two subfolders:
+-> Check the Groupe_B-SOEN341 folder to access our meeting minutes.
 
-	•	Feature_1/ – Completed, but to inspect website please read readme file name "INSTRUCTIONS.md" inside Sprint2 folder.
-	
-	•	Feature_2/ – Currently in development.
+-> HERE TALK ABOUT DIAGRAMMMMMMM!!
 
 Thank you for reviewing our progress!
