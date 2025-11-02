@@ -51,7 +51,8 @@ eventRoutes.route("/events").post(async (req, res) => {
           attendees:[],
           imagePath:req.body.imagePath,
           dateAdded: new Date(),
-          nextTicketNum:1
+          nextTicketNum:1,
+          isApproved:true,
         }
 
         //check if event aready exists, assume 2 events with same date and location cannot be accepted, everything else is ok
@@ -81,6 +82,30 @@ eventRoutes.route("/events").post(async (req, res) => {
     catch (error) {
         console.error(error);
         return res.status(500).json({ msg: "500 - Server error"});
+    }
+});
+
+//approve an event
+eventRoutes.route("/events/approve").patch(async (req, res) => {
+    try {
+        let db = database.getDb();
+        const event = await db.collection("events").findOne({eventId: req.body.eventId}, {projection: {_id:1, isApproved:1}});
+
+        if (!event) return res.status(404).json({ msg: "Event not found"});
+
+        let eventUpdt = {
+            $set:{
+                isApproved: req.body.isApproved
+            }
+        }
+        let data = await db.collection("events").updateOne({eventId: req.body.eventId}, eventUpdt);
+        let updtEvent = await db.collection("events").findOne({eventId: req.body.eventId});
+        return res.status(201).json({data, event:updtEvent, msg:"Event updated successfully!"}); 
+    }
+        
+    catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "500 - Server error"});
     }
 });
 

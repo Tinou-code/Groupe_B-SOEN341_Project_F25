@@ -34,7 +34,7 @@ export default function MyOrgEvents() {
                
                 <div>
                     <div className="events-container">
-                    {events? events?.map(event => <EventCard key={event.eventId} ev={event} />):"No Events Found"}
+                    {events? events?.map(event => <EventCard key={event.eventId} event={event} />):"No Events Found"}
                     </div>
                 </div>:
                 <NoAccessMsg/>}

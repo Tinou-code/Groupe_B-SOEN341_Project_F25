@@ -1,0 +1,5 @@
+{"name":"Concordia Welcome Crew","id":"ORG001","isApproved":true,"members":[{"userId":"O1301"},{"userId":"O1302"},{"userId":"O1303"}]}
+{"name":"Tech Club","id":"ORG002","isApproved":true,"members":[{"userId":"O12345"},{"userId":"O1304"},{"userId":"O1305"},{"userId":"O1306"}]}
+{"name":"Student Union","id":"ORG003","isApproved":true,"members":[{"userId":"O1307"},{"userId":"O1308"},{"userId":"O1309"}]}
+{"name":"Green Society","id":"ORG004","isApproved":true,"members":[{"userId":"O1310"},{"userId":"O1311"},{"userId":"O1312"}]}
+{"name":"Arts Collective","id":"ORG005","isApproved":true,"members":[{"userId":"O1313"},{"userId":"O1314"},{"userId":"O1315"}]}

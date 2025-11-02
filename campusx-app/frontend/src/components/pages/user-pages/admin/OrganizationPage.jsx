@@ -2,7 +2,7 @@ import Footer from "../../../footer/Footer"
 import Sidebar from "../../../sidebar/Sidebar"
 import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { useState, useEffect, useContext } from "react"
-import { getMembers, getOrganizations, handleApproveAccount, handleDisableAccount } from "../../../../../../api/admin"
+import { getMembers, getOrganization, getOrganizations, handleApproveAccount, handleAproveEvent, handleDisableAccount } from "../../../../../../api/admin"
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App"
 import { Link, useParams } from "react-router-dom"
 import { getEvents } from "../../../../../../api/events"
@@ -17,24 +17,37 @@ export default function OrganizationPage() {
     const {notifyUser} = useContext(ScreenNotificationContext);
     const [members, setMembers] = useState();
     const [events, setEvents] = useState();
-
+    const [organization, setOrganization] = useState();
 
     useEffect(() => {
+        async function fetchOrg() {
+             const response = await getOrganization(params.organization);
+            //console.log("members", response.members); 
+            if (response.status === 200) setOrganization(o => response.organization);
+        }
         async function fetchMembers() {
             const response = await getMembers(params.organization);
-            //console.log("members", response.members); 
-            setMembers(m => [...response.members].sort((a,b) => a.lastName - b.lastName));
+            //console.log("members", response.members);
+            let members = [...response.members].sort((a,b) => a.lastName - b.lastName);
+            if (members.length === 0) setMembers(m => undefined);
+            else setMembers(m => members);
         }
+        fetchOrg();
+        fetchMembers();   
+    }, [params]);
+
+    useEffect(() => {
         async function fetchOrgEvents() {
             const response = await getEvents();
             //console.log("events", response.events.filter(e => e.organizer === params.organization)); 
-            setEvents(m => response.events.filter(e => e.organizer === params.organization));
+            let events = response.events.filter(e => e.organizer === organization?.name);
+            if (events.length === 0) setEvents(e => undefined); 
+            else setEvents(e => events);
         }
-        fetchMembers();
-        fetchOrgEvents();   
-    }, []);
+        fetchOrgEvents();
+    }, [organization]);
 
-    async function approveAccountr(userId) {
+    async function approveAccount(userId) {
         const approve = await handleApproveAccount(userId);
         notifyUser(approve.msg);
         if (approve.status === 201) {
@@ -43,7 +56,7 @@ export default function OrganizationPage() {
         } 
     }
 
-     async function disableAccount(userId) {
+    async function disableAccount(userId) {
         const approve = await handleDisableAccount(userId);
         notifyUser(approve.msg);
         if (approve.status === 201) {
@@ -52,17 +65,121 @@ export default function OrganizationPage() {
         } 
     }
 
-    return(
+    async function approveEvent(eventId, isApproved) {
+        const approve = await handleAproveEvent(eventId, isApproved);
+        //console.log("claim ticket res", response);
+        notifyUser(approve.msg);
+        if (approve.status === 201) {
+            const response = await getEvents();
+            let events = response.events.filter(e => e.organizer === organization?.name);
+            if (events.length === 0) setEvents(e => undefined); 
+            else setEvents(e => events);
+        }
+      }
+
+    return(   
+        currentUser && organization ?
+                        
+        <div>
+            <div className="org-container">
+            <span className="table-title">{organization.name} Members</span>
+            {members ?
+            <table className="org-members">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Account Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {members?.map(m => 
+                    <tr key={m.userId}>
+                        <td>{m.userId}</td>
+                        <td>{`${m.lastName}, ${m.firstName}`}</td>
+                        <td><i>n/a</i></td>
+                        <td>
+                            <span className="action">
+                            <span className={"status" + (m.isApproved ? "-approved":"-unapproved")}>{m.isApproved ? "Approved":"Not Approved"}</span>
+                            </span>
+                        </td>
+                        <td> 
+                            <span className="action">{m.isApproved ? 
+                            <button className="disable-account" onClick={() => disableAccount(m.userId)}>Disable User Account</button>
+                            :<button className="approve-account" onClick={() => approveAccount(m.userId)}>Approve User Account</button>} 
+                            </span>
+                        </td>
+                    </tr>
+                    )}
+                </tbody>
+                </table> : <div className="content-paragraphs">
+                            <p>No members found</p>
+                            </div>}
+            </div>
+            
+            <div className="org-container">
+            <span className="table-title">Events by {organization.name}</span>
+            
+            {events ?
+            <table className="org-members">
+                <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                        <th>Remaining Tickets</th>
+                        <th>Event Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {events?.map(e => 
+                    <tr key={e.event}>
+                        <td>{e.eventId}</td>
+                        <td>{e.title}</td>
+                        <td>{e.date}</td>
+                        <td>{e.location}</td>
+                        <td>{e.tickets}</td>
+                        <td>{e.remainingTickets}</td>
+                        <td>
+                            <span className="action">
+                            <span className={"status" + (e.isApproved ? "-approved":"-unapproved")}>{e.isApproved ? "Approved":"Not Approved"}</span>
+                            </span>
+                        </td>
+                        <td> 
+                            <span className="action">{e.isApproved ? 
+                            <button className="disable-account" onClick={() => approveEvent(e.eventId, false)}>Suspend Event</button>
+                            :<button className="approve-account" onClick={() => approveEvent(e.eventId, true)}>Approve Event</button>} 
+                            </span>
+                        </td>
+                    </tr>
+                    )}
+                </tbody>
+                </table> : <div className="content-paragraphs">
+                            <p>No events found</p>
+                            </div>}
+            </div>
+
+        </div>:
+        <NoAccessMsg/>
+    )
+}
+
+    /*return(
         <div className="page-container">
             <Sidebar/>
             <div className="main-content">
                 <div className="page-header"><h2>Manage Organizations</h2></div>
                 
-                {currentUser?
+                {currentUser && organization ?
                                
                 <div>
                     <div className="members-container">
-                    <h5>{params.organization} Members</h5>
+                    <h5>{organization.name} Members</h5>
                     {members ?
                     <table className="org-members">
                         <thead>
@@ -90,7 +207,7 @@ export default function OrganizationPage() {
                      </table> : "No members found"}
                     </div>
 
-                    <h5>Events by {params.organization}</h5>
+                    <h5>Events by {organization.name}</h5>
                     <div className="events-container">
                         {events? events?.map(ev => <EventCard key={ev.eventId} ev={ev} />):"No Events Found"}
                     </div>
@@ -101,5 +218,4 @@ export default function OrganizationPage() {
                 <Footer/>
             </div>
         </div>
-    )
-}
+    )*/

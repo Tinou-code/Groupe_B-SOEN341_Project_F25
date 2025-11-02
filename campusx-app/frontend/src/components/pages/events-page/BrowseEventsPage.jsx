@@ -14,7 +14,7 @@ export default function BrowseEventsPage() {
     const {currentUser} = useContext(CurrentUserContext);
     const [events, setEvents] = useState();
     const [search, setSearch] = useState("");
-    const [searchDate, setSearchDate] = useState(new Date());
+    const [searchDate, setSearchDate] = useState(currentUser.type === "admin" ? null:new Date());
 
     //handle user search
     function handleSearch(events) {
@@ -65,7 +65,7 @@ export default function BrowseEventsPage() {
                     </div>
 
                     <div className="events-container">
-                    {events? handleSearch(events).map(event => <EventCard key={event.eventId} ev={event} />):"No Events Found"}
+                    {events? handleSearch(events).map(event => <EventCard key={event.eventId} event={event} />):"No Events Found"}
                     </div>
                 </div>:
                 <NoAccessMsg/>}

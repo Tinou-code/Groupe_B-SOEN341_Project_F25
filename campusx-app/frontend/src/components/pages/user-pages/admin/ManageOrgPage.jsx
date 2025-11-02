@@ -4,18 +4,20 @@ import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { useState, useEffect, useContext } from "react"
 import { getOrganizations } from "../../../../../../api/admin"
 import { CurrentUserContext } from "../../../../App"
-import { Link } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
+import "./manageOrg.css"
 
 export default function ManageOrgPage() {
 
     const {currentUser} = useContext(CurrentUserContext);
     const [organizations, setOrganizations] = useState();
-
+    const [org, setOrg] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchOrgs() {
             const response = await getOrganizations();
-            //console.log("response2", response.events.filter(e => e.organizer === currentUser?.organization)); 
+            console.log("response2", response.organizations); 
             setOrganizations(e => [...response.organizations].sort());
         }
         fetchOrgs()   
@@ -30,13 +32,29 @@ export default function ManageOrgPage() {
                 {currentUser?
                                
                 <div>
-                    <div className="events-container">
-                        <h5>Organizations</h5>
-                    <ul className="org-list">
-                    {organizations? organizations?.map(org => 
-                        <Link to={`/admin/organizers/${org}`}><li key={org} className="org-card"> {org} </li></Link>):"No data found"}
-                    </ul>
+                    <div className="org-container">
+                    {organizations?
+                    <select className="org-list" onChange={e => {
+                        const value = e.target.value;
+                        if (value === "") {
+                            setOrg(o => undefined);
+                            navigate("/admin/organizers");
+                        }
+                        else {
+                            setOrg(o => value)
+                            navigate(`/admin/organizers/${value}`);
+                        }
+                    }}>
+                        <option value="">Select an organization</option>
+                        {organizations?.sort((a,b) => a.name.localeCompare(b.name)).map(org => 
+                            <option key={org.id} value={org.id} className="org-card">{`${org.name} - ${org.id}`}</option>)}
+                    </select>
+                    :"No data found"}
                     </div>
+                    {org ? <Outlet/>
+                        :<div className="content-paragraphs">
+                            <p>Select an organization to manage</p>
+                        </div>}
                 </div>:
                 <NoAccessMsg/>}
 

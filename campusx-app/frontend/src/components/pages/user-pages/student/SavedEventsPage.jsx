@@ -48,7 +48,7 @@ export default function SavedEventsPage() {
                 <div className="content-paragraphs">
                     <p>You have not saved events yet</p>
                 </div>:
-                events?.map(event => <EventCard key={event.eventId} ev={event} />)
+                events?.map(event => <EventCard key={event.eventId} event={event} />)
             }
             </div> : <NoAccessMsg/>}
             

@@ -46,6 +46,10 @@
     padding: 24px;
 }
 
+.event-content #status-approved, .event-content #status-unapproved {
+    font-size: large;
+}
+
 .event-page-content {
     margin: 30px;
     display: flex;

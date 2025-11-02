@@ -21,7 +21,7 @@ organizationsRoutes.route("/organizations").get(async (req, res) => {
 organizationsRoutes.route("/organizations/:id").get(async (req, res) => {
     let db = database.getDb();
     try {
-        let data = await db.collection("organizations").findOne({orgId: req.params.id});
+        let data = await db.collection("organizations").findOne({id: req.params.id});
         if (!data || data.length < 1) return res.status(404).json({msg: "Data not found" });
         res.status(200).json({data, msg: "Success"});
     }

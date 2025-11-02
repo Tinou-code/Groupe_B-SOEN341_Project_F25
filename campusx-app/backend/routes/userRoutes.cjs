@@ -105,8 +105,23 @@ userRoutes.route("/users").post(async (req, res) => {
         if (userExists) return res.status(409).json({ msg: "A user with this ID already exists" });
         else {
             let addUser = await db.collection("users").insertOne(mongoUser);
-            if (addUser && addUser.acknowledged === true)
+            if (addUser && addUser.acknowledged === true) {
+                if (mongoUser.type === "organizer") {
+                    let orgExist = await db.collection("organizations").findOne({name: mongoUser.organization});
+                    if (!orgExist) {
+                        let idTracker = await db.collection("organizations").findOne({nextOrgId: {$exists:true}});
+                        if (!idTracker) return res.status(500).json({ msg: "500 - Server error"});
+                        else orgId= `ORG${idTracker.nextOrgId}`;
+                        let updateNextId = await db.collection("organizations").updateOne({_id: idTracker._id}, {$set:{nextOrgId:Number(idTracker.nextOrgId)+1}});
+                        if (!updateNextId.acknowledged === true) return res.status(500).json({ msg: "500 - Server error"});
+                        let newOrg = await db.collection("organizations").insertOne({name: mongoUser.organization, id:orgId, isApproved:true, members:[{userId:mongoUser.userId}]});
+                    } else {
+                        let updateOrg = await db.collection("organizations").updateOne({_id: orgExist._id}, {$set:{members:[...orgExist.members, {userId:mongoUser.userId}]}});
+                        if (!updateOrg.acknowledged === true) return res.status(500).json({ msg: "500 - Server error"});
+                    } 
+                } 
                 return res.status(201).json({addUser, msg:"User created successfully!"});
+            }
             else throw new Error();
         }
     }
