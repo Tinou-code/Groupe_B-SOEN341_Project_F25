@@ -7,7 +7,7 @@ Final app is in campusx-app - it contains the following subfolders:
 	- currently there are tests for (each with various edge cases) :
 		- Login route 
 		- Register route
-    - Events route
+    	- Events route
 
 ## To run the app locally
 

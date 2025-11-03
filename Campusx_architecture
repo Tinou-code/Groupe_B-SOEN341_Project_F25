@@ -1,0 +1,27 @@
+          Block Diagram
+
+┌──────────────────────────────────────┐
+│     FRONTEND (React)                 │
+│                                      │
+│  - User Interface                    │
+│  - Student / Organizer / Admin views │
+└─────────────┬────────────────────────┘
+              │    ^                   
+              │    │   (HTTP / JSON)     
+              ▼    │                  
+┌─────────────────────────────────────────────────────┐
+│   BACKEND (Node.js + Express)                       │
+│                                                     │
+│  - Handles business logic                           │
+│  - Provides REST API routes (auth, events, tickets) │
+└─────────────┬───────────────────────────────────────┘
+              │     ^
+              │     │   (Data Storage)
+              ▼     │
+┌─────────────────────────────────────┐
+│     DATA STORAGE                    │        
+│                                     │
+│  - MongoDB                          │
+│  - TXT files - data for imports     │
+│  - Stores users,events,organisation │
+└─────────────────────────────────────┘
