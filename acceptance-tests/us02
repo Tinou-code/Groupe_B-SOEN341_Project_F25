@@ -1,0 +1,46 @@
+US.02 Find events using filters
+
+1. Login with an approved Student account.
+You can login with the following info:
+
+student id: S111
+
+password: 111
+
+Expected result:
+Student dashboard loads with the student’s name and event browsing menu.
+
+2. Open the Browse Events page from the sidebar.
+
+Expected result:
+A list of upcoming events is displayed, along with search bar for filter options (e.g., category, organization, date range, location).
+
+3. Use the category filter or search bar to search for a keyword.
+Example: type "networking" or "free".
+
+Expected result:
+Event list updates to show only events matching the entered keyword.
+Events that do not match disappear from the list.
+
+Apply multiple filters, for example:
+
+Category: "Science"
+
+Organization: "Tech Club"
+
+Date range: next 30 days
+
+Expected result:
+Only events matching all selected criteria appear.
+No unrelated events should be displayed.
+
+4. Erase all filters.
+
+Expected result:
+The full event list returns, showing all upcoming events.
+
+Search for a keyword that has no matching events (e.g., "Ice Fishing" if no such event exists)
+
+Expected result:
+No events are displayed.
+The app does not crash.
