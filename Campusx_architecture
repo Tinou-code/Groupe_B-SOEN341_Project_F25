@@ -6,21 +6,22 @@
 │  - User Interface                    │
 │  - Student / Organizer / Admin views │
 └─────────────┬────────────────────────┘
-              │
-              │  (HTTP / JSON)
-              ▼
+              │    ^                   
+              │    │   (HTTP / JSON)     
+              ▼    │                  
 ┌─────────────────────────────────────────────────────┐
 │   BACKEND (Node.js + Express)                       │
 │                                                     │
 │  - Handles business logic                           │
 │  - Provides REST API routes (auth, events, tickets) │
 └─────────────┬───────────────────────────────────────┘
-              │
-              │  ( Local Data Storage)
-              ▼
+              │     ^
+              │     │   (Data Storage)
+              ▼     │
 ┌─────────────────────────────────────┐
 │     DATA STORAGE                    │        
 │                                     │
-│  - TXT files                        │
+│  - MongoDB                          │
+│  - TXT files - data for imports     │
 │  - Stores users,events,organisation │
 └─────────────────────────────────────┘
