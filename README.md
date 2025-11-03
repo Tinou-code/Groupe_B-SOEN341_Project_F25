@@ -9,6 +9,9 @@ Final app is in campusx-app - it contains the following subfolders:
 		- Register route
     	- Events route
 
+try the app online (render server may take a minute to load) : https://campusx-app.onrender.com/
+- A list of test users to try the app is available in ``` campusx-app/README.md ```
+
 ## To run the app locally
 
 - A list of test users to try the app is available in ``` campusx-app/README.md ```

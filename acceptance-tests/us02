@@ -3,12 +3,12 @@ US.02 Find events using filters
 1. Login with an approved Student account.
 You can login with the following info:
 
-student id: S111
+student id: S12345
 
-password: 111
+password: 12345
 
 Expected result:
-Student dashboard loads with the student’s name and event browsing menu.
+You will receive an on screen notification indicating the result, and if login is successful, you will be redirected to home page
 
 2. Open the Browse Events page from the sidebar.
 
