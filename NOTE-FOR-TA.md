@@ -11,8 +11,8 @@
 
 -> Milestones have been set for Sprint 4.
 
--> Check the Groupe_B-SOEN341 folder to access our meeting minutes.
+-> Campusx_architecture contains the diagram.
 
--> HERE TALK ABOUT DIAGRAMMMMMMM!!
+-> Check the Groupe_B-SOEN341 folder to access our meeting minutes.
 
 Thank you for reviewing our progress!
