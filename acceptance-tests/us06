@@ -1,61 +1,97 @@
-Acceptance Test
+US.06 Create Events (File 2)
 
-This acceptance test is for the following user stories and features:
-US.06 – Browse Upcoming Events
-Feature – Create Event Initializer (browse, view, and delete your events)
+1. Login with an approved Organizer account.
+You can login with the following credentials:
 
-Steps and Expected Results
+Organizer ID: O12345
 
-Login as an organizer.
-You can log in with the following info:
+Password: 12345
 
- id: O1123
+Expected result:
+Organizer dashboard loads with organization name and event management options.
 
-password : oidhw
+2. Open the Create Event page from the sidebar.
 
-Click on “Browse Events” in the sidebar.
-This will show you a list of upcoming events. Each event is displayed as an event card containing the event name, date, and organizer.
+Expected result:
+A form is displayed allowing the organizer to enter event details such as:
 
-View event details.
-Click on an event card to open its details page, which displays the event’s description, date, location, and any other relevant information.
+Event Title
+
+Category
+
+Date & Time
+
+Location
+
+Capacity
+
+Event Type
+
+Event Banner (image)
+
+Description 
+
+
+3. Fill in valid event details (example):
+
+Event Name: “AI & Machine Learning Talk”
+
+Description: “A workshop hosted by Tech Club introducing machine learning basics.”
+
+Date: 2025-02-10
+
+Time: 18:00
+
+Location: Hall A
+
+Capacity: 100
+
+Expected result:
+The form accepts the input. No error messages are shown.
+
+4. Click the Create Event button.
 
 Expected result:
 
-The event details are displayed correctly and correspond to the selected event.
+The system validates the inputs
 
-Delete one of your own events.
-If you are the event organizer or the event creator, click on the Delete button.
+A success message appears:
+“Event created successfully.”
 
-Expected results:
+The new event is added to the event list on the organizer dashboard
 
-The selected event is removed from the event list.
+The event becomes visible on the student Browse Events page
 
-An on-screen notification confirms that the event has been deleted successfully.
+5. If you try to submit the form with missing required fields (e.g., empty event name or missing date)
 
-The event is no longer visible in the event list after deletion.
+Expected result:
 
-Attempt to delete an event you did not create.
-Expected results:
+The system rejects the submission
 
-The system prevents the deletion.
+Required fields are highlighted
 
-An on-screen notification appears: “You can only delete events that you created.”
+Error message displayed:
+“Please fill all required fields.”
 
-Optional: Refresh or revisit the Browse Events page.
-Expected results:
+No event is created
 
-The event list remains accurate and updated (deleted events do not reappear).
+6. If you try submitting invalid data (e.g., text in ticket count field or negative numbers)
 
-Additional Feature – Event Management for Organizers
+Expected result:
 
-If you log in as an organizer, you can:
+System prevents submission
 
-Create a new event using the “Create Event” button.
+Error shown:
+“Please enter a valid number of tickets.”
 
-Edit or delete your previously created events directly from the list.
+No crash
 
-Expected results:
+Upload an event image (optional).
 
-New events appear immediately in the Browse Events list.
+Expected result:
 
-Deleting or editing an event updates it across all users’ views.
+Image preview appears
+
+File uploads successfully
+
+Event can still be created with or without image
