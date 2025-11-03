@@ -1,0 +1,54 @@
+US.12 View Global Statistics
+
+1. Login with an approved Administrator account.
+You can login with the following info:
+
+admin id: A12345
+
+password: 12345
+
+Expected result:
+Administrator dashboard loads with the administrator’s name and main navigation menu.
+
+2. Open the Dashboard / Analytics / Global Statistics page in your browser.
+
+Expected result:
+A page loads showing a section titled Global Statistics.
+
+Verify that the following statistics are displayed:
+
+Total number of events on the platform
+
+Total number of tickets issued
+
+Total number of registered participants
+
+Participation rate
+
+There should also load a table showing the organizations and their data. 
+
+Expected result:
+A table loads showing a section titled All Organizations.
+
+Verify that the following statistics are displayed:
+
+organization ID
+
+organization name
+
+organization members
+
+organization events
+
+organization status
+
+
+A clear dashboard appears showing the above metrics in tables, cards, or charts.
+No fields are blank or showing errors.
+
+
+3. Log out and attempt to access the Global Statistics URL directly.
+
+Expected result:
+System redirects to login page.
+Non-admin users cannot view statistics.
