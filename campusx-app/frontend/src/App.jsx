@@ -18,6 +18,7 @@ import OrgDashboard from './components/pages/user-pages/organizer/OrgDashboard';
 import MyOrgEvents from './components/pages/user-pages/organizer/MyOrgEvents';
 import OrganizationPage from './components/pages/user-pages/admin/OrganizationPage';
 import AdminDashboard from './components/pages/user-pages/admin/AdminDashboard';
+import AboutPage from './components/pages/AboutPage';
 
 
 export const ErrorContext = createContext()
@@ -36,6 +37,7 @@ const pageRouter = createBrowserRouter([
       {path:"/register/:userType", element: <RegisterPage/>},
       {path:"/events", element: <BrowseEventsPage/>},
       {path:"/events/:eventId", element: <EventPage/>},
+      {path:"/about", element: <AboutPage/>},
 
       //student pages
       {path:"/myevents", element: <SavedEventsPage/>},

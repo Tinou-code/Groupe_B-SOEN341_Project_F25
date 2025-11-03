@@ -7,6 +7,7 @@
 .org-members {
     border-radius: 15px;
     border: none;
+    margin-bottom: 15px;
 }
 
 .disable-account, .approve-account {
