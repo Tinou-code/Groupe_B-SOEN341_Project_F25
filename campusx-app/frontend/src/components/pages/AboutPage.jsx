@@ -8,15 +8,21 @@ export default function AboutPage() {
     <div className="page-container">
         <Sidebar/>
         
-        <div className="home-main-content">
-    
-                <HeroBanner/>
+        <div className="main-content">
 
+            <div className="page-header"><h3>About<br/>
+                </h3></div>
+            <div>    
             <div className="content-paragraphs">
                 <p>Campusx is your ultimate hub for discovering and tracking all the exciting happenings on campus. 
                     Whether you're looking for academic seminars, cultural festivals, career fairs, or social gatherings, we've got you covered. 
                     Our platform makes it easy to stay connected with the vibrant campus community and never miss out on opportunities that matter to you.</p>
-                <table className="org-members">
+                    
+                <p>For any inquiries, you can contact the administration at : <b>contact@campusx-concordia.ca</b></p>
+            </div>
+            <div className="dashboard-container"> 
+            
+            <table id="event-table">
                     <tbody>
                     <tr><td colSpan={3} className="table-head">Dev Team</td></tr>
                     <tr><td>Saeed Ramez Fakhouri</td> 
@@ -53,6 +59,7 @@ export default function AboutPage() {
                         </tr>
                         </tbody>
                 </table>
+            </div>
             </div>
             <Footer/>
         </div>

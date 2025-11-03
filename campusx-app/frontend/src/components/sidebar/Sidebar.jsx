@@ -66,8 +66,7 @@ export default function Sidebar() {
                     <li className="logout-nav-link" onClick={() => logout()}>Logout</li>
                     </div> : 
                     <li><SidebarLink path="/login/student" name="Login"/></li>}
-                <li><SidebarLink path="/about" name="About"/></li>
-                <li><SidebarLink path="/contact" name="Contact"/></li>
+                <li><SidebarLink path="/about" name="About/Contact"/></li>
             </ul>
             </div>
         </div>
