@@ -208,3 +208,41 @@ export async function handleCancelTicket(userId, eventId) {
     const displayHour = hour % 12 || 12;
     return `${displayHour}:${minutes} ${ampm}`;
   }
+
+  export async function notifyByEmail(email, event) {
+  const options = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+      },
+      body: JSON.stringify({ email, event }),
+  };
+
+  try {
+      const response = await fetch(`${SERVER_URL}/notify/email`, options);
+      const result = await response.json();
+      return { status: response.status, msg: result.message };
+  } catch (err) {
+      return { status: 500, msg: "Server error" };
+  }
+}
+
+export async function notifyBySMS(phoneNumber, event) {
+  const options = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+      },
+      body: JSON.stringify({ phoneNumber, event }),
+  };
+
+  try {
+      const response = await fetch(`${SERVER_URL}/notify/sms`, options);
+      const result = await response.json();
+      return { status: response.status, msg: result.message };
+  } catch (err) {
+      return { status: 500, msg: "Server error" };
+  }
+}
