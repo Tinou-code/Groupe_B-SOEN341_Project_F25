@@ -2,7 +2,7 @@ import Footer from "../../../footer/Footer"
 import Sidebar from "../../../sidebar/Sidebar"
 import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { useState, useEffect, useContext } from "react"
-import { getMembers, getOrganization, getOrganizations, handleApproveAccount, handleAproveEvent, handleDisableAccount } from "../../../../../../api/admin"
+import { getMembers, getOrganization, getOrganizations, handleApproveAccount, handleAproveEvent, handleDisableAccount, handleRoleUpdt } from "../../../../../../api/admin"
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App"
 import { Link, useParams } from "react-router-dom"
 import { getEvents } from "../../../../../../api/events"
@@ -18,6 +18,7 @@ export default function OrganizationPage() {
     const [members, setMembers] = useState();
     const [events, setEvents] = useState();
     const [organization, setOrganization] = useState();
+    const roles = ["organizer", "owner", "staff"];
 
     useEffect(() => {
         async function fetchOrg() {
@@ -28,7 +29,7 @@ export default function OrganizationPage() {
         async function fetchMembers() {
             const response = await getMembers(params.organization);
             //console.log("members", response);
-            let members = response.members.sort((a,b) => a.lastName - b.lastName);
+            let members = sortMembers(response.members);
             if (members.length === 0) setMembers(m => undefined);
             else setMembers(m => members);
         }
@@ -52,7 +53,7 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => response.members.sort((a,b) => a.lastName - b.lastName));
+            setMembers(m => sortMembers(response.members));
         } 
     }
 
@@ -61,7 +62,16 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => response.members.sort((a,b) => a.lastName - b.lastName));
+            setMembers(m => sortMembers(response.members));
+        } 
+    }
+
+    async function roleUpdt(userId, role) {
+        const update = await handleRoleUpdt(userId, role);
+        notifyUser(update.msg);
+        if (update.status === 201) {
+            const response = await getMembers(params.organization); 
+            setMembers(m => sortMembers(response.members));
         } 
     }
 
@@ -75,7 +85,17 @@ export default function OrganizationPage() {
             if (events.length === 0) setEvents(e => undefined); 
             else setEvents(e => events);
         }
-      }
+    }
+
+    function sortMembers(members) {
+        let arr = members.sort((a,b) => a.lastName.localeCompare(b.lastName));
+        let i = arr.findIndex(e => e.role === "owner");
+        if (i !== -1) {
+            let owner = arr.splice(i,1)[0];
+            arr.unshift(owner);
+        }
+        return arr;
+    }
 
     return(   
         currentUser && organization ?
@@ -95,11 +115,18 @@ export default function OrganizationPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {members?.sort((a,b) => a.lastName.localeCompare(b.lastName)).map(m => 
+                    {members?.map(m => 
                     <tr key={m.userId}>
                         <td>{m.userId}</td>
                         <td>{`${m.lastName}, ${m.firstName}`}</td>
-                        <td><i>n/a</i></td>
+                        <td>
+                            <select onChange={e => roleUpdt(m.userId, e.target.value)}>
+                                <option value={m.role}>{m.role}</option>
+                                {roles.filter(r => r !== m.role).map(r => (
+                                    <option key={r} value={r}>{r}</option>
+                                ))}
+                            </select>
+                        </td>
                         <td>
                             <span className="action">
                             <span className={"status" + (m.isApproved ? "-approved":"-unapproved")}>{m.isApproved ? "Approved":"Not Approved"}</span>

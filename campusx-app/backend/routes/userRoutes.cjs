@@ -52,7 +52,7 @@ userRoutes.route("/users/:id").post(async (req, res) => {
             );
         if (!data) {
             let userExists = await db.collection("users").findOne(
-                {userId: req.params.id}, {projection:{_id:0, userId:1}}
+                {userId: req.params.id, type}, {projection:{_id:0, userId:1}}
             );
             if (!userExists) return res.status(404).json({ msg: "User not found" });
             else return res.status(401).json({msg: "Incorrect password"});
@@ -92,7 +92,8 @@ userRoutes.route("/users").post(async (req, res) => {
                 mongoUser =  {
                 ...mongoUser,
                 organization: req.body.organization,
-                isApproved:false
+                isApproved:false,
+                role: "organizer",
                 }
                 break;
         }
@@ -270,7 +271,7 @@ userRoutes.route("/users/cancel").patch(async (req, res) => {
         
     catch (error) {
     console.error(error);
-    return res.status(500).json({ msg: "500 - Server error"});
+    return res.status(500).json({ msg: `500 - Server error - ${error.message}`});
     }
 });
 
@@ -281,6 +282,25 @@ userRoutes.route("/users/approve").patch(async (req, res) => {
         let mongoUser = {$set:{isApproved:req.body.isApproved}}
 
         let data = await db.collection("users").updateOne({userId: req.body.userId, type:"organizer"}, mongoUser);
+        if (data.acknowledged !== true) throw new Error("failed to update user");
+        let updatedUser = await db.collection("users").findOne({userId: req.body.userId}, {projection: {_id:0, password:0}});
+        return res.status(201).json({data, user:updatedUser, msg:"User account updated successfully!"}); 
+    }
+        
+    catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "500 - Server error"});
+    }
+});
+
+//update role
+userRoutes.route("/users/role").patch(async (req, res) => {
+    try {
+        let db = database.getDb();
+        let mongoUser = {$set:{role:req.body.role}}
+
+        let data = await db.collection("users").updateOne({userId: req.body.userId, type:"organizer"}, mongoUser);
+        if (data.acknowledged !== true) throw new Error("failed to update user");
         let updatedUser = await db.collection("users").findOne({userId: req.body.userId}, {projection: {_id:0, password:0}});
         return res.status(201).json({data, user:updatedUser, msg:"User account updated successfully!"}); 
     }

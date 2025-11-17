@@ -37,7 +37,7 @@ export default function ManageOrgPage() {
                     <select className="org-list" onChange={e => {
                         const value = e.target.value;
                         if (value === "") {
-                            setOrg(o => undefined);
+                            setOrg(o => "");
                             navigate("/admin/organizers");
                         }
                         else {
