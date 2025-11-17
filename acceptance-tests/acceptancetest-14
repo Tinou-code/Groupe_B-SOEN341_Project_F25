@@ -1,0 +1,26 @@
+## This acceptance test is for the following user stories and features
+
+## US.14 As a student, I want to receive reminders about events I've registered for so that I don't miss them
+
+
+## Steps and expected results 
+
+1. Create a new student account using a valid email address you have access to.
+
+2. Click on ```Browse Events``` in the sidebar – this will show you a list of all upcoming events.
+
+3. Click on any event in the list to open its information page.
+
+4. Click on the ```Save Event``` button to register/save the event.
+
+5. After saving the event, click on the ```Email``` button on the event page.  
+   This triggers the reminder/confirmation email for that event.
+
+6. Open the inbox of the email address used for the student account and check the received email.
+
+### Expected results
+- A confirmation/reminder email is sent after clicking the ```Email``` button.
+- The email includes:
+  - The event title
+  - The event ID
+  - The event date, time, and location
