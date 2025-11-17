@@ -1,7 +1,7 @@
 //register.js file
 const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
 
-export async function handleRegister(userType, userName, password, firstName, lastName, email, phoneNumber, organization) {
+export async function handleRegister(userType, userName, password, firstName, lastName, email, phoneNumber, organization,carrier) {
     if (userType && userType === "organizer" && !organization) return {status: 400, msg: "Missing fields"};  
     if (!userType || !userName || !password || !firstName || !lastName || !email || !phoneNumber) 
         return {status: 400, msg: "Missing fields"};  
@@ -19,6 +19,8 @@ export async function handleRegister(userType, userName, password, firstName, la
      return {status: 401, msg: "Invalid phone number. Must be a 10-digit Canadian number."};
     }
 
+    if (!carrier) return { status: 400, msg: "Please select your phone carrier." };
+
     //Allows communication between frontend and backend 
     const options = {
         method: "POST",
@@ -34,7 +36,8 @@ export async function handleRegister(userType, userName, password, firstName, la
             lastName, 
             email, 
             phoneNumber,
-            organization
+            organization,
+            carrier
         }) 
     }
 
