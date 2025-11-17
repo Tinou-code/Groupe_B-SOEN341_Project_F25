@@ -69,8 +69,7 @@ userRoutes.route("/users/:id").post(async (req, res) => {
 userRoutes.route("/users").post(async (req, res) => {
     try {
         let db = database.getDb();
-        if (!req.body.carrier)
-            return res.status(400).json({ msg: "Carrier is required" });
+        
         let mongoUser = {
             userId: req.body.id,
             type: req.body.type,
