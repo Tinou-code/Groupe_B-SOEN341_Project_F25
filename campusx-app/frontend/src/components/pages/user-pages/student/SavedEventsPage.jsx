@@ -12,6 +12,38 @@ export default function SavedEventsPage() {
 
     const {currentUser} = useContext(CurrentUserContext)
     const [events, setEvents] = useState(); 
+    const notifyByEmail = async (eventObj) => {
+    const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  
+  const response = await fetch("http://localhost:3000/api/notify/email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: user.email,
+      event: eventObj
+    })
+  });
+
+  const data = await response.json();
+  alert(data.message);
+}
+
+const notifyBySMS = async (eventObj) => {
+  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+
+  const response = await fetch("http://localhost:3000/api/notify/sms", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phone: user.phoneNumber,
+      carrier: user.carrier,
+      event: eventObj
+    })
+  });
+
+  const data = await response.json();
+  alert(data.message);
+}
 
     useEffect(() => {
 
@@ -48,7 +80,30 @@ export default function SavedEventsPage() {
                 <div className="content-paragraphs">
                     <p>You have not saved events yet</p>
                 </div>:
-                events?.map(event => <EventCard key={event.eventId} event={event} />)
+                events?.map(event => (<div key={event.eventId} className="saved-event-wrapper">
+
+      <EventCard event={event} />
+
+      <div className="notification-buttons">
+
+          <button 
+            className="notify-email-btn"
+            onClick={() => notifyByEmail(event)}
+          >
+            Notify Me by Email
+          </button>
+
+          <button 
+            className="notify-sms-btn"
+            onClick={() => notifyBySMS(event)}
+          >
+            Notify Me by SMS
+          </button>
+
+      </div>
+
+  </div>
+))
             }
             </div> : <NoAccessMsg/>}
             

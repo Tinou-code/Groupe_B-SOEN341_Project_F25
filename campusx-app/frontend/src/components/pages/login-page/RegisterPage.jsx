@@ -34,10 +34,11 @@ export default function RegisterPage() {
     const [registerStatus, setRegisterStatus] = useState(0);
     const [organization, setOrganization] = useState(""); //optional for organizers
     const [errMsg, setErrMsg] = useState("");
+    const [carrier, setCarrier] = useState("");
 
     const register = async (event) => {
         event.preventDefault();
-        const response = await handleRegister(params.userType, getIdPrefix(params)+userName, password, firstName, lastName, email, phoneNumber, organization);
+        const response = await handleRegister(params.userType, getIdPrefix(params)+userName, password, firstName, lastName, email, phoneNumber, organization,carrier);
         //console.log("register result", response);
         setRegisterStatus(response.status);
         setErrMsg(response.msg);
@@ -100,6 +101,25 @@ export default function RegisterPage() {
                         <label class="form-label" for="phone">Phone Number</label>
                         <input type="tel" id="phone" class="form-input" placeholder="10-digit Canadian number" required 
                             value={phoneNumber} onChange={e => setPhoneNumber(p => e.target.value)}/>
+                        </div>
+
+                        <div className="form-group">
+                        <label className="form-label" htmlFor="carrier">Phone Carrier</label>
+                        <select 
+                         id="carrier" 
+                         className="form-input" 
+                         required
+                         value={carrier} 
+                         onChange={e => setCarrier(e.target.value)}
+                      >
+                        <option value="">Select your carrier</option>
+                        <option value="bell">Bell</option>
+                        <option value="rogers">Rogers</option>
+                        <option value="telus">Telus</option>
+                        <option value="fido">Fido</option>
+                        <option value="videotron">Videotron</option>
+                        <option value="koodo">Koodo</option>
+                        </select>
                         </div>
 
                         <div className="form-group">

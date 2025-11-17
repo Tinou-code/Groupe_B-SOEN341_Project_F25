@@ -45,6 +45,9 @@ importers:
       mongodb:
         specifier: ^6.20.0
         version: 6.20.0
+      nodemailer:
+        specifier: ^7.0.10
+        version: 7.0.10
 
   frontend:
     dependencies:
@@ -2228,6 +2231,10 @@ packages:
     resolution: {integrity: sha512-nYC3Zsz3ZQHGbBQrU8OAf63Qwhgptf352vQLGXVES2dL22QRrwjGzkuGS+C4FJ1b0awisMEe2tuPU87MDwj61A==}
     engines: {npm: '>=5.0.0'}
     hasBin: true
+
+  nodemailer@7.0.10:
+    resolution: {integrity: sha512-Us/Se1WtT0ylXgNFfyFSx4LElllVLJXQjWi2Xz17xWw7amDKO2MLtFnVp1WACy7GkVGs+oBlRopVNUzlrGSw1w==}
+    engines: {node: '>=6.0.0'}
 
   nodemon@3.1.10:
     resolution: {integrity: sha512-WDjw3pJ0/0jMFmyNDp3gvY2YizjLmmOUQo6DEBY+JgdvW/yQ9mEeSw6H5ythl5Ny2ytb7f9C2nIbjSxMNzbJXw==}
@@ -5162,6 +5169,8 @@ snapshots:
   node@25.1.0:
     dependencies:
       node-bin-setup: 1.1.4
+
+  nodemailer@7.0.10: {}
 
   nodemon@3.1.10:
     dependencies:

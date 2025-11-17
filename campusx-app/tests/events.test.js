@@ -1,4 +1,4 @@
-//this code tests events functions
+//this code tests events routes
 
 const request = require("supertest");
 const {MongoMemoryServer} = require("mongodb-memory-server");
