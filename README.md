@@ -121,13 +121,17 @@ try the app online (render server may take a minute to load) : https://campusx-a
    - Vitest
 
 ## Naming conventions
-- React components : Pascal Case (MyComponent and MyComponent.jsx)
+- React components : Pascal Case 
+	- Ex: ```MyComponent```, ```MyComponent.jsx```
 	- The name of the component and the file name should be the same
-- Directory names : Kebab Case (my-directory) 
+- Directory names : Kebab Case
+	- Ex: ```my-directory``` 
 - Variables : Camel Case (myVariable)
-- CSS Files : Camel Case (myStyle.css)
-	- CSS Classes : Kebab Case (my-class)
-- Constants and global variables : Screaming Snake Case (MY_CONSTANT_VAR)
+	- Ex: ```myVariable``` 
+- CSS Files and Classes : Kebab Case
+	- Ex: ```my-style.css```, ```className = "my-class"```
+- Constants and global variables : Screaming Snake Case
+	- Ex: ```MY_CONSTANT_VAR```
 
 
 
