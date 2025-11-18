@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react"
 import { getOrganizations } from "../../../../../../api/admin"
 import { CurrentUserContext } from "../../../../App"
 import { Link, Outlet, useNavigate } from "react-router-dom"
-import "./manageOrg.css"
+import "./manage-org.css"
 
 export default function ManageOrgPage() {
 

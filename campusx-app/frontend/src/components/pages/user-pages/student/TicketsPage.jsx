@@ -4,7 +4,7 @@ import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { CurrentUserContext } from "../../../../App"
 import { useContext } from "react"
 import TicketCard from "./TicketCard"
-import "./ticketsPage.css"
+import "./tickets-page.css"
 
 export default function TicketsPage() {
 
