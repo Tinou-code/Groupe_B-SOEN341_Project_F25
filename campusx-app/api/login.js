@@ -1,10 +1,10 @@
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
+const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
 export async function handleLogin(userType, userName, password) {
     
     if (!userType | !userName | !password) return {status: 400, msg:"Missing fields"}; 
     
-    if (!/^[SOA][0-9]+$/.test(userName)) {
+    if (!/^[SOA][0-9]+$/.test(userName) | (userType !== "student" && userType !== "organizer" && userType !== "admin")) {
       return {status: 401, msg: "Invalid username"};
     }
     

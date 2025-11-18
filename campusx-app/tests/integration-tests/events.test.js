@@ -1,9 +1,9 @@
 //this code tests events routes
-
+import {describe, it, expect, beforeAll, afterAll} from "vitest";
 const request = require("supertest");
 const {MongoMemoryServer} = require("mongodb-memory-server");
-const connect = require("../backend/connect.cjs");
-const app = require("../backend/app.cjs");
+const connect = require("../../backend/connect.cjs");
+const app = require("../../backend/app.cjs");
 
 let mongoServer;
 

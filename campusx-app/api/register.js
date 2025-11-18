@@ -1,9 +1,9 @@
 //register.js file
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
+const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
 export async function handleRegister(userType, userName, password, firstName, lastName, email, phoneNumber, organization, carrier) {
     if (userType && userType === "organizer" && !organization) return {status: 400, msg: "Missing fields"};  
-    if (!userType || !userName || !password || !firstName || !lastName || !email || !phoneNumber || !carrier) 
+    if (!userType || !userName || !password || !firstName || !lastName || !email || !phoneNumber) 
         return {status: 400, msg: "Missing fields"};  
     
     //Here we validate the inputs

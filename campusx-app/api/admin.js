@@ -1,5 +1,5 @@
 //functions to fetch data for admins
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
+const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
 export async function getOrganizations() {
   const options = {
