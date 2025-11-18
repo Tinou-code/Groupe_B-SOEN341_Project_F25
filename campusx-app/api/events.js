@@ -1,4 +1,4 @@
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
+const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
  export async function handleCreateEvent(title,date,time,location,category,organizer,tickets,type,image,desc) { 
      if (!title || !date || !time || !location || !category || !organizer || !tickets || !type || !desc) //image is treated as optional for now

@@ -10,7 +10,8 @@
     "startdev": "npm run dev --prefix backend",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest --runInBand"
+    "test:run": "vitest",
+    "test": "vitest run"
   },
   "jest": {
     "testEnvironment": "node"
@@ -19,7 +20,8 @@
     "concurrently": "^9.2.1",
     "node": "^25.1.0",
     "nodemon": "^3.1.10",
-    "pnpm": "^10.20.0"
+    "pnpm": "^10.20.0",
+    "vitest": "^4.0.10"
   },
   "devDependencies": {
     "jest": "^30.2.0",

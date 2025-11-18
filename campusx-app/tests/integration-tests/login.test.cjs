@@ -1,9 +1,10 @@
 //this code tests login routes
-
+import {describe, it, expect, beforeAll, afterAll} from "vitest";
 const request = require("supertest");
 const {MongoMemoryServer} = require("mongodb-memory-server");
-const connect = require("../backend/connect.cjs");
-const app = require("../backend/app.cjs");
+const connect = require("../../backend/connect.cjs");
+const app = require("../../backend/app.cjs");
+const { handleLogin } = require("../../api/login.js");
 
 let mongoServer;
 
