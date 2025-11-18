@@ -1,7 +1,7 @@
 import Footer from "../../footer/Footer"
 import Sidebar from "../../sidebar/Sidebar"
 import HeroBanner from "./HeroBanner"
-import "./homePage.css"
+import "./home-page.css"
 
 export default function HomePage() {
 

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import FormStatusMsg from "../../../utils/formStatusMsg";
-import "./scanQR.css";
+import "./scan-qr.css";
 
 export default function ScanQR({showpopup, setShowpopup, guests}) {
 

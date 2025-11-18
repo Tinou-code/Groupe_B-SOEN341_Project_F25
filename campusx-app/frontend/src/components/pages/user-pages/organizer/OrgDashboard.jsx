@@ -4,7 +4,7 @@ import NoAccessMsg from "../../../error-page/noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState, useEffect } from "react";
 import { getEvents } from "../../../../../../api/events";
-import "./orgDashboard.css"
+import "./org-dashboard.css"
 import { getUser } from "../../../../../../api/users";
 import{ CSVLink } from "react-csv";
 import ScanQR from "./ScanQR";

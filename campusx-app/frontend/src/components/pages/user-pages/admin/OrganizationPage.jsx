@@ -7,7 +7,7 @@ import { CurrentUserContext, ScreenNotificationContext } from "../../../../App"
 import { Link, useParams } from "react-router-dom"
 import { getEvents } from "../../../../../../api/events"
 import EventCard from "../../events-page/EventCard"
-import "./manageOrg.css"
+import "./manage-org.css"
 
 export default function OrganizationPage() {
 
