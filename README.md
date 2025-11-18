@@ -126,8 +126,9 @@ try the app online (render server may take a minute to load) : https://campusx-a
 	- The name of the component and the file name should be the same
 - Directory names : Kebab Case
 	- Ex: ```my-directory``` 
-- Variables : Camel Case (myVariable)
-	- Ex: ```myVariable``` 
+- Variables, Functions : Camel Case (myVariable)
+	- Ex: ```myVariable```, ```myFunction()```
+	- Descriptive name, ex: ```handleLogin()``` 
 - CSS Files and Classes : Kebab Case
 	- Ex: ```my-style.css```, ```className = "my-class"```
 - Constants and global variables : Screaming Snake Case
