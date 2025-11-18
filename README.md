@@ -112,14 +112,28 @@ try the app online (render server may take a minute to load) : https://campusx-a
 - ReactJS;
 - NodeJS;
 - ExpressJS;
-- MongoDB (NoSQL);
+- MongoDB;
 - Javascript;
 - HTML;
 - CSS;
-- SQL
 
-- CI Test framework:
-   - Jest
+- Test framework:
+   - Vitest
+
+## Naming conventions
+- React components : Pascal Case 
+	- Ex: ```MyComponent```, ```MyComponent.jsx```
+	- The name of the component and the file name should be the same
+- Directory names : Kebab Case
+	- Ex: ```my-directory``` 
+- Variables, Functions : Camel Case (myVariable)
+	- Ex: ```myVariable```, ```myFunction()```
+	- Descriptive name, ex: ```handleLogin()``` 
+- CSS Files and Classes : Kebab Case
+	- Ex: ```my-style.css```, ```className = "my-class"```
+- Constants and global variables : Screaming Snake Case
+	- Ex: ```MY_CONSTANT_VAR```
+
 
 
 
