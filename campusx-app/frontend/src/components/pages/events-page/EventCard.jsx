@@ -4,7 +4,6 @@ import { CurrentUserContext, ScreenNotificationContext } from "../../../App"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import img404 from "/event-placeholder.svg";
-import { handleAproveEvent } from "../../../../../api/admin";
 
 //Event component
 export default function EventCard({event}) {

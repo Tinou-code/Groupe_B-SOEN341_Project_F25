@@ -4,7 +4,7 @@ import NoAccessMsg from "../../../error-page/noAccessMsg";
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App";
 import { useContext, useState, useEffect } from "react";
 import { getEvents } from "../../../../../../api/events";
-import "../organizer/orgDashboard.css"
+import "../organizer/org-dashboard.css"
 import { getOrganizations, getStudents } from "../../../../../../api/admin";
 
 export default function AdminDashboard() {

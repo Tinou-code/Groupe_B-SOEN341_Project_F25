@@ -2,7 +2,7 @@ import Footer from "../footer/Footer";
 import { ScreenNotificationContext } from "../../App";
 import { useContext } from "react";
 import { ErrorContext } from "../../App"; 
-import "./errorPage.css";
+import "./error-page.css";
 import { useNavigate, useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../../footer/Footer";
-import "./loginPage.css"
+import "./login-page.css"
 import { useContext, useEffect, useState } from "react";
 import { handleLogin } from "../../../../../api/login";
 import { CurrentUserContext, ScreenNotificationContext} from "../../../App";

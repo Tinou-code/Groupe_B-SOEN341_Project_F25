@@ -1,5 +1,5 @@
 //functions to fetch data for admins
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api`;
+const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
 export async function getOrganizations() {
   const options = {
@@ -180,4 +180,29 @@ export async function getOrganizations() {
       }
  }
 
+ export async function handleRoleUpdt(userId, role) {
+   const options = {
+          method: "PATCH",
+          headers: {
+              "Content-Type": "application/json",
+              accept: "application/json"
+          },
+          body: JSON.stringify({
+           userId,
+           role,
+          })
+       }
+  
+      try {
+          const response = await fetch(`${SERVER_URL}/users/role`, options);
+          let fetchResult = await response.json();
+          if (fetchResult) 
+              return {status:response.status, data:fetchResult.data, user:fetchResult.user, msg:fetchResult.msg}
+          else return {status:response.status, msg:fetchResult.msg}
+      }
+      catch (err) {
+          console.error(err);
+          return {status:500, msg:"500 - Server error"}
+      }
+ }
 

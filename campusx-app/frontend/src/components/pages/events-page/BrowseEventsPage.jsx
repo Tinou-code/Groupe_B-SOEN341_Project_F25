@@ -3,7 +3,7 @@ import Sidebar from "../../sidebar/Sidebar"
 import Footer from "../../footer/Footer"
 import EventCard from "./EventCard"
 
-import "./eventsPage.css"
+import "./events-page.css"
 import { CurrentUserContext } from "../../../App"
 import { useContext, useEffect, useState } from "react"
 import NoAccessMsg from "../../error-page/noAccessMsg"

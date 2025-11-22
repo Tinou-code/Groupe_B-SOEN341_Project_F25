@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react"
 import { getOrganizations } from "../../../../../../api/admin"
 import { CurrentUserContext } from "../../../../App"
 import { Link, Outlet, useNavigate } from "react-router-dom"
-import "./manageOrg.css"
+import "./manage-org.css"
 
 export default function ManageOrgPage() {
 
@@ -37,7 +37,7 @@ export default function ManageOrgPage() {
                     <select className="org-list" onChange={e => {
                         const value = e.target.value;
                         if (value === "") {
-                            setOrg(o => undefined);
+                            setOrg(o => "");
                             navigate("/admin/organizers");
                         }
                         else {

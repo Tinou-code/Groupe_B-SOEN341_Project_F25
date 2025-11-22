@@ -1,13 +1,21 @@
 ## CAMPUSX-APP
-Final app is in campusx-app - it contains the following subfolders: 
-- api/ - code to allow communication between frontend and backend
-- backend/ - code for backend (to read and write data) 
-- frontend/ - code for website frontend
-- tests/ - code for CI tests, 
-	- currently there are tests for (each with various edge cases) :
-		- Login route 
-		- Register route
-    	- Events route
+- Final app is in ```campusx-app/``` - it contains the following subfolders:
+	- ```api/``` - code to allow communication between frontend and backend
+	- ```backend/``` - code for backend (to read and write data)
+	- ```frontend/``` - code for website frontend
+	- ```tests/``` 
+		- ```integration-tests/``` - currently there are tests for (each with various edge cases) :
+			- Login flow
+			- Register flow
+			- Events creation flow
+		- ```unit-tests/``` - currently there are tests for (each with various edge cases) :
+			- handleLogin
+			- handleRegister
+			- handleCreateEvents
+			- getEvents
+			- getOrganizations
+			
+		- CI tests are run automatically on every push to ```react-app``` and pull requests to ```main```
 
 try the app online (render server may take a minute to load) : https://campusx-app.onrender.com/
 - A list of test users to try the app is available in ``` campusx-app/README.md ```
@@ -104,14 +112,28 @@ try the app online (render server may take a minute to load) : https://campusx-a
 - ReactJS;
 - NodeJS;
 - ExpressJS;
-- MongoDB (NoSQL);
+- MongoDB;
 - Javascript;
 - HTML;
 - CSS;
-- SQL
 
-- CI Test framework:
-   - Jest
+- Test framework:
+   - Vitest
+
+## Naming conventions
+- React components : Pascal Case 
+	- Ex: ```MyComponent```, ```MyComponent.jsx```
+	- The name of the component and the file name should be the same
+- Directory names : Kebab Case
+	- Ex: ```my-directory``` 
+- Variables, Functions : Camel Case (myVariable)
+	- Ex: ```myVariable```, ```myFunction()```
+	- Descriptive name, ex: ```handleLogin()``` 
+- CSS Files and Classes : Kebab Case
+	- Ex: ```my-style.css```, ```className = "my-class"```
+- Constants and global variables : Screaming Snake Case
+	- Ex: ```MY_CONSTANT_VAR```
+
 
 
 

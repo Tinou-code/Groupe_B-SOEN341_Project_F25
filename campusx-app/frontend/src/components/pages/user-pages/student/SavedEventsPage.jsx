@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { CurrentUserContext } from "../../../../App"
+import { CurrentUserContext, ScreenNotificationContext } from "../../../../App"
 import Sidebar from "../../../sidebar/Sidebar"
 import Footer from "../../../footer/Footer"
 import EventCard from "../../events-page/EventCard"
@@ -10,29 +10,62 @@ import { getEvent } from "../../../../../../api/events"
 
 export default function SavedEventsPage() {
 
-    const {currentUser} = useContext(CurrentUserContext)
+    const {currentUser} = useContext(CurrentUserContext);
+    const {notifyUser} = useContext(ScreenNotificationContext);
     const [events, setEvents] = useState(); 
+    
+  const notifyByEmail = async (eventObj) => {
+    const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+    const response = await fetch("http://localhost:3000/api/notify/email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: user.email,
+        event: eventObj
+      })
+    });
 
-    useEffect(() => {
+    const data = await response.json();
+    notifyUser(data.message);
+  }
 
-        async function fetchEvents() {
+  const notifyBySMS = async (eventObj) => {
+    const user = JSON.parse(sessionStorage.getItem("loggedUser"));
 
-            if (!currentUser) return;
+    const response = await fetch("http://localhost:3000/api/notify/sms", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        phone: user.phoneNumber,
+        carrier: user.carrier,
+        event: eventObj
+      })
+    });
 
-            const eventList = await Promise.all(
-                currentUser?.savedEvents.map(async id => {
-                    const response = await getEvent(id);
-                    return response.event;
-            }))
+    const data = await response.json();
+    notifyUser(data.message);
+  }
 
-            //console.log("event list", eventList);
+  useEffect(() => {
 
-            setEvents(e => eventList);
-        }
+      async function fetchEvents() {
 
-        fetchEvents()
+          if (!currentUser) return;
 
-    },[currentUser])
+          const eventList = await Promise.all(
+              currentUser?.savedEvents.map(async id => {
+                  const response = await getEvent(id);
+                  return response.event;
+          }))
+
+          //console.log("event list", eventList);
+
+          setEvents(e => eventList);
+      }
+
+      fetchEvents()
+
+  },[currentUser])
     
 
     return(
@@ -48,10 +81,26 @@ export default function SavedEventsPage() {
                 <div className="content-paragraphs">
                     <p>You have not saved events yet</p>
                 </div>:
-                events?.map(event => <EventCard key={event.eventId} event={event} />)
-            }
-            </div> : <NoAccessMsg/>}
-            
+                events?.map(event => (
+                
+                  <div key={event.eventId} className="saved-event-wrapper">
+                    <EventCard event={event} />
+                    <div className="notification-buttons">
+
+                        <button 
+                          className="notify-email-btn"
+                          onClick={() => notifyByEmail(event)}>
+                          Notify Me by Email
+                        </button>
+
+                        {/*<button 
+                          className="notify-sms-btn"
+                          onClick={() => notifyBySMS(event)}>
+                          Notify Me by SMS
+                        </button>*/}
+                    </div>
+                  </div>))}
+          </div> : <NoAccessMsg/>}
             <Footer/>
         </div>
     </div>

@@ -1,0 +1,30 @@
+## Steps and expected results 
+
+
+1. Create a student account using any valid email address.
+
+2. Navigate to the student’s ```Notification Settings``` or profile page.
+
+3. In the notification method section, select ```Email``` as the preferred notification method  
+   (Email is the only supported method).
+
+4. Save the notification preference.
+
+5. Refresh the page to ensure the selected preference remains set.
+
+6. Click on ```Browse Events```, open any event, and click ```Save Event```.
+
+7. Click the ```Email``` button to request a confirmation/reminder.
+
+8. Check the inbox of the email address used for the student account.
+
+
+### Expected results
+- The notification preference (Email) is saved and persists after refreshing or re-logging.
+- Clicking the `Email button sends the event confirmation/reminder using the chosen method (Email).
+- Since SMS is not supported, Email remains the default and only available option.
+- The received email includes:
+  - Event **title**
+  - Event **ID**
+  - Event **date**, **time**, and **location**
+

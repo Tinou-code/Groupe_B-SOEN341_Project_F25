@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import "./sideBar.css"
+import "./sidebar.css"
 import { CurrentUserContext } from "../../App"
 import { ScreenNotificationContext } from "../../App"
 import { Link, useNavigate, useLocation } from "react-router-dom"
