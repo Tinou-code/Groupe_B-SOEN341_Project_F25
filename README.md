@@ -15,7 +15,7 @@
 			- getEvents
 			- getOrganizations
 			
-		- CI tests are run automatically on every push to ```react-app``` and pull requests to ```main```
+		- CI tests are run automatically on every push and pull requests to ```main```
 
 try the app online (render server may take a minute to load) : https://campusx-app.onrender.com/
 - A list of test users to try the app is available in ``` campusx-app/README.md ```

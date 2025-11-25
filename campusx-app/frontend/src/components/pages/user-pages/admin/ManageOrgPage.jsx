@@ -4,7 +4,7 @@ import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { useState, useEffect, useContext } from "react"
 import { getOrganizations } from "../../../../../../api/admin"
 import { CurrentUserContext } from "../../../../App"
-import { Link, Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import "./manage-org.css"
 
 export default function ManageOrgPage() {
@@ -18,7 +18,7 @@ export default function ManageOrgPage() {
         async function fetchOrgs() {
             const response = await getOrganizations();
             //console.log("response2", response.organizations); 
-            setOrganizations(e => [...response.organizations].sort());
+            setOrganizations([...response.organizations].sort());
         }
         fetchOrgs()   
     }, []);
@@ -37,11 +37,11 @@ export default function ManageOrgPage() {
                     <select className="org-list" onChange={e => {
                         const value = e.target.value;
                         if (value === "") {
-                            setOrg(o => "");
+                            setOrg("");
                             navigate("/admin/organizers");
                         }
                         else {
-                            setOrg(o => value)
+                            setOrg(value)
                             navigate(`/admin/organizers/${value}`);
                         }
                     }}>

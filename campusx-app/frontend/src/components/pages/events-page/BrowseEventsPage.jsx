@@ -37,7 +37,7 @@ export default function BrowseEventsPage() {
         async function fetchEvents() {
             const response = await getEvents();
             //console.log("response2", response); 
-            setEvents(e => response.events);
+            setEvents(response.events);
         }
         fetchEvents()   
     }, [currentUser]);
@@ -57,11 +57,11 @@ export default function BrowseEventsPage() {
                     id="eventSearch"
                     className="search-input"
                     value={search}
-                    onChange={e => setSearch(s => e.target.value)}
+                    onChange={e => setSearch(e.target.value)}
                     placeholder="Search by title, category, or location..."
                     />
                     <div className="search-date">
-                    <input type="date" value={searchDate} onChange={e => {setSearchDate(d => e.target.value)}}/>
+                    <input type="date" value={searchDate} onChange={e => {setSearchDate(e.target.value)}}/>
                     </div>
                     </div>
 

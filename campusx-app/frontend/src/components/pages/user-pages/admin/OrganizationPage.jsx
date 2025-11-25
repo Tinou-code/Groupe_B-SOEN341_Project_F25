@@ -1,12 +1,9 @@
-import Footer from "../../../footer/Footer"
-import Sidebar from "../../../sidebar/Sidebar"
 import NoAccessMsg from "../../../error-page/noAccessMsg"
 import { useState, useEffect, useContext } from "react"
-import { getMembers, getOrganization, getOrganizations, handleApproveAccount, handleAproveEvent, handleDisableAccount, handleRoleUpdt } from "../../../../../../api/admin"
+import { getMembers, getOrganization, handleApproveAccount, handleAproveEvent, handleDisableAccount, handleRoleUpdt } from "../../../../../../api/admin"
 import { CurrentUserContext, ScreenNotificationContext } from "../../../../App"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getEvents } from "../../../../../../api/events"
-import EventCard from "../../events-page/EventCard"
 import "./manage-org.css"
 
 export default function OrganizationPage() {
@@ -24,14 +21,14 @@ export default function OrganizationPage() {
         async function fetchOrg() {
              const response = await getOrganization(params.organization);
             //console.log("members", response.members); 
-            if (response.status === 200) setOrganization(o => response.organization);
+            if (response.status === 200) setOrganization(response.organization);
         }
         async function fetchMembers() {
             const response = await getMembers(params.organization);
             //console.log("members", response);
             let members = sortMembers(response.members);
-            if (members.length === 0) setMembers(m => undefined);
-            else setMembers(m => members);
+            if (members.length === 0) setMembers(undefined);
+            else setMembers(members);
         }
         fetchOrg();
         fetchMembers();   
@@ -42,8 +39,8 @@ export default function OrganizationPage() {
             const response = await getEvents();
             //console.log("events", response.events.filter(e => e.organizer === params.organization)); 
             let events = response.events.filter(e => e.organizer === organization?.name);
-            if (events.length === 0) setEvents(e => undefined); 
-            else setEvents(e => events);
+            if (events.length === 0) setEvents(undefined); 
+            else setEvents(events);
         }
         fetchOrgEvents();
     }, [organization]);
@@ -53,7 +50,7 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => sortMembers(response.members));
+            setMembers(sortMembers(response.members));
         } 
     }
 
@@ -62,7 +59,7 @@ export default function OrganizationPage() {
         notifyUser(approve.msg);
         if (approve.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => sortMembers(response.members));
+            setMembers(sortMembers(response.members));
         } 
     }
 
@@ -71,7 +68,7 @@ export default function OrganizationPage() {
         notifyUser(update.msg);
         if (update.status === 201) {
             const response = await getMembers(params.organization); 
-            setMembers(m => sortMembers(response.members));
+            setMembers(sortMembers(response.members));
         } 
     }
 
@@ -82,8 +79,8 @@ export default function OrganizationPage() {
         if (approve.status === 201) {
             const response = await getEvents();
             let events = response.events.filter(e => e.organizer === organization?.name);
-            if (events.length === 0) setEvents(e => undefined); 
-            else setEvents(e => events);
+            if (events.length === 0) setEvents(undefined); 
+            else setEvents(events);
         }
     }
 

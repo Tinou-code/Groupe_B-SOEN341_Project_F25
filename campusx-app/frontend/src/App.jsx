@@ -69,13 +69,13 @@ export default function App() {
   const [error, setError] = useState();
   
   function notifyUser(msg) {
-    setScreenNotification(m => msg)
+    setScreenNotification(msg)
   } 
 
   useEffect(() => {
     const savedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
     //console.log(savedUser)
-    if (savedUser) setCurrentUser(u => u = {...savedUser, isLoggedIn:true});
+    if (savedUser) setCurrentUser({...savedUser, isLoggedIn:true});
   }, [])
 
   return (

@@ -12,7 +12,7 @@ import ScanQR from "./ScanQR";
 
 export default function OrgDashboard() {
 
-    const {notifyUser} = useContext(ScreenNotificationContext);
+    //const {notifyUser} = useContext(ScreenNotificationContext);
 
     const {currentUser} = useContext(CurrentUserContext);
     const [events, setEvents] = useState();
@@ -25,7 +25,7 @@ export default function OrgDashboard() {
         async function fetchEvents() {
             const response = await getEvents();
             //console.log("fetchevents", response); 
-            setEvents(e => response.events.filter(e => e.organizer === currentUser.organization));
+            setEvents(response.events.filter(e => e.organizer === currentUser.organization));
         }
         fetchEvents()   
     }, []);
@@ -48,7 +48,7 @@ export default function OrgDashboard() {
                 email:g.email, 
                 phoneNumber:g.phoneNumber, 
                 ticketNum:g.claimedTickets.filter(t => t.eventId === selectEvent.eventId)[0]?.ticketId}))
-            setGuests(g => data.sort((a,b) => a.studentId.localeCompare(b.studentId)));
+            setGuests(data.sort((a,b) => a.studentId.localeCompare(b.studentId)));
         }
         fetchGuests()
     },[selectEvent]);
@@ -86,7 +86,7 @@ export default function OrgDashboard() {
                         setSelectEvent(undefined);
                         setGuests(undefined);
                     }
-                    else setSelectEvent(s => events.find(event => event.eventId === e.target.value))}}>
+                    else setSelectEvent(events.find(event => event.eventId === e.target.value))}}>
                     
                     <option value="">Select an event</option>
                     {events?.sort((a,b) => a.title.localeCompare(b.title)).map(c => (

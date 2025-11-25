@@ -2,8 +2,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
-import { useState } from 'react';
-
 
 export default function ErrorBoundaryLayout() {
 

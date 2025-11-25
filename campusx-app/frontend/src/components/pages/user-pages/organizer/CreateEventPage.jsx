@@ -75,7 +75,7 @@ export default function CreateEventPage() {
                     <div className="form-group">
                     <label htmlFor="name" className="form-label">Organization*</label>
                     <input type="text" className="form-input" id="form-input-organization" readOnly={true}
-                    value={organization} onChange={(e) => setOrganization(o => e.target.value)}/>
+                    value={organization} onChange={(e) => setOrganization(e.target.value)}/>
                     </div>
 
                     <div className="form-elements">
@@ -84,25 +84,25 @@ export default function CreateEventPage() {
                             <div className="form-group">
                             <label htmlFor="name" className="form-label">Event Title*</label>
                             <input type="text" id="name" name="name" className="form-input"
-                            value={title} onChange={e => setTitle(t => e.target.value)} required />
+                            value={title} onChange={e => setTitle(e.target.value)} required />
                             </div>
 
                             <div className="form-group">
                             <label htmlFor="date" className="form-label">Date*</label>
                             <input type="date" id="date" name="date" className="form-input" 
-                            value={date} onChange={e => setDate(t => e.target.value)} required />
+                            value={date} onChange={e => setDate(e.target.value)} required />
                             </div>
 
                             <div className="form-group">
                             <label htmlFor="time" className="form-label">Time*</label>
                             <input type="time" id="time" name="time" className="form-input" 
-                            value={time} onChange={e => setTime(t => e.target.value)} required />
+                            value={time} onChange={e => setTime(e.target.value)} required />
                             </div>
 
                             <div className="form-group">
                             <label htmlFor="location" className="form-label">Location*</label>
                             <input type="text" id="location" name="location" className="form-input"
-                            value={location} onChange={e => setLocation(t => e.target.value)}  required />
+                            value={location} onChange={e => setLocation(e.target.value)}  required />
                             </div>
                         </div>
                         
@@ -110,7 +110,7 @@ export default function CreateEventPage() {
                             <div className="form-group">
                             <label className="form-label">Category*</label>
                             <select className="form-input"
-                                value={category} onChange={e => setCategory(t => e.target.value)}  required>
+                                value={category} onChange={e => setCategory(e.target.value)}  required>
                                     <option value="">Select an option</option>
                                         {categories.sort().map(c => (
                                             <option key={c} value={c}>{c}</option>
@@ -122,13 +122,13 @@ export default function CreateEventPage() {
                             <div className="form-group">
                             <label className="form-label">Capacity*</label>
                             <input type="number" className="form-input"
-                            value={capacity} onChange={e => setCapacity(t => e.target.value)}  required />
+                            value={capacity} onChange={e => setCapacity(e.target.value)}  required />
                             </div>
 
                             <div className="form-group">
                             <label className="form-label">Event type*</label>
                             <select className="form-input"
-                                value={type} onChange={e => setType(t => e.target.value)}  required>
+                                value={type} onChange={e => setType(e.target.value)}  required>
                                     <option value="">Select an option</option>
                                     <option value="Free">Free</option>
                                     <option value="Paid">Paid</option>
@@ -138,14 +138,14 @@ export default function CreateEventPage() {
                             <div className="form-group">
                             <label className="form-label">Event Banner</label>
                             <input type="text" className="form-input" 
-                                value={imagePath} onChange={e => setImagePath(t => e.target.value)} placeholder="(Optional) URL to event banner image"/>
+                                value={imagePath} onChange={e => setImagePath(e.target.value)} placeholder="(Optional) URL to event banner image"/>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="description" className="form-label">Description*</label>
                             <textarea id="description" name="description" className="form-input" rows="5" 
-                            value={desc} onChange={e => setDesc(t => e.target.value)} required></textarea>
+                            value={desc} onChange={e => setDesc(e.target.value)} required></textarea>
                         </div>
                     </div>
 

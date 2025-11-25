@@ -22,7 +22,7 @@ export default function LoginPage() {
              //console.log(params);
              if (!params.userType) navigate("/login/student");
              else if (!acceptedUserType.includes(params.userType)) navigate("/error");
-             setLoginStatus(l => 0);
+             setLoginStatus(0);
          }, [params])
 
         const [userName, setUserName] = useState("");
@@ -37,10 +37,10 @@ export default function LoginPage() {
             const response = await handleLogin(params.userType, getIdPrefix(params)+userName, password)
             //console.log("login result", response)
             if (response.status === 200) {
-                setCurrentUser(u => u = {...response.user, isLoggedIn:true})
+                setCurrentUser({...response.user, isLoggedIn:true})
                 sessionStorage.setItem("loggedUser", JSON.stringify(response.user))
             }
-            setLoginStatus(l => response.status)
+            setLoginStatus(response.status)
             setErrMsg(response.msg)
             notifyUser(response.msg);
         }
@@ -77,7 +77,7 @@ export default function LoginPage() {
                             <div className="form-group">
                             <label className="form-label" htmlFor="password">Password</label>
                             <input type="password" id="password" className="form-input" 
-                                value={password} onChange={e => setPassword(p => e.target.value)} required/>
+                                value={password} onChange={e => setPassword(e.target.value)} required/>
                             </div>
 
                             <button className="btn-primary" type="submit">

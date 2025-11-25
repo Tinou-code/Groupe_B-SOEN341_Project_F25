@@ -15,7 +15,7 @@ beforeAll(async () => {
     await connect.connectToServer(uri);
     const db = connect.getDb();
     
-    //create test users for test db
+    //create test events for test db
     await db.collection("events").insertMany([
         {nextEventId:103},
         {eventId: "EV01",title: "title", date: new Date().getFullYear(), location:"H Building"},

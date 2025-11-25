@@ -1,6 +1,5 @@
 import Footer from "../footer/Footer"
 import Sidebar from "../sidebar/Sidebar"
-import HeroBanner from "./home-page/HeroBanner" 
 
 export default function AboutPage() {
 

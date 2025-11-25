@@ -23,7 +23,7 @@ export default function EventPage() {
                   const response = await getEvent(eventId);
                   //console.log("get event res", response);
                   if (response.status !== 200) setError(response)
-                  setEvent(e => response.event);
+                  setEvent(response.event);
               }
               fetchEvent()   
           }, [currentUser])
@@ -34,7 +34,7 @@ export default function EventPage() {
        const response = await handleSaveEvent(currentUser?.userId, ev?.eventId);
        //console.log("save event res", response);
        if (response.user)
-       setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+       setCurrentUser({...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
@@ -42,7 +42,7 @@ export default function EventPage() {
        const response = await handleUnsaveEvent(currentUser?.userId, ev?.eventId);
        //console.log("unsave event res", response);
        if (response.user)
-       setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+       setCurrentUser({...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
@@ -50,7 +50,7 @@ export default function EventPage() {
        const response = await handleClaimTicket(currentUser?.userId, ev?.eventId);
        //console.log("claim ticket res", response);
        if (response.user)
-       setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+       setCurrentUser({...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    
@@ -58,7 +58,7 @@ export default function EventPage() {
         const response = await handleCancelTicket(currentUser?.userId, ev?.eventId);
        //console.log("claim ticket res", response);
        if (response.user)
-       setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+       setCurrentUser({...response.user, isLoggedIn:true}); 
        notifyUser(response.msg);
      }
    

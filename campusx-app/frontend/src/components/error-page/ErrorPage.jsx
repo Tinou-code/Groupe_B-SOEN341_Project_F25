@@ -16,7 +16,7 @@ export default function ErrorPage() {
     if (routeError) console.error (routeError);
     
     const navigateHome = () => {
-        setError(e => undefined); 
+        setError(undefined); 
         nav("/");
         window.location.reload(false);
     }

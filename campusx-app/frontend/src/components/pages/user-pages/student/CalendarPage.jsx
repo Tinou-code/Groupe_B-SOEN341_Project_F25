@@ -40,7 +40,7 @@ export default function CalendarPage() {
     
                 //console.log("event list", eventList);
     
-                setEvents(e => eventList);
+                setEvents(eventList);
             }
     
             fetchEvents()

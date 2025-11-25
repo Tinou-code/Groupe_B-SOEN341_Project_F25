@@ -29,7 +29,7 @@ export default function SavedEventsPage() {
     notifyUser(data.message);
   }
 
-  const notifyBySMS = async (eventObj) => {
+  /*const notifyBySMS = async (eventObj) => {
     const user = JSON.parse(sessionStorage.getItem("loggedUser"));
 
     const response = await fetch("http://localhost:3000/api/notify/sms", {
@@ -44,12 +44,11 @@ export default function SavedEventsPage() {
 
     const data = await response.json();
     notifyUser(data.message);
-  }
+  }*/
 
   useEffect(() => {
 
       async function fetchEvents() {
-
           if (!currentUser) return;
 
           const eventList = await Promise.all(
@@ -59,12 +58,9 @@ export default function SavedEventsPage() {
           }))
 
           //console.log("event list", eventList);
-
-          setEvents(e => eventList);
+          setEvents(eventList);
       }
-
       fetchEvents()
-
   },[currentUser])
     
 

@@ -21,7 +21,7 @@ export default function RegisterPage() {
         //console.log(params);
         if (!params.userType) navigate("/login/student");
         else if (!acceptedUserType.includes(params.userType)) navigate("/error");
-        setRegisterStatus(l => 0);
+        setRegisterStatus(0);
     }, [params])
 
 
@@ -72,35 +72,35 @@ export default function RegisterPage() {
                         <UserIdInput userName={userName} setUserName={setUserName}/>
 
                         {params.userType === "organizer" ? 
-                            <div class="form-group">
-                            <label class="form-label" for="firstName">Organization</label>
-                            <input type="text" id="organization" class="form-input" required 
-                                value={organization} onChange={e => setOrganization(p => e.target.value)}/>
+                            <div className="form-group">
+                            <label className="form-label" htmlFor="firstName">Organization</label>
+                            <input type="text" id="organization" className="form-input" required 
+                                value={organization} onChange={e => setOrganization(e.target.value)}/>
                             </div>:""
                         }
 
-                        <div class="form-group">
-                        <label class="form-label" for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-input" required 
-                            value={firstName} onChange={e => setFirstName(p => e.target.value)}/>
+                        <div className="form-group">
+                        <label className="form-label" htmlFor="firstName">First Name</label>
+                        <input type="text" id="firstName" className="form-input" required 
+                            value={firstName} onChange={e => setFirstName(e.target.value)}/>
                         </div>
 
-                        <div class="form-group">
-                        <label class="form-label" for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-input" required 
-                            value={lastName} onChange={e => setLastName(p => e.target.value)}/>
+                        <div className="form-group">
+                        <label className="form-label" htmlFor="lastName">Last Name</label>
+                        <input type="text" id="lastName" className="form-input" required 
+                            value={lastName} onChange={e => setLastName(e.target.value)}/>
                         </div>
 
-                        <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" required 
-                            value={email} onChange={e => setEmail(p => e.target.value)}/>
+                        <div className="form-group">
+                        <label className="form-label" htmlFor="email">Email</label>
+                        <input type="email" id="email" className="form-input" required 
+                            value={email} onChange={e => setEmail(e.target.value)}/>
                         </div>
 
-                        <div class="form-group">
-                        <label class="form-label" for="phone">Phone Number</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="10-digit Canadian number" required 
-                            value={phoneNumber} onChange={e => setPhoneNumber(p => e.target.value)}/>
+                        <div className="form-group">
+                        <label className="form-label" htmlFor="phone">Phone Number</label>
+                        <input type="tel" id="phone" className="form-input" placeholder="10-digit Canadian number" required 
+                            value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)}/>
                         </div>
 
                         <div className="form-group">
@@ -125,7 +125,7 @@ export default function RegisterPage() {
                         <div className="form-group">
                         <label className="form-label" htmlFor="password">Password</label>
                         <input type="password" id="password" className="form-input" 
-                            value={password} onChange={e => setPassword(p => e.target.value)} required/>
+                            value={password} onChange={e => setPassword(e.target.value)} required/>
                         </div>
 
                         <button className="btn-primary" type="submit">

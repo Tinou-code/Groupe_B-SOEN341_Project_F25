@@ -33,9 +33,9 @@ export default function UserIdInput({userName, setUserName}) {
                 </label>
             
                 <div className="id-input-container">
-                    <input className="id-prefix" value={idPrefix} onChange={e => setIdPrefix(i => e.target.value)} readOnly={true}/>
+                    <input className="id-prefix" value={idPrefix} onChange={e => setIdPrefix(e.target.value)} readOnly={true}/>
                     <input type="text" id="username" className="form-input" 
-                        value={userName} onChange={e => setUserName(u => e.target.value)} required/>
+                        value={userName} onChange={e => setUserName(e.target.value)} required/>
                 </div>
             </div>
     )

@@ -1,12 +1,16 @@
 const SERVER_URL = `${import.meta?.env?.VITE_SERVER_URL || "http://localhost:3000" }/api`;
 
  export async function handleCreateEvent(title,date,time,location,category,organizer,tickets,type,image,desc) { 
-     if (!title || !date || !time || !location || !category || !organizer || !tickets || !type || !desc) //image is treated as optional for now
+     if (!title || !date || !time || !location || !category || !organizer || (tickets !=0 && !tickets) || !type || !desc) //image is treated as optional for now
          return {status: 400, msg: "Missing fields"};  
      
      //Here we validate the inputs //do not accept event with date earlier than current date
      if (new Date(date) <= new Date()) { 
        return {status: 401, msg: "Enter a valid date for the event!"};
+     }
+
+     if (tickets <= 0) { 
+       return {status: 401, msg: "Enter a valid number of tickets"};
      }
  
      //Allows communication between frontend and backend 
@@ -243,6 +247,6 @@ export async function notifyBySMS(phoneNumber, event) {
       const result = await response.json();
       return { status: response.status, msg: result.message };
   } catch (err) {
-      return { status: 500, msg: "Server error" };
+      return { status: 500, msg: `Server error` };
   }
 }
