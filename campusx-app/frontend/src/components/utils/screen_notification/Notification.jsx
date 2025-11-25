@@ -12,16 +12,16 @@ export default function Notification() {
     const [showNotification, setShowNotification] = useState(false)
 
     function notify(msg) {
-        setNotificationMsg(m => msg);
-        setShowNotification(n => true);
+        setNotificationMsg(msg);
+        setShowNotification(true);
         hideNotification()
     }
 
     function hideNotification() {
         setTimeout(() => {
-            setNotificationMsg(m => "");
-            setShowNotification(n => false);
-            setScreenNotification(n => null)
+            setNotificationMsg("");
+            setShowNotification(false);
+            setScreenNotification(null)
         }, 3000)
     }
 

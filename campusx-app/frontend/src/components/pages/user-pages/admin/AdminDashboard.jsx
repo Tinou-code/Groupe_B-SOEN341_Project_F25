@@ -9,7 +9,7 @@ import { getOrganizations, getStudents } from "../../../../../../api/admin";
 
 export default function AdminDashboard() {
 
-    const {notifyUser} = useContext(ScreenNotificationContext);
+    //const {notifyUser} = useContext(ScreenNotificationContext);
 
     const {currentUser} = useContext(CurrentUserContext);
     const [events, setEvents] = useState();
@@ -23,16 +23,16 @@ export default function AdminDashboard() {
         async function fetchEvents() {
             const response = await getEvents();
             //console.log("fetchevents", response); 
-            setEvents(e => response.events);
+            setEvents(response.events);
         }
         async function fetchOrgs() {
             const response = await getOrganizations();
             //console.log("response2", response.organizations); 
-            setOrganizations(e => [...response.organizations].sort());
+            setOrganizations([...response.organizations].sort());
         }
         async function fetchStudents() {
             const response = await getStudents();
-            setStudents(s => response.students);
+            setStudents(response.students);
         }
         fetchEvents(); 
         fetchOrgs()
@@ -54,8 +54,8 @@ export default function AdminDashboard() {
                 numOfPastEvents++;
             }
         });
-        setTicketsIssued(t => numOfTickets);
-        setAvgParticipation(a => Number(100*(participation/numOfPastEvents)).toFixed(2));
+        setTicketsIssued(numOfTickets);
+        setAvgParticipation(Number(100*(participation/numOfPastEvents)).toFixed(2));
     }, [events]);
 
     return(

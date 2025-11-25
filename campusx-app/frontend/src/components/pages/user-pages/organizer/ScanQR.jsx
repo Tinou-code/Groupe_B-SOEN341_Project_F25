@@ -17,12 +17,12 @@ export default function ScanQR({showpopup, setShowpopup, guests}) {
     //const resultDiv = document.getElementById("result");
     let guest = validTickets.find(t => t.ticketNum === decodedText);
     if (guest) {
-      setGuest(g => guest);
-      setStatus(s => 200);
-      setMsg(m => `Ticket ${decodedText} is VALID`);
+      setGuest(guest);
+      setStatus(200);
+      setMsg(`Ticket ${decodedText} is VALID`);
     } else {
-      setStatus(s => 400);
-      setMsg(m => `Ticket ${decodedText} is NOT VALID`);
+      setStatus(400);
+      setMsg(`Ticket ${decodedText} is NOT VALID`);
     }
   }
 
@@ -38,8 +38,8 @@ export default function ScanQR({showpopup, setShowpopup, guests}) {
       .catch(err => {
         //document.getElementById("result").innerHTML = "Could not read QR code. Please try another image.";
         //document.getElementById("result").style.color = "orange";
-        setStatus(s => 400);
-        setMsg(m => "Could not read QR code. Please try another file.");
+        setStatus(400);
+        setMsg("Could not read QR code. Please try another file.");
         console.error("Error scanning file:", err);
       });
   };
@@ -50,10 +50,10 @@ export default function ScanQR({showpopup, setShowpopup, guests}) {
           if (!showpopup) return;
           if (!scanPopupRef.current) return;
           if (e.target instanceof Node && !scanPopupRef.current.contains(e.target)) {
-                  setShowpopup(p => false);
+                  setShowpopup(false);
                   fileRef.current.value = "";
-                  setStatus(s => 0);
-                  setMsg(m => null);
+                  setStatus(0);
+                  setMsg(null);
               }
           };
       document.addEventListener("click", handler);

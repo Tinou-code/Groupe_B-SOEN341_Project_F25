@@ -11,7 +11,7 @@ export default function TicketCard({user, ticketId, eventId}) {
            async function fetchEvent() {
                const response = await getEvent(eventId);
                //console.log("get event res", response); 
-               setEvent(e => response.event);
+               setEvent(response.event);
            }
            fetchEvent()   
        }, [])
@@ -26,7 +26,7 @@ export default function TicketCard({user, ticketId, eventId}) {
             margin: 2
         }, (err, ticketCode) => {
             if (err) return console.error(err);
-            setQrcode(q => ticketCode);
+            setQrcode(ticketCode);
         })
     }
 
@@ -80,7 +80,7 @@ function TicketPopUp({qrcode, user, eventId, ticketId, showpopup, title, setShow
             if (!showpopup) return;
             if (!ticketPopupRef.current) return;
             if (e.target instanceof Node && !ticketPopupRef.current.contains(e.target)) {
-                    setShowpopup(p => false);
+                    setShowpopup(false);
                 }
             };
         document.addEventListener("click", handler);

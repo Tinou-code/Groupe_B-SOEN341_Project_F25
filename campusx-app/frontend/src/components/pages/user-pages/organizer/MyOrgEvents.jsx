@@ -19,7 +19,7 @@ export default function MyOrgEvents() {
         async function fetchEvents() {
             const response = await getEvents();
             //console.log("response2", response.events.filter(e => e.organizer === currentUser?.organization)); 
-            setEvents(e => response.events.filter(e => e.organizer === currentUser?.organization));
+            setEvents(response.events.filter(e => e.organizer === currentUser?.organization));
         }
         fetchEvents()   
     }, [currentUser]);

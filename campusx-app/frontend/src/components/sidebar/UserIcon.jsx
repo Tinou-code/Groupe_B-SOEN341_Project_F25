@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../App";
 import { FaUserAlt } from "react-icons/fa";
 
 export default function UserIcon() {
-    const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
+    const {currentUser} = useContext(CurrentUserContext);
     if (currentUser)
     return(
         <div className="user-icon">

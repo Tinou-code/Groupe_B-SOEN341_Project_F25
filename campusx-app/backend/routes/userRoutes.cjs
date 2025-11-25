@@ -113,11 +113,13 @@ userRoutes.route("/users").post(async (req, res) => {
                     let orgExist = await db.collection("organizations").findOne({name: mongoUser.organization});
                     if (!orgExist) {
                         let idTracker = await db.collection("organizations").findOne({nextOrgId: {$exists:true}});
+                        let orgId;
                         if (!idTracker) return res.status(500).json({ msg: "500 - Server error"});
-                        else orgId= `ORG${idTracker.nextOrgId}`;
+                        else orgId = `ORG${idTracker.nextOrgId}`;
                         let updateNextId = await db.collection("organizations").updateOne({_id: idTracker._id}, {$set:{nextOrgId:Number(idTracker.nextOrgId)+1}});
                         if (!updateNextId.acknowledged === true) return res.status(500).json({ msg: "500 - Server error"});
-                        let newOrg = await db.collection("organizations").insertOne({name: mongoUser.organization, id:orgId, isApproved:true, members:[{userId:mongoUser.userId}]});
+                        let newOrgId = await db.collection("organizations").insertOne({name: mongoUser.organization, id:orgId, isApproved:true, members:[{userId:mongoUser.userId}]});
+                        if (!newOrgId.acknowledged === true) return res.status(500).json({ msg: "500 - Server error"});
                     } else {
                         let updateOrg = await db.collection("organizations").updateOne({_id: orgExist._id}, {$set:{members:[...orgExist.members, {userId:mongoUser.userId}]}});
                         if (!updateOrg.acknowledged === true) return res.status(500).json({ msg: "500 - Server error"});

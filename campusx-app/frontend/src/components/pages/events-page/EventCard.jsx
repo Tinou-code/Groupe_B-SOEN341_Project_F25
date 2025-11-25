@@ -2,13 +2,11 @@ import { useContext, useEffect } from "react"
 import { formatDate, formatTime, handleCancelTicket, handleClaimTicket, handleSaveEvent, handleUnsaveEvent } from "../../../../../api/events"
 import { CurrentUserContext, ScreenNotificationContext } from "../../../App"
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import img404 from "/event-placeholder.svg";
 
 //Event component
 export default function EventCard({event}) {
 
-  const [ev, setEv] = useState(event);
   const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
   const {notifyUser} = useContext(ScreenNotificationContext);
 
@@ -16,7 +14,7 @@ export default function EventCard({event}) {
     const response = await handleSaveEvent(currentUser?.userId, event.eventId);
     //console.log("save event res", response);
     if (response.user)
-    setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+    setCurrentUser({...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
@@ -24,7 +22,7 @@ export default function EventCard({event}) {
     const response = await handleUnsaveEvent(currentUser?.userId, event.eventId);
     //console.log("unsave event res", response);
     if (response.user)
-    setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+    setCurrentUser({...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
@@ -32,7 +30,7 @@ export default function EventCard({event}) {
     const response = await handleClaimTicket(currentUser?.userId, event.eventId);
     //console.log("claim ticket res", response);
     if (response.user)
-    setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+    setCurrentUser({...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
@@ -40,7 +38,7 @@ export default function EventCard({event}) {
      const response = await handleCancelTicket(currentUser?.userId, event.eventId);
     //console.log("claim ticket res", response);
     if (response.user)
-    setCurrentUser(u => u = {...response.user, isLoggedIn:true}); 
+    setCurrentUser({...response.user, isLoggedIn:true}); 
     notifyUser(response.msg);
   }
 
@@ -49,7 +47,7 @@ export default function EventCard({event}) {
   }, [currentUser])
 
     return(
-      ev ? 
+      event ? 
       <div className="event-card">
         <Link to={`/events/${event.eventId}`} className="event-card-link">
           <img src={event.imagePath ? event.imagePath : img404} alt={event.title} 
@@ -62,9 +60,9 @@ export default function EventCard({event}) {
               <span className="event-tag">{event.category}</span>
               <span className="event-tag">{event.type}</span>
             </div>
-            {currentUser.type === "admin" || (currentUser.type === "organizer" && currentUser.organization === ev.organizer) ? 
-            <p id={"status"+(ev?.isApproved? "-approved":"-unapproved")}>
-                        Status: {ev?.isApproved ? "Approved":"Not Approved"}</p>:""}
+            {currentUser.type === "admin" || (currentUser.type === "organizer" && currentUser.organization === event.organizer) ? 
+            <p id={"status"+(event?.isApproved? "-approved":"-unapproved")}>
+                        Status: {event?.isApproved ? "Approved":"Not Approved"}</p>:""}
 
             <h2 className="event-title">{event.title}</h2>
             <span className="available-tickets">{`${event.remainingTickets}/${event.tickets}`} tickets remaining</span>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import "./sidebar.css"
 import { CurrentUserContext } from "../../App"
 import { ScreenNotificationContext } from "../../App"
@@ -35,7 +35,7 @@ export default function Sidebar() {
         notifyUser("Logging out")
         setTimeout(() => {
         handleLogout();
-        setCurrentUser(u => undefined)
+        setCurrentUser(undefined)
         navigate("/");
         }, 1000);
     }
